@@ -1,5 +1,11 @@
 @import url("./background.scss");
+@import url("./colors.scss");
+@import url("./flex.scss");
+@import url("./font_size.scss");
+@import url("./font_weight.scss");
 @import url("./size.scss");
+@import url("./space.scss");
+@import url("./variables/global.scss");
 
 * {
   font-family: sans-serif;
@@ -7,6 +13,6 @@
   padding: 0;
 }
 
-.cursor-pointer {
+.pointer {
   cursor: pointer;
 }
