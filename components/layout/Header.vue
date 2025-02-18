@@ -11,7 +11,7 @@
 import { sidebarStoreModule } from "~/stores/sidebarModule";
 
 const handleChangeSidebarState = () => {
-  sidebarStoreModule.sidebarState.value = "open";
+  sidebarStoreModule.handleChangeSidebarState();
 };
 </script>
 

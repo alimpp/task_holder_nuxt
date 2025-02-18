@@ -26,5 +26,6 @@ const sidebarState = computed(() => {
   border: 1px solid #d1cdcd53;
   border-radius: 10px;
   margin: 0 15px;
+  transition: 0.5s;
 }
 </style>
