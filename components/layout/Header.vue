@@ -11,7 +11,7 @@
 import { sidebarStoreModule } from "~/stores/sidebarModule";
 
 const handleChangeSidebarState = () => {
-  sidebarStoreModule.sidebarState.value = "open";
+  sidebarStoreModule.handleChangeSidebarState();
 };
 </script>
 
@@ -24,5 +24,10 @@ const handleChangeSidebarState = () => {
   align-items: center;
   border: 1px solid #d1cdcd53;
   padding: 0 10px;
+}
+@media (max-width: 800px) {
+  .layout-header-style {
+    width: 90%;
+  }
 }
 </style>

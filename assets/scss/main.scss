@@ -1,11 +1,8 @@
 @import url("./background.scss");
 @import url("./colors.scss");
 @import url("./flex.scss");
-@import url("./font_size.scss");
 @import url("./font_weight.scss");
-@import url("./size.scss");
-@import url("./space.scss");
-@import url("./variables/global.scss");
+@import url("./animations.scss");
 
 * {
   font-family: sans-serif;
@@ -15,4 +12,86 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.border-rounded {
+  border-radius: 5px;
+}
+
+@for $i from 1 through 100 {
+  .w-#{$i} {
+    width: #{$i}#{"%"};
+  }
+}
+
+@for $i from 1 through 500 {
+  .w-#{$i}-px {
+    width: #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .h-#{$i}-dvh {
+    height: #{$i}dvh;
+  }
+}
+
+@for $i from 1 through 500 {
+  .h-#{$i}-px {
+    height: #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .f-s-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .pt-#{$i} {
+    padding-top: #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .pb-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .px-#{$i} {
+    padding: 0 #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .py-#{$i} {
+    padding: #{$i}px 0;
+  }
+}
+
+@for $i from 1 through 100 {
+  .mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .mx-#{$i} {
+    margin: 0 #{$i}px;
+  }
+}
+
+@for $i from 1 through 100 {
+  .my-#{$i} {
+    margin: #{$i}px 0;
+  }
 }

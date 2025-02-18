@@ -8,6 +8,8 @@
         <LayoutHeader />
       </div>
     </div>
+
+    <LayoutMobileSidebar class="mobile-size" />
   </div>
 </template>
 
@@ -35,5 +37,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.mobile-size {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .sidebar-content {
+    display: none;
+  }
+  .mobile-size {
+    display: flex;
+  }
 }
 </style>

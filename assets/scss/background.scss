@@ -1,5 +1,27 @@
 @import url("./theme_colors.scss");
 
+.bg-primary {
+  background: var(--primary-);
+}
+.bg-secondary {
+  background: var(--secondary-);
+}
+.bg-info {
+  background: var(--info-);
+}
+.bg-warning {
+  background: var(--warning-);
+}
+.bg-danger- {
+  background: var(--danger-);
+}
+.bg-red- {
+  background: var(--red-);
+}
+.bg-gray- {
+  background: var(--gray-);
+}
+
 .bg-primary-white {
   background: var(--primary-white);
 }

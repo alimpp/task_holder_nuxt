@@ -45,8 +45,15 @@ export class SidebarModule {
     this.sidebarList.value = sidebarList;
   }
 
-  handleChangeSidebarState(state: string) {
-    this.sidebarState.value = state;
+  handleChangeSidebarState() {
+    switch (this.sidebarState.value) {
+      case "close":
+        this.sidebarState.value = "open";
+        break;
+      case "open":
+        this.sidebarState.value = "close";
+        break;
+    }
   }
 }
 
