@@ -46,7 +46,6 @@ export class SidebarModule {
   }
 
   handleChangeSidebarState() {
-    console.log(123);
     switch (this.sidebarState.value) {
       case "close":
         this.sidebarState.value = "open";
