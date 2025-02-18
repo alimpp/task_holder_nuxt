@@ -7,6 +7,9 @@
       <div class="header-content">
         <LayoutHeader />
       </div>
+      <div class="router-content">
+        <NuxtPage />
+      </div>
     </div>
 
     <LayoutMobileSidebar class="mobile-size" />
@@ -30,6 +33,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.router-content {
+  height: 90dvh;
+  overflow-y: scroll;
+  padding: 0 15px;
+}
+.router-content::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar-content {

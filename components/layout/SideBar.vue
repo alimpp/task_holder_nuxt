@@ -22,24 +22,39 @@
       :key="index"
     >
       <div class="flex w-100" @click="item.isOpen = !item.isOpen">
-        <div class="flex align-center w-70 px-5">
-          <span class="f-s-16 f-w-600 color-primary">{{ item.name }}</span>
+        <div
+          class="flex align-center w-70 px-5"
+          :class="{ 'justify-center': sidebarState == 'close' }"
+        >
+          <img :src="item.icon" alt="icon" width="20" />
+          <span
+            class="f-s-14 f-w-600 color-primary px-2"
+            v-if="sidebarState === 'open'"
+            >{{ item.name }}</span
+          >
         </div>
-        <div class="w-30 flex justify-end">
+        <div class="w-30 flex justify-end" v-if="sidebarState === 'open'">
           <IconsArrowDown v-if="item.isOpen" />
           <IconsArrowUp v-else />
         </div>
       </div>
       <div
-        class="flex flex-column w-100 px-15 fade_animations"
-        v-if="item.isOpen"
+        class="flex flex-column w-100 fade_animations"
+        v-if="item.isOpen && sidebarState === 'open'"
       >
         <div
-          class="flex w-100 py-5"
+          class="flex align-center w-100 py-5 mt-5 border-rounded"
           v-for="(child, index) in item.childs"
           :key="index"
+          @click="navigateTo(child.path)"
+          :class="{ 'bg-primary': route.path == child.path }"
         >
-          <span class="f-s-14 f-w-600 color-gray">{{ child.name }}</span>
+          <IconsCheckCircle class="mx-2" />
+          <span
+            class="f-s-14 f-w-600 color-gray px-5"
+            :class="{ 'color-primary-white': route.path == child.path }"
+            >{{ child.name }}</span
+          >
         </div>
       </div>
     </div>
@@ -47,7 +62,10 @@
 </template>
 
 <script setup>
+import { useRoute } from "vue-router";
 import { sidebarStoreModule } from "@/stores/sidebarModule";
+
+const route = useRoute();
 
 const sidebarList = computed(() => {
   return sidebarStoreModule.sidebarList.value;

@@ -13,9 +13,9 @@ export interface ISidebarItem {
 const sidebarListData: ISidebarItem[] = [
   {
     name: "Porjects",
-    isOpen: false,
+    isOpen: true,
     permission: true,
-    icon: "/public/sidebar/projects.svg",
+    icon: "/sidebar/projects-icon.png",
     childs: [
       {
         name: "Projects List",
@@ -36,9 +36,9 @@ const sidebarListData: ISidebarItem[] = [
   },
   {
     name: "Users",
-    isOpen: false,
+    isOpen: true,
     permission: true,
-    icon: "/public/sidebar/projects.svg",
+    icon: "/sidebar/users-icon.png",
     childs: [
       {
         name: "Users List",
