@@ -15,7 +15,7 @@ const sidebarListData: ISidebarItem[] = [
     name: "Porjects",
     isOpen: false,
     permission: true,
-    icon: "/public/",
+    icon: "/public/sidebar/projects.svg",
     childs: [
       {
         name: "Projects List",
@@ -30,6 +30,29 @@ const sidebarListData: ISidebarItem[] = [
       {
         name: "Update Project",
         path: "/projects/update",
+        active: false,
+      },
+    ],
+  },
+  {
+    name: "Users",
+    isOpen: false,
+    permission: true,
+    icon: "/public/sidebar/projects.svg",
+    childs: [
+      {
+        name: "Users List",
+        active: false,
+        path: "/users/list",
+      },
+      {
+        name: "Create User",
+        path: "/users/create",
+        active: false,
+      },
+      {
+        name: "Update User",
+        path: "/users/update",
         active: false,
       },
     ],
