@@ -1,6 +1,7 @@
 <template>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae velit incidunt
-  nesciunt quisquam fuga libero quibusdam error, ab deleniti similique
-  voluptatem minima ex officia perferendis temporibus voluptatum nobis voluptas
-  voluptatibus.
+  <div class="w-100 flex flex-column">
+    <div class="w-100">
+      <BaseBreadCrumbs />
+    </div>
+  </div>
 </template>

@@ -10,6 +10,16 @@
   padding: 0;
 }
 
+.container {
+  padding: 10px 15px;
+}
+
+@media (max-width: 550px) {
+  .container {
+    padding: 5px 5px;
+  }
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
