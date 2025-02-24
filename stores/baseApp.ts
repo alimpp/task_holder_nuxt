@@ -15,6 +15,11 @@ export class BaseAppModule {
   public loading = ref<boolean>(false);
   public toastMessages = ref<IToastMessage[]>([]);
 
+  constructor(loading: boolean, toastMessages: IToastMessage[]) {
+    this.loading.value = loading;
+    this.toastMessages.value = toastMessages;
+  }
+
   createToast(toast: IToastMessage) {
     this.toastMessages.value.push(toast);
   }
@@ -27,3 +32,5 @@ export class BaseAppModule {
     );
   }
 }
+
+export const baseAppStoreModule = new BaseAppModule(false, []);
