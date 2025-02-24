@@ -1,16 +1,14 @@
 <template>
   <button
     class="base-button"
-    :style="{padding: `${padding}`, border: `${border}` }"
-    :class="[bg]"
+    :style="{ padding: `${padding}` }"
+    :class="[bg, color, border]"
     :disabled="disabled"
-  > 
-    <div v-if="loading">
-      loading...
-    </div>
-    <div class="flex align-center" v-else>
+  >
+    <div class="flex align-center">
       <slot name="iconRight"></slot>
       <span :class="[fontSize, fontWight, color]"> {{ name }}</span>
+      <IconsSpinner v-if="loading" />
       <slot name="iconLeft"></slot>
     </div>
   </button>
@@ -20,15 +18,15 @@
 const props = defineProps({
   bg: {
     type: String,
-    default: "",
+    default: "bg-primary",
   },
   color: {
     type: String,
-    default: "",
+    default: "color-primary-white",
   },
   fontSize: {
     type: String,
-    default: "f-s-14",
+    default: "f-s-12",
   },
   fontWight: {
     type: String,
@@ -52,7 +50,7 @@ const props = defineProps({
   },
   padding: {
     type: String,
-    default: "5px 10px",
+    default: "10px 10px",
   },
 });
 </script>
@@ -64,5 +62,6 @@ const props = defineProps({
   justify-content: center;
   border-radius: 6px;
   cursor: pointer;
+  border: none;
 }
 </style>

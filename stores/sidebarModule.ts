@@ -12,6 +12,19 @@ export interface ISidebarItem {
 
 const sidebarListData: ISidebarItem[] = [
   {
+    name: "Dashboard",
+    isOpen: true,
+    permission: true,
+    icon: "/sidebar/dashboard-icon.png",
+    childs: [
+      {
+        name: "Reports",
+        active: false,
+        path: "/",
+      },
+    ],
+  },
+  {
     name: "Porjects",
     isOpen: true,
     permission: true,

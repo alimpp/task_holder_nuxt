@@ -8,6 +8,14 @@
   background: var(--secondary-);
   transition: 0.5s;
 }
+.bg-success {
+  background: var(--success-);
+  transition: 0.5s;
+}
+.bg-success-low {
+  background: var(--success-low-);
+  transition: 0.5s;
+}
 .bg-info {
   background: var(--info-);
   transition: 0.5s;
@@ -16,11 +24,11 @@
   background: var(--warning-);
   transition: 0.5s;
 }
-.bg-danger- {
+.bg-danger {
   background: var(--danger-);
   transition: 0.5s;
 }
-.bg-red- {
+.bg-red {
   background: var(--red-);
   transition: 0.5s;
 }
