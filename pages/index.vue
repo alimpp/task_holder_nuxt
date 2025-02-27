@@ -78,7 +78,6 @@
           bg="bg-warning"
           color="color-primary-white"
           padding="12px 15px"
-          :loading="loadingButton"
           @click="
             addToast({
               title: 'warning toast',
@@ -95,7 +94,6 @@
           bg="bg-success"
           color="color-primary-white"
           padding="12px 15px"
-          :loading="loadingButton"
           @click="
             addToast({
               title: 'success toast',
@@ -112,7 +110,6 @@
           bg="bg-danger"
           color="color-primary-white"
           padding="12px 15px"
-          :loading="loadingButton"
           @click="
             addToast({
               title: 'danger toast',

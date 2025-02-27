@@ -8,7 +8,7 @@
     <div class="flex align-center">
       <slot name="iconRight"></slot>
       <span :class="[fontSize, fontWight, color]"> {{ name }}</span>
-      <IconsSpinner v-if="loading" />
+      <IconsSpinner v-if="loading" :color="loadingColor" />
       <slot name="iconLeft"></slot>
     </div>
   </button>
@@ -23,6 +23,10 @@ const props = defineProps({
   color: {
     type: String,
     default: "color-primary-white",
+  },
+  loadingColor: {
+    type: String,
+    default: "#fff",
   },
   fontSize: {
     type: String,

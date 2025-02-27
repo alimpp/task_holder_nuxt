@@ -7,7 +7,7 @@
   >
     <g
       fill="none"
-      stroke="#fff"
+      :stroke="color"
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
@@ -50,6 +50,10 @@
 
 <script setup>
 const props = defineProps({
+  color: {
+    type: String,
+    default: "#fff",
+  },
   width: {
     type: String,
     default: "18",

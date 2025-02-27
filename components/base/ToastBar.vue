@@ -33,7 +33,6 @@ const remove = (id) => {
   bottom: 0;
   right: 0;
   overflow: hidden;
-  background: blue;
 }
 
 @media (max-width: 600px) {
