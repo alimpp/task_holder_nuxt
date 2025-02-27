@@ -32,11 +32,14 @@
   background: var(--red-);
   transition: 0.5s;
 }
-.bg-gray- {
+.bg-gray {
   background: var(--gray-);
   transition: 0.5s;
 }
-
+.bg-dark {
+  background: var(--dark-);
+  transition: 0.5s;
+}
 .bg-primary-white {
   background: var(--primary-white);
   transition: 0.5s;

@@ -22,7 +22,8 @@
         /><BaseButton
           name="Loading Button Test"
           bg="bg-warning"
-          color="color-primary-white"
+          color="color-dark"
+          loading-color="#000"
           padding="12px 15px"
           :loading="loadingButton"
           @click="handleLoading"
