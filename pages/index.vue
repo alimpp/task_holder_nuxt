@@ -76,12 +76,14 @@
         <BaseInput
           placeholder="Default search in base input"
           label="label input for test"
+          width="350px"
         />
         <BaseInput
           class="mt-5"
           placeholder="Default search in base input"
           label="With error input test"
           error-message="error message for test"
+          width="350px"
         />
       </div>
     </div>

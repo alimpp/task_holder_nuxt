@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="flex flex-column">
     <span class="f-s-12 f-w-500" :class="{ 'color-danger': errorMessage }">
       {{ label }}
     </span>
@@ -75,11 +75,7 @@ input {
   border-radius: 6px;
   color: black;
 }
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
+
 .error {
   border: 2px solid #f50000;
   color: #f50000;
