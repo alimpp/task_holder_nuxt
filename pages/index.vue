@@ -86,6 +86,30 @@
           width="350px"
         />
       </div>
+      <div class="flex w-100 mt-10">
+        <BaseChip
+          bg="bg-success-low"
+          color="color-success"
+          name="base chip for test"
+          width="120px"
+          border="border-success"
+        />
+        <BaseChip
+          bg="bg-danger"
+          color="color-primary-white"
+          name="base chip for test"
+          width="120px"
+          border="border-red"
+          class="mx-5"
+        />
+        <BaseChip
+          bg="bg-info"
+          color="color-primary"
+          name="base chip for test"
+          width="120px"
+          border="border-primary"
+        />
+      </div>
     </div>
   </div>
 </template>
