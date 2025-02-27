@@ -14,6 +14,7 @@
 
     <LayoutMobileSidebar class="mobile-size" />
     <BasePageLoading v-if="pageLoading" />
+    <BaseToastBar />
   </div>
 </template>
 

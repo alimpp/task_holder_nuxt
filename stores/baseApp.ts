@@ -2,11 +2,8 @@ import { ref } from "vue";
 
 interface IToastMessage {
   title: string;
-  titleColor: string;
   text: string;
-  textColor: string;
   type: string;
-  bg: string;
   id: string | number;
   timeout: number | string;
 }

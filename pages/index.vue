@@ -68,9 +68,61 @@
           bg="bg-secondary"
           color="color-primary-white"
           padding="12px 15px"
-          :loading="loadingButton"
           class="mx-2"
           @click="pageLoading"
+        />
+      </div>
+      <div class="flex mt-10">
+        <BaseButton
+          name="warning toast"
+          bg="bg-warning"
+          color="color-primary-white"
+          padding="12px 15px"
+          :loading="loadingButton"
+          @click="
+            addToast({
+              title: 'warning toast',
+              text: 'warning toast for test',
+              type: 'warning',
+              id: '1',
+              timeout: 5000,
+            })
+          "
+          class="mx-2"
+        />
+        <BaseButton
+          name="success toast"
+          bg="bg-success"
+          color="color-primary-white"
+          padding="12px 15px"
+          :loading="loadingButton"
+          @click="
+            addToast({
+              title: 'success toast',
+              text: 'success toast for test',
+              type: 'success',
+              id: '2',
+              timeout: 5000,
+            })
+          "
+          class="mx-2"
+        />
+        <BaseButton
+          name="danger toast"
+          bg="bg-danger"
+          color="color-primary-white"
+          padding="12px 15px"
+          :loading="loadingButton"
+          @click="
+            addToast({
+              title: 'danger toast',
+              text: 'danger toast for test',
+              type: 'danger',
+              id: '3',
+              timeout: 5000,
+            })
+          "
+          class="mx-2"
         />
       </div>
     </div>
@@ -94,5 +146,9 @@ const pageLoading = () => {
   setTimeout(() => {
     baseAppStoreModule.loading.value = !baseAppStoreModule.loading.value;
   }, 3000);
+};
+
+const addToast = (toast) => {
+  baseAppStoreModule.createToast(toast);
 };
 </script>
