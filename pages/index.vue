@@ -72,6 +72,19 @@
           class="mx-2"
         />
       </div>
+      <div class="flex flex-column mt-10">
+        <BaseInput
+          placeholder="Default search in base input"
+          label="label input for test"
+        />
+        <BaseInput
+          class="mt-5"
+          placeholder="Default search in base input"
+          label="With error input test"
+          :error="true"
+          error-message="error message for test"
+        />
+      </div>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <span class="label">
+    <span class="f-s-12 f-w-500" :class="{ 'color-danger': errorMessage }">
       {{ label }}
     </span>
     <input
@@ -16,8 +16,9 @@
       }"
       :disabled="disabled"
       :placeholder="placeholder"
+      class="mt-2"
     />
-    <span v-if="error" class="color-danger errorMessage">
+    <span v-if="error" class="color-danger f-s-12 f-w-500">
       {{ errorMessage }}
     </span>
   </div>
@@ -69,7 +70,6 @@ const props = defineProps({
     default: "100%",
   },
 });
-
 </script>
 
 <style scoped lang="scss">
@@ -88,17 +88,5 @@ input {
 .error {
   border: 2px solid #f50000;
   color: #f50000;
-}
-.label {
-  font-size: 14px;
-  font-weight: 600;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-.errorMessage {
-  font-size: 12px;
-  font-weight: 600;
-  padding-left: 8px;
-  padding-right: 8px;
 }
 </style>
