@@ -81,7 +81,6 @@
           class="mt-5"
           placeholder="Default search in base input"
           label="With error input test"
-          :error="true"
           error-message="error message for test"
         />
       </div>

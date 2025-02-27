@@ -12,13 +12,13 @@
       @input="$emit('update:modelValue', $event.target.value)"
       :type="type"
       :class="{
-        error: error,
+        error: errorMessage,
       }"
       :disabled="disabled"
       :placeholder="placeholder"
       class="mt-2"
     />
-    <span v-if="error" class="color-danger f-s-12 f-w-500">
+    <span v-if="errorMessage" class="color-danger f-s-12 f-w-500">
       {{ errorMessage }}
     </span>
   </div>
@@ -39,11 +39,6 @@ const props = defineProps({
   type: {
     type: String,
     default: "",
-    required: false,
-  },
-  error: {
-    type: Boolean,
-    default: false,
     required: false,
   },
   errorMessage: {
