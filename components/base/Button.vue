@@ -1,7 +1,7 @@
 <template>
   <button
     class="base-button"
-    :style="{ padding: `${padding}` }"
+    :style="{ width: width, height: height }"
     :class="[bg, color, border]"
     :disabled="disabled"
   >
@@ -51,6 +51,14 @@ const props = defineProps({
   border: {
     type: String,
     default: "",
+  },
+  width: {
+    type: String,
+    default: "70px",
+  },
+  height: {
+    type: String,
+    default: "40px",
   },
   padding: {
     type: String,

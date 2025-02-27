@@ -6,58 +6,7 @@
           name="Loading Button Test"
           bg="bg-primary"
           color="color-primary-white"
-          padding="12px 15px"
-          :loading="loadingButton"
-          @click="handleLoading"
-          class="mx-2"
-        />
-        <BaseButton
-          name="Loading Button Test"
-          bg="bg-secondary"
-          color="color-primary-white"
-          padding="12px 15px"
-          :loading="loadingButton"
-          @click="handleLoading"
-          class="mx-2"
-        /><BaseButton
-          name="Loading Button Test"
-          bg="bg-warning"
-          color="color-dark"
-          loading-color="#000"
-          padding="12px 15px"
-          :loading="loadingButton"
-          @click="handleLoading"
-          class="mx-2"
-        /><BaseButton
-          name="Loading Button Test"
-          bg="bg-success"
-          color="color-primary-white"
-          padding="12px 15px"
-          :loading="loadingButton"
-          @click="handleLoading"
-          class="mx-2"
-        /><BaseButton
-          name="Loading Button Test"
-          bg="bg-success-low"
-          color="color-primary-white"
-          padding="12px 15px"
-          :loading="loadingButton"
-          @click="handleLoading"
-          class="mx-2"
-        /><BaseButton
-          name="Loading Button Test"
-          bg="bg-red"
-          color="color-primary-white"
-          padding="12px 15px"
-          :loading="loadingButton"
-          @click="handleLoading"
-          class="mx-2"
-        />
-        <BaseButton
-          name="Loading Button Test"
-          bg="bg-danger"
-          color="color-primary-white"
-          padding="12px 15px"
+          width="150px"
           :loading="loadingButton"
           @click="handleLoading"
           class="mx-2"
@@ -68,7 +17,7 @@
           name="Loading page"
           bg="bg-secondary"
           color="color-primary-white"
-          padding="12px 15px"
+          width="150px"
           class="mx-2"
           @click="pageLoading"
         />
@@ -77,8 +26,8 @@
         <BaseButton
           name="warning toast"
           bg="bg-warning"
-          color="color-primary-white"
-          padding="12px 15px"
+          color="color-dark"
+          width="120px"
           @click="
             addToast({
               title: 'warning toast',
@@ -94,7 +43,7 @@
           name="success toast"
           bg="bg-success"
           color="color-primary-white"
-          padding="12px 15px"
+          width="120px"
           @click="
             addToast({
               title: 'success toast',
@@ -110,7 +59,7 @@
           name="danger toast"
           bg="bg-danger"
           color="color-primary-white"
-          padding="12px 15px"
+          width="120px"
           @click="
             addToast({
               title: 'danger toast',
