@@ -1,5 +1,4 @@
 <template>
-  <BaseButton/>
   <div>
     <nuxtLayout>
       <nuxtPage />

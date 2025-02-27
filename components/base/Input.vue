@@ -13,8 +13,6 @@
       :type="type"
       :class="{
         error: error,
-        'bg-white': isThemeLight,
-        'color-primary-white': !isThemeLight,
       }"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -81,6 +79,7 @@ input {
   outline: none;
   border: 1px solid #8481812f;
   border-radius: 6px;
+  color: black;
 }
 .container {
   width: 100%;
