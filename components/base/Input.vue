@@ -70,7 +70,6 @@ const props = defineProps({
   },
 });
 
-const isThemeLight = ref(true);
 </script>
 
 <style scoped lang="scss">
