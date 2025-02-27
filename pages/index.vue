@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 flex flex-column">
     <div class="w-100 flex flex-column">
-      <div class="flex mt-10">
+      <div class="flex mt-10 flex-wrap">
         <BaseButton
           name="Loading Button Test"
           bg="bg-primary"
@@ -90,8 +90,6 @@ const handleLoading = () => {
 };
 
 const pageLoading = () => {
-  console.log(baseAppStoreModule.loading.value);
-
   baseAppStoreModule.loading.value = !baseAppStoreModule.loading.value;
   setTimeout(() => {
     baseAppStoreModule.loading.value = !baseAppStoreModule.loading.value;

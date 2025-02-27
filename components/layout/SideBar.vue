@@ -39,7 +39,7 @@
         </div>
       </div>
       <div
-        class="flex flex-column w-100 fade_animations"
+        class="flex flex-column w-100 fade-animation"
         v-if="item.isOpen && sidebarState === 'open'"
       >
         <div

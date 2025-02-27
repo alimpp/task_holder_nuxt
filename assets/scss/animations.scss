@@ -34,11 +34,11 @@
   animation: 0.3s slid-up;
 }
 
-.fade_animations {
-  animation: 0.8s fade_animations;
+.fade-animation {
+  animation: 0.8s fade-animation;
 }
 
-@keyframes fade_animations {
+@keyframes fade-animation {
   0% {
     opacity: 0;
   }

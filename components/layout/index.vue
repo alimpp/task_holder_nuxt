@@ -17,15 +17,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { baseAppStoreModule } from "@/stores/baseApp";
 
-const pageLoading = computed(
-  () => {
-    return baseAppStoreModule.loading.value;
-  },
-  { deep: true }
-);
+const pageLoading = computed(() => {
+  return baseAppStoreModule.loading.value;
+});
 </script>
 
 <style scoped>
