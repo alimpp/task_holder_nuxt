@@ -28,6 +28,29 @@ export class BaseAppModule {
       }
     );
   }
+
+  convertDataToJson(data: any) {
+    const response = JSON.stringify(data);
+    return response;
+  }
+
+  parseJsonData(data: any) {
+    const response = JSON.parse(data);
+    return response;
+  }
+
+  saveToLocaleStorage(key: string, data: any) {
+    localStorage.setItem(key, data);
+  }
+
+  getDataFromLocaleStorage(key: string) {
+    const response = localStorage.getItem(key);
+    return response;
+  }
+
+  removeItemFromLocaleStorage(key: string) {
+    localStorage.removeItem(key);
+  }
 }
 
 export const baseAppStoreModule = new BaseAppModule(false, []);
