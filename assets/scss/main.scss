@@ -62,13 +62,15 @@
 
 @for $i from 1 through 100 {
   .px-#{$i} {
-    padding: 0 #{$i}px;
+    padding-left: #{$i}px;
+    padding-right: #{$i}px;
   }
 }
 
 @for $i from 1 through 100 {
   .py-#{$i} {
-    padding: #{$i}px 0;
+    padding-top: #{$i}px;
+    padding-bottom: #{$i}px;
   }
 }
 
@@ -86,12 +88,14 @@
 
 @for $i from 1 through 100 {
   .mx-#{$i} {
-    margin: 0 #{$i}px;
+    margin-left: #{$i}px;
+    margin-right: #{$i}px;
   }
 }
 
 @for $i from 1 through 100 {
   .my-#{$i} {
-    margin: #{$i}px 0;
+    margin-top: #{$i}px;
+    margin-bottom: #{$i}px;
   }
 }

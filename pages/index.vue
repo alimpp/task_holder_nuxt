@@ -110,6 +110,15 @@
           border="border-primary"
         />
       </div>
+      <BaseButton
+        name="Create User"
+        bg="bg-secondary"
+        color="color-primary-white"
+        width="150px"
+        class="mx-2 mt-10"
+        @click="isOpen = true"
+      />
+      <ModalsTest :isOpen="isOpen" @close="isOpen = false" />
     </div>
   </div>
 </template>
@@ -118,6 +127,7 @@
 import { baseAppStoreModule } from "@/stores/baseApp";
 
 const loadingButton = ref(false);
+const isOpen = ref(false);
 
 const handleLoading = () => {
   loadingButton.value = !loadingButton.value;
