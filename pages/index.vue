@@ -118,7 +118,16 @@
         class="mx-2 mt-10"
         @click="isOpen = true"
       />
+      <BaseButton
+        name="Create User"
+        bg="bg-info"
+        color="color-primary"
+        width="150px"
+        class="mx-2 mt-10"
+        @click="isOpenDrawer = true"
+      />
       <ModalsTest :isOpen="isOpen" @close="isOpen = false" />
+      <DrawersTest :isOpen="isOpenDrawer" @close="isOpenDrawer = false" />
     </div>
   </div>
 </template>
@@ -128,6 +137,7 @@ import { baseAppStoreModule } from "@/stores/baseApp";
 
 const loadingButton = ref(false);
 const isOpen = ref(false);
+const isOpenDrawer = ref(false);
 
 const handleLoading = () => {
   loadingButton.value = !loadingButton.value;
