@@ -10,7 +10,7 @@ export interface ISidebarItem {
   childs?: ISidebarItem[];
 }
 
-const sidebarListData: ISidebarItem[] = [
+export const sidebarListData: ISidebarItem[] = [
   {
     name: "Dashboard",
     isOpen: true,

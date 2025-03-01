@@ -1,5 +1,24 @@
 <template>
   <div class="w-100 flex flex-column">
+    <span> {{ counterModule }}</span>
+    <BaseButton
+      name="increment"
+      bg="bg-primary"
+      color="color-primary-white"
+      width="150px"
+      @click="counterStoreModule.increment()"
+      class="mx-2"
+    />
+
+    <BaseButton
+      name="decrement"
+      bg="bg-primary"
+      color="color-primary-white"
+      width="150px"
+      @click="handleDecrement"
+      class="mx-2 mt-4"
+    />
+
     <div class="w-100 flex flex-column">
       <div class="flex mt-10 flex-wrap">
         <BaseButton
@@ -134,10 +153,19 @@
 
 <script setup>
 import { baseAppStoreModule } from "@/stores/baseApp";
+import { counterStoreModule } from "@/stores/counterModule";
+
+const counterModule = computed(() => {
+  return counterStoreModule.counter.value;
+});
 
 const loadingButton = ref(false);
 const isOpen = ref(false);
 const isOpenDrawer = ref(false);
+
+const handleDecrement = () => {
+  counterStoreModule.decrement()
+};
 
 const handleLoading = () => {
   loadingButton.value = !loadingButton.value;
