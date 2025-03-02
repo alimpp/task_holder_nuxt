@@ -152,7 +152,7 @@
 </template>
 
 <script setup>
-import { baseAppStoreModule } from "@/stores/baseApp";
+import { BaseAppStoreElementModule } from "@/stores/baseApp";
 import { counterStoreModule } from "@/stores/counterModule";
 
 const counterModule = computed(() => {
@@ -164,7 +164,7 @@ const isOpen = ref(false);
 const isOpenDrawer = ref(false);
 
 const handleDecrement = () => {
-  counterStoreModule.decrement()
+  counterStoreModule.decrement();
 };
 
 const handleLoading = () => {
@@ -175,13 +175,15 @@ const handleLoading = () => {
 };
 
 const pageLoading = () => {
-  baseAppStoreModule.loading.value = !baseAppStoreModule.loading.value;
+  BaseAppStoreElementModule.loading.value =
+    !BaseAppStoreElementModule.loading.value;
   setTimeout(() => {
-    baseAppStoreModule.loading.value = !baseAppStoreModule.loading.value;
+    BaseAppStoreElementModule.loading.value =
+      !BaseAppStoreElementModule.loading.value;
   }, 3000);
 };
 
 const addToast = (toast) => {
-  baseAppStoreModule.createToast(toast);
+  BaseAppStoreElementModule.createToast(toast);
 };
 </script>

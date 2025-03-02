@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
-import { baseAppStoreModule } from "@/stores/baseApp";
+import { BaseAppStoreElementModule } from "@/stores/baseApp";
 
 const pageLoading = computed(() => {
-  return baseAppStoreModule.loading.value;
+  return BaseAppStoreElementModule.loading.value;
 });
 </script>
 

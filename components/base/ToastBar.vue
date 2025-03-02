@@ -10,14 +10,14 @@
 </template>
 
 <script setup>
-import { baseAppStoreModule } from "~/stores/baseApp";
+import { BaseAppStoreElementModule } from "~/stores/baseApp";
 
 const toastMessages = computed(() => {
-  return baseAppStoreModule.toastMessages.value;
+  return BaseAppStoreElementModule.toastMessages.value;
 });
 
 const remove = (id) => {
-  baseAppStoreModule.removeToast(id);
+  BaseAppStoreElementModule.removeToast(id);
 };
 </script>
 
