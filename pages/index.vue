@@ -23,6 +23,7 @@
 </template>
 
 <script setup>
+import { BaseAppStoreElementModule } from "@/stores/baseApp";
 import { counterStoreModule } from "@/stores/counterModule";
 
 const loading = computed(() => {
@@ -33,11 +34,31 @@ const counter = computed(() => {
   return counterStoreModule.counter.value;
 });
 
-const increment = () => {
-  counterStoreModule.increment();
+const loadingButton = ref(false);
+const isOpen = ref(false);
+const isOpenDrawer = ref(false);
+
+const handleDecrement = () => {
+  counterStoreModule.decrement();
 };
 
-const decrement = () => {
-  counterStoreModule.decrement();
+const handleLoading = () => {
+  loadingButton.value = !loadingButton.value;
+  setTimeout(() => {
+    loadingButton.value = !loadingButton.value;
+  }, 3000);
+};
+
+const pageLoading = () => {
+  BaseAppStoreElementModule.loading.value =
+    !BaseAppStoreElementModule.loading.value;
+  setTimeout(() => {
+    BaseAppStoreElementModule.loading.value =
+      !BaseAppStoreElementModule.loading.value;
+  }, 3000);
+};
+
+const addToast = (toast) => {
+  BaseAppStoreElementModule.createToast(toast);
 };
 </script>

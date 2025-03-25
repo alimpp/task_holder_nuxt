@@ -9,28 +9,6 @@ interface IToastMessage {
 }
 
 export class BaseAppModule {
-  public loading = ref<boolean>(false);
-  public toastMessages = ref<IToastMessage[]>([]);
-
-  constructor(loading: boolean, toastMessages: IToastMessage[]) {
-    this.loading.value = loading;
-    this.toastMessages.value = toastMessages;
-  }
-
-  createToast(toast: IToastMessage) {
-    this.toastMessages.value.push(toast);
-    console.log("for test");
-    console.log(toast, this.toastMessages.value);
-  }
-
-  removeToast(id: number | string) {
-    this.toastMessages.value = this.toastMessages.value.filter(
-      (toast: IToastMessage) => {
-        return toast.id != id;
-      }
-    );
-  }
-
   convertDataToJson(data: any) {
     const response = JSON.stringify(data);
     return response;
@@ -55,4 +33,29 @@ export class BaseAppModule {
   }
 }
 
-export const baseAppStoreModule = new BaseAppModule(false, []);
+export class BaseAppElementModule {
+  public loading = ref<boolean>(false);
+  public toastMessages = ref<IToastMessage[]>([]);
+
+  constructor(loading: boolean, toastMessages: IToastMessage[]) {
+    this.loading.value = loading;
+    this.toastMessages.value = toastMessages;
+  }
+
+  createToast(toast: IToastMessage) {
+    this.toastMessages.value.push(toast);
+    console.log("for test");
+    console.log(toast, this.toastMessages.value);
+  }
+
+  removeToast(id: number | string) {
+    this.toastMessages.value = this.toastMessages.value.filter(
+      (toast: IToastMessage) => {
+        return toast.id != id;
+      }
+    );
+  }
+}
+
+export const baseAppStoreModule = new BaseAppModule();
+export const BaseAppStoreElementModule = new BaseAppElementModule(false, []);
