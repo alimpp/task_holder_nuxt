@@ -20,7 +20,7 @@
       class="mt-10 slid-up-animation-5 fade-animation"
       width="365px"
       label="Password"
-      placeholder="Password your email"
+      placeholder="Enter your Password"
       :errorMessage="errorMessage.password"
       v-model="form.password"
     />

@@ -1,4 +1,4 @@
-import { BaseAppModule } from "./baseApp";
+import { BaseAppModule, BaseAppStoreElementModule } from "./baseApp";
 
 interface Input {
   email: string;
@@ -27,7 +27,14 @@ export class Login extends BaseAppModule {
   }
 
   async login(input: Input) {
-    console.log(input);
+    BaseAppStoreElementModule.createToast({
+      title: "Login Successfully",
+      text: "Login Successfully",
+      type: "success",
+      id: Date.now(),
+      timeout: 5000,
+    });
+    navigateTo("/");
   }
 }
 
