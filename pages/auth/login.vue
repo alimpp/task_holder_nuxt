@@ -13,12 +13,16 @@
       width="365px"
       label="Email"
       placeholder="Enter your email"
+      :errorMessage="errorMessage.email"
+      v-model="form.email"
     />
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
       width="365px"
       label="Password"
       placeholder="Password your email"
+      :errorMessage="errorMessage.password"
+      v-model="form.password"
     />
     <div class="flex align-center w-100 mt-10">
       <BaseButton
@@ -26,6 +30,7 @@
         name="Login"
         class="fade-animation"
         height="40px"
+        @click="login"
       />
       <span
         @click="navigateTo('/auth/register')"
@@ -37,7 +42,22 @@
 </template>
 
 <script setup>
+import { LoginStoreModule } from "@/stores/login";
+
 definePageMeta({
   layout: "auth",
 });
+
+const form = ref({
+  email: "",
+  password: "",
+});
+
+const errorMessage = computed(() => {
+  return LoginStoreModule.inputError.value;
+});
+
+const login = async () => {
+  await LoginStoreModule.validateInput(form.value);
+};
 </script>

@@ -42,23 +42,17 @@ export class BaseAppModule {
     minLength: number,
     maxLength: number
   ): { isValid: boolean; message?: string } {
-    if (minLength > maxLength) {
-      return {
-        isValid: false,
-        message: "حداقل طول نمی‌تواند از حداکثر طول بیشتر باشد",
-      };
-    }
     const length = input.length;
     if (length < minLength) {
       return {
         isValid: false,
-        message: `طول رشته باید حداقل ${minLength} کاراکتر باشد`,
+        message: `The password length must be at least ${minLength} characters.`,
       };
     }
     if (length > maxLength) {
       return {
         isValid: false,
-        message: `طول رشته نمی‌تواند بیشتر از ${maxLength} کاراکتر باشد`,
+        message: `The password length cannot exceed ${maxLength} characters.`,
       };
     }
     return { isValid: true };
