@@ -44,8 +44,6 @@ export class BaseAppElementModule {
 
   createToast(toast: IToastMessage) {
     this.toastMessages.value.push(toast);
-    console.log("for test");
-    console.log(toast, this.toastMessages.value);
   }
 
   removeToast(id: number | string) {
