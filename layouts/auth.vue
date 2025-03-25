@@ -6,7 +6,7 @@
       class="w-100 h-100-dvh"
     />
     <div class="glass-effect">
-      <div class="content border-rounded"><slot /></div>
+      <div class="content border-rounded px-10 py-30"><slot /></div>
     </div>
   </div>
 </template>
