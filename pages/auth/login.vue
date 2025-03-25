@@ -3,7 +3,7 @@
     <div
       class="slid-up-animation-5 flex flex-column justify-center align-center w--100"
     >
-      <span class="color-primary f-s-18 f-w-600">Login From Taskholder</span>
+      <span class="color-primary f-s-18 f-w-600">Login With Taskholder</span>
       <span class="color-gray f-s-10 f-w-500 pt-5"
         >Sign In With Email And Password</span
       >
@@ -20,12 +20,19 @@
       label="Password"
       placeholder="Password your email"
     />
-    <BaseButton
-      width="100%"
-      name="Login"
-      class="mt-10 fade-animation"
-      height="40px"
-    />
+    <div class="flex align-center w-100 mt-10">
+      <BaseButton
+        width="150px"
+        name="Login"
+        class="fade-animation"
+        height="40px"
+      />
+      <span
+        @click="navigateTo('/auth/register')"
+        class="f-s-13 f-w-500 color-primary cursor-pointer px-29"
+        >Do you not have an account?</span
+      >
+    </div>
   </div>
 </template>
 

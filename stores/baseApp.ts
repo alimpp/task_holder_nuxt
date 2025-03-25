@@ -31,6 +31,38 @@ export class BaseAppModule {
   removeItemFromLocaleStorage(key: string) {
     localStorage.removeItem(key);
   }
+
+  validEmail(email: string): boolean {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  validLength(
+    input: string,
+    minLength: number,
+    maxLength: number
+  ): { isValid: boolean; message?: string } {
+    if (minLength > maxLength) {
+      return {
+        isValid: false,
+        message: "حداقل طول نمی‌تواند از حداکثر طول بیشتر باشد",
+      };
+    }
+    const length = input.length;
+    if (length < minLength) {
+      return {
+        isValid: false,
+        message: `طول رشته باید حداقل ${minLength} کاراکتر باشد`,
+      };
+    }
+    if (length > maxLength) {
+      return {
+        isValid: false,
+        message: `طول رشته نمی‌تواند بیشتر از ${maxLength} کاراکتر باشد`,
+      };
+    }
+    return { isValid: true };
+  }
 }
 
 export class BaseAppElementModule {
