@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { LoginStoreModule } from "@/stores/login";
+import { LoginControllerModule } from "@/controllers/login";
 
 definePageMeta({
   layout: "auth",
@@ -54,10 +54,10 @@ const form = ref({
 });
 
 const errorMessage = computed(() => {
-  return LoginStoreModule.inputError.value;
+  return LoginControllerModule.inputError.value;
 });
 
 const login = async () => {
-  await LoginStoreModule.validateInput(form.value);
+  await LoginControllerModule.validateInput(form.value);
 };
 </script>
