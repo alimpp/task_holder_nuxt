@@ -66,7 +66,7 @@
 </template>
 
 <script setup>
-import { RegisterStoreModule } from "@/stores/register";
+import { RegisterControllerModule } from "@/controllers/register";
 
 definePageMeta({
   layout: "auth",
@@ -81,10 +81,10 @@ const form = ref({
 });
 
 const errorMessage = computed(() => {
-  return RegisterStoreModule.inputError.value;
+  return RegisterControllerModule.inputError.value;
 });
 
 const register = async () => {
-  await RegisterStoreModule.validateInput(form.value);
+  await RegisterControllerModule.validateInput(form.value);
 };
 </script>

@@ -1,4 +1,5 @@
 import { BaseAppModule } from "@/stores/baseApp";
+import { RegisterStoreModule } from "@/stores/register";
 import { ref } from "vue";
 
 interface Input {
@@ -52,12 +53,8 @@ export class RegisterController extends BaseAppModule {
       this.validEmail(email) &&
       this.inputError.value.confrimPassword.length == 0
     ) {
-      this.register(input);
+      RegisterStoreModule.register(input);
     }
-  }
-
-  async register(input: Input) {
-    navigateTo("/auth/login");
   }
 }
 

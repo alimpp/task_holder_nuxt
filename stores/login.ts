@@ -1,4 +1,4 @@
-import { BaseAppModule, BaseAppStoreElementModule } from "./baseApp";
+import { BaseAppStoreElementModule } from "./baseApp";
 
 interface Input {
   email: string;
@@ -6,11 +6,6 @@ interface Input {
 }
 
 export class Login {
-  inputError = ref<Input>({
-    email: "",
-    password: "",
-  });
-
   async login(input: Input) {
     BaseAppStoreElementModule.createToast({
       title: "Login Successfully",
