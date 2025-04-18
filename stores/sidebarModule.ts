@@ -18,7 +18,7 @@ export const sidebarListData: ISidebarItem[] = [
     icon: "/sidebar/dashboard-icon.png",
     childs: [
       {
-        name: "Reports",
+        name: "Dashboard",
         active: false,
         path: "/",
       },
@@ -34,39 +34,6 @@ export const sidebarListData: ISidebarItem[] = [
         name: "Projects List",
         active: false,
         path: "/projects/list",
-      },
-      {
-        name: "Create Project",
-        path: "/projects/create",
-        active: false,
-      },
-      {
-        name: "Update Project",
-        path: "/projects/update",
-        active: false,
-      },
-    ],
-  },
-  {
-    name: "Users",
-    isOpen: true,
-    permission: true,
-    icon: "/sidebar/users-icon.png",
-    childs: [
-      {
-        name: "Users List",
-        active: false,
-        path: "/users/list",
-      },
-      {
-        name: "Create User",
-        path: "/users/create",
-        active: false,
-      },
-      {
-        name: "Update User",
-        path: "/users/update",
-        active: false,
       },
     ],
   },
