@@ -7,7 +7,7 @@
   >
     <path
       fill="none"
-      stroke="currentColor"
+      stroke="#fff"
       stroke-linecap="round"
       stroke-width="1.5"
       d="M20 7H4m16 5H4m16 5H4"

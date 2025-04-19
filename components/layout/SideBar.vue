@@ -1,13 +1,13 @@
 <template>
   <div
-    class="sidebar-style bg-primary-white"
+    class="sidebar-style bg-secondary"
     :class="{
       'w-200-px': sidebarState === 'open',
       'w-40-px': sidebarState == 'close',
     }"
   >
     <div class="w-100 flex align-center bg-info py-2 border-rounded">
-      <IconsLogo />
+      <img src="/public/image/logo/logo.png" width="40" />
       <div class="flex flex-column" v-if="sidebarState == 'open'">
         <span class="f-s-12 f-w-500 color-primary">Task Holder</span>
         <span class="f-s-10 f-w-500 color-gray pt-5"
@@ -49,10 +49,10 @@
           @click="navigateTo(child.path)"
           :class="{ 'bg-primary': route.path == child.path }"
         >
-          <IconsCheckCircle class="mx-2" />
+          <IconsCheckCircle class="mx-2" v-if="route.path == child.path" />
           <span
-            class="f-s-14 f-w-600 color-gray px-5"
-            :class="{ 'color-primary-white': route.path == child.path }"
+            class="f-s-14 f-w-600 color-primary-white"
+            :class="{ 'color-primary-white': route.path == child.path, 'px-28': route.path != child.path }"
             >{{ child.name }}</span
           >
         </div>
