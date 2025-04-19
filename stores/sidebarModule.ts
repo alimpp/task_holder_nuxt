@@ -40,7 +40,7 @@ export const sidebarListData: ISidebarItem[] = [
 ];
 
 export class SidebarModule {
-  public sidebarState = ref<string>("close");
+  public sidebarState = ref<string>("open");
   public sidebarList = ref<ISidebarItem[]>(sidebarListData);
 
   constructor(sidebarState: string, sidebarList: ISidebarItem[]) {
@@ -60,4 +60,4 @@ export class SidebarModule {
   }
 }
 
-export const sidebarStoreModule = new SidebarModule("close", sidebarListData);
+export const sidebarStoreModule = new SidebarModule("open", sidebarListData);

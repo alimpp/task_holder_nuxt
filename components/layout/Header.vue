@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-header-style bg-secondary">
+  <div class="layout-header-style bg-primary-white">
     <IconsHamburgerMenu
       class="cursor-pointer"
       @click="handleChangeSidebarState"
