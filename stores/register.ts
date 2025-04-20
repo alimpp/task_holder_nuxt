@@ -1,15 +1,17 @@
 interface Input {
-  frsitname: string;
+  fristname: string;
   lastname: string;
   email: string;
   password: string;
-  confrimPassword: string;
 }
 
 export class Register {
   async register(input: Input) {
+    await $fetch("/api/auth/register", {
+      method: "POST",
+      body: { ...input, avatarUrl: "" },
+    });
     navigateTo("/auth/login");
-    return input;
   }
 }
 

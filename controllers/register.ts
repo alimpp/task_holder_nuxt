@@ -3,34 +3,31 @@ import { RegisterStoreModule } from "@/stores/register";
 import { ref } from "vue";
 
 interface Input {
-  frsitname: string;
+  fristname: string;
   lastname: string;
   email: string;
   password: string;
-  confrimPassword: string;
 }
 
 export class RegisterController extends BaseAppModule {
   inputError = ref<Input>({
-    frsitname: "",
+    fristname: "",
     lastname: "",
     email: "",
     password: "",
-    confrimPassword: "",
   });
 
   async validateInput(input: Input) {
-    const { frsitname, lastname, email, password, confrimPassword } = input;
+    const { fristname, lastname, email, password } = input;
     this.inputError.value = {
       email: "",
       password: "",
-      frsitname: "",
+      fristname: "",
       lastname: "",
-      confrimPassword: "",
     };
-    const frsitnameValid = this.validLength(frsitname, 3, 10);
-    if (!frsitnameValid.isValid) {
-      this.inputError.value.frsitname = frsitnameValid.message || "";
+    const fristnameValid = this.validLength(fristname, 3, 10);
+    if (!fristnameValid.isValid) {
+      this.inputError.value.fristname = fristnameValid.message || "";
     }
     const lastnameValid = this.validLength(lastname, 3, 16);
     if (!lastnameValid.isValid) {
@@ -43,15 +40,11 @@ export class RegisterController extends BaseAppModule {
     if (!isValid) {
       this.inputError.value.password = message || "";
     }
-    if (password !== confrimPassword) {
-      this.inputError.value.confrimPassword = "Password Not Match";
-    }
     if (
-      frsitnameValid.isValid &&
+      fristnameValid.isValid &&
       lastnameValid.isValid &&
       isValid &&
-      this.validEmail(email) &&
-      this.inputError.value.confrimPassword.length == 0
+      this.validEmail(email)
     ) {
       RegisterStoreModule.register(input);
     }

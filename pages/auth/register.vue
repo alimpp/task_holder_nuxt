@@ -11,10 +11,10 @@
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
       width="365px"
-      label="Frsitname"
-      placeholder="Enter your Frsitname"
-      :errorMessage="errorMessage.frsitname"
-      v-model="form.frsitname"
+      label="fristname"
+      placeholder="Enter your fristname"
+      :errorMessage="errorMessage.fristname"
+      v-model="form.fristname"
     />
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
@@ -39,14 +39,6 @@
       placeholder="Enter your password"
       :errorMessage="errorMessage.password"
       v-model="form.password"
-    />
-    <BaseInput
-      class="mt-10 slid-up-animation-5 fade-animation"
-      width="365px"
-      label="Confrim Password"
-      placeholder="Enter your confrim password"
-      :errorMessage="errorMessage.confrimPassword"
-      v-model="form.confrimPassword"
     />
     <div class="flex align-center w-100 mt-10">
       <BaseButton
@@ -73,11 +65,10 @@ definePageMeta({
 });
 
 const form = ref({
-  frsitname: "",
+  fristname: "",
   lastname: "",
   email: "",
   password: "",
-  confrimPassword: "",
 });
 
 const errorMessage = computed(() => {
