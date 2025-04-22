@@ -9,12 +9,13 @@ interface Input {
 export class Login {
   async login(input: Input) {
     const { setCookie, getCookie } = useCookie();
+
     await $fetch("/api/auth/login", {
       method: "POST",
       body: input,
     })
       .then((res) => {
-        setCookie("token", res.token);
+        setCookie("token", res.token, { expires: 7 });
         BaseAppStoreElementModule.createToast({
           title: "Login Successfully",
           text: "Login Successfully",
