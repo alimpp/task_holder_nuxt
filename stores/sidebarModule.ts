@@ -12,28 +12,15 @@ export interface ISidebarItem {
 
 export const sidebarListData: ISidebarItem[] = [
   {
-    name: "Dashboard",
+    name: "Friends",
     isOpen: true,
     permission: true,
-    icon: "/sidebar/dashboard-icon.png",
+    icon: "/sidebar/friends-icon.png",
     childs: [
       {
-        name: "Dashboard",
+        name: "Friends List",
         active: false,
-        path: "/",
-      },
-    ],
-  },
-  {
-    name: "Porjects",
-    isOpen: true,
-    permission: true,
-    icon: "/sidebar/projects-icon.png",
-    childs: [
-      {
-        name: "Projects List",
-        active: false,
-        path: "/projects/list",
+        path: "/friends/list",
       },
     ],
   },

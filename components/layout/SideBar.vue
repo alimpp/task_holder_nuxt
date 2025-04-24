@@ -6,7 +6,10 @@
       'w-40-px': sidebarState == 'close',
     }"
   >
-    <div class="w-100 flex align-center bg-info py-2 border-rounded">
+    <div
+      class="w-100 flex align-center bg-info py-2 border-rounded cursor-pointer"
+      @click="navigateTo('/')"
+    >
       <img src="/public/image/logo/logo.png" width="40" />
       <div class="flex flex-column" v-if="sidebarState == 'open'">
         <span class="f-s-12 f-w-500 color-primary">Task Holder</span>
@@ -52,7 +55,10 @@
           <IconsCheckCircle class="mx-2" v-if="route.path == child.path" />
           <span
             class="f-s-14 f-w-600 color-primary-white"
-            :class="{ 'color-primary-white': route.path == child.path, 'px-28': route.path != child.path }"
+            :class="{
+              'color-primary-white': route.path == child.path,
+              'px-28': route.path != child.path,
+            }"
             >{{ child.name }}</span
           >
         </div>
