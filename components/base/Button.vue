@@ -8,7 +8,7 @@
     <div class="flex align-center">
       <slot name="iconRight"></slot>
       <span :class="[fontSize, fontWight, color]"> {{ name }}</span>
-      <IconsSpinner v-if="loading" :color="loadingColor" />
+      <IconsSpinner class="mx-2" v-if="loading" :color="loadingColor" />
       <slot name="iconLeft"></slot>
     </div>
   </button>

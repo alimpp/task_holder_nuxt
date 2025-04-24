@@ -3,8 +3,9 @@
 </template>
 
 <script setup>
-import { ProfileStoreModule } from "~/stores/user";
-const getProfile = () => {
-  ProfileStoreModule.profile();
-};
+import { UserControllerModule } from "@/controllers/user";
+
+onMounted(async () => {
+  await UserControllerModule.getUserProfile();
+});
 </script>

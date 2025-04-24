@@ -30,6 +30,7 @@
         name="Login"
         class="fade-animation"
         height="40px"
+        :loading="loading"
         @click="login"
       />
       <span
@@ -48,6 +49,8 @@ definePageMeta({
   layout: "auth",
 });
 
+const loading = ref(false);
+
 const form = ref({
   email: "",
   password: "",
@@ -58,6 +61,8 @@ const errorMessage = computed(() => {
 });
 
 const login = async () => {
+  loading.value = true;
   await LoginControllerModule.validateInput(form.value);
+  loading.value = false;
 };
 </script>

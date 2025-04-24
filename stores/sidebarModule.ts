@@ -24,6 +24,19 @@ export const sidebarListData: ISidebarItem[] = [
       },
     ],
   },
+  {
+    name: "Profile",
+    isOpen: true,
+    permission: true,
+    icon: "/sidebar/user-icon.png",
+    childs: [
+      {
+        name: "User Profile",
+        active: false,
+        path: "/profile/userProfile",
+      },
+    ],
+  },
 ];
 
 export class SidebarModule {

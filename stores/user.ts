@@ -1,31 +1,39 @@
 import { BaseAppStoreElementModule } from "./baseApp";
 import { useCookie } from "@/composable/useCookie";
+import { ref } from "vue";
 
-export class Profile {
+interface IUser {
+  fullname: string;
+  fristChar: string;
+  fristname: string;
+  lastname: string;
+  email: string;
+  id: number;
+  avatarUrl: string;
+}
+
+export class User {
+  public user = ref<IUser>({
+    fullname: "",
+    fristChar: "",
+    fristname: "",
+    lastname: "",
+    email: "",
+    id: 0,
+    avatarUrl: "",
+  });
+
   async profile() {
-    const { setCookie, getCookie } = useCookie();
-    const cookie = getCookie("token");
-
-    await $fetch("/api/users/profile", {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch("/api/users/profile", {
       method: "get",
       headers: {
-        Authorization: `Bearer ${cookie}`,
+        Authorization: `Bearer ${token}`,
       },
-    })
-      .then((res) => {
-        BaseAppStoreElementModule.createToast({
-          title: `hi ${res.fristname}`,
-          text: "Get User Profile Successfully",
-          type: "success",
-          id: Date.now(),
-          timeout: 5000,
-        });
-        console.log(res);   
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    });
+    return response;
   }
 }
 
-export const ProfileStoreModule = new Profile();
+export const UserStoreModule = new User();

@@ -46,6 +46,7 @@
         name="Register"
         class="fade-animation"
         height="40px"
+        :loading="loading"
         @click="register"
       />
       <span
@@ -64,6 +65,8 @@ definePageMeta({
   layout: "auth",
 });
 
+const loading = ref(false);
+
 const form = ref({
   fristname: "",
   lastname: "",
@@ -76,6 +79,8 @@ const errorMessage = computed(() => {
 });
 
 const register = async () => {
+  loading.value = true;
   await RegisterControllerModule.validateInput(form.value);
+  loading.value = false;
 };
 </script>
