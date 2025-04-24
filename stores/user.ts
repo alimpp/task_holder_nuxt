@@ -13,6 +13,7 @@ interface IUser {
 }
 
 export class User {
+  public isAuthenticated = ref<boolean>(false);
   public user = ref<IUser>({
     fullname: "",
     fristChar: "",
@@ -32,6 +33,7 @@ export class User {
         Authorization: `Bearer ${token}`,
       },
     });
+    if (response) this.isAuthenticated.value = true;
     return response;
   }
 }
