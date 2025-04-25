@@ -25,6 +25,7 @@ export class User {
   });
 
   async profile() {
+    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     const response = await $fetch("/api/users/profile", {
@@ -33,6 +34,7 @@ export class User {
         Authorization: `Bearer ${token}`,
       },
     });
+    BaseAppStoreElementModule.loading.value = false;
     if (response) this.isAuthenticated.value = true;
     return response;
   }

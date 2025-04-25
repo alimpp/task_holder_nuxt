@@ -4,7 +4,9 @@
     :class="[bgClass]"
     :style="{ 'min-width': width, 'min-height': height }"
   >
-    <span class="color-primary-white f-s-20 f-w-600">{{ character }}</span>
+    <span class="color-primary-white" :class="[characterSize]">{{
+      character
+    }}</span>
   </div>
 </template>
 
@@ -25,6 +27,10 @@ const props = defineProps({
   bgClass: {
     type: String,
     default: "bg-primary",
+  },
+  characterSize: {
+    type: String,
+    default: "f-s-20",
   },
 });
 </script>
