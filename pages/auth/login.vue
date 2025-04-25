@@ -40,16 +40,36 @@
       >
     </div>
   </div>
+  <BaseConfrim
+    :isOpen="confrimModalState"
+    type="error"
+    title="401 Unauthorized"
+    text="You are not authorized to access this page"
+  >
+    <template #footer>
+      <BaseButton
+        bg="bg-none"
+        name="Try Again"
+        border="1px solid #fff"
+        fontWight="f-w-400"
+        @click="tryAgain"
+      ></BaseButton>
+    </template>
+  </BaseConfrim>
 </template>
 
 <script setup>
 import { LoginControllerModule } from "@/controllers/login";
+import { LoginStoreModule } from "~/stores/login";
 
 definePageMeta({
   layout: "auth",
 });
 
 const loading = ref(false);
+const confrimModalState = computed(() => {
+  return LoginStoreModule.confrimModalState.value;
+});
 
 const form = ref({
   email: "",
@@ -64,5 +84,9 @@ const login = async () => {
   loading.value = true;
   await LoginControllerModule.validateInput(form.value);
   loading.value = false;
+};
+
+const tryAgain = () => {
+  LoginStoreModule.confrimModalState.value = false;
 };
 </script>

@@ -1,5 +1,6 @@
 import { BaseAppStoreElementModule } from "./baseApp";
 import { useCookie } from "@/composable/useCookie";
+import { ref } from "vue";
 
 interface Input {
   email: string;
@@ -7,8 +8,10 @@ interface Input {
 }
 
 export class Login {
+  public confrimModalState = ref<Boolean>(false);
+
   async login(input: Input) {
-    const { setCookie, getCookie } = useCookie();
+    const { setCookie } = useCookie();
 
     await $fetch("/api/auth/login", {
       method: "POST",
@@ -26,7 +29,9 @@ export class Login {
         navigateTo("/");
       })
       .catch((err) => {
-        console.log(err);
+        if (err.data.data.statusCode == 401) {
+          this.confrimModalState.value = true;
+        }
       });
   }
 }

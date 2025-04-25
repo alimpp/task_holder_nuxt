@@ -6,8 +6,9 @@
       </div>
       <div
         class="w-100 flex align-center bg-info py-5 border-rounded mt-5 mb-5"
+        @click="navigate('/')"
       >
-       <img src="/public/image/logo/logo.png" width="40" />
+        <img src="/public/image/logo/logo.png" width="40" />
         <div class="flex flex-column px-10" v-if="sidebarState == 'open'">
           <span class="f-s-12 f-w-600 color-primary">Task Holder</span>
           <span class="f-s-10 f-w-500 color-gray pt-5"
@@ -51,7 +52,10 @@
             <IconsCheckCircle class="mx-2" v-if="route.path == child.path" />
             <span
               class="f-s-14 f-w-600 color-gray px-5"
-              :class="{ 'color-primary-white': route.path == child.path, 'px-28': route.path != child.path }"
+              :class="{
+                'color-primary-white': route.path == child.path,
+                'px-28': route.path != child.path,
+              }"
               >{{ child.name }}</span
             >
           </div>

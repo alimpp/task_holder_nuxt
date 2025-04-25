@@ -1,8 +1,8 @@
 <template>
   <button
     class="base-button"
-    :style="{ width: width, height: height }"
-    :class="[bg, color, border]"
+    :style="{ width: width, height: height, border: border }"
+    :class="[bg, color]"
     :disabled="disabled"
   >
     <div class="flex align-center">
