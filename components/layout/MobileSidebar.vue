@@ -61,6 +61,14 @@
           </div>
         </div>
       </div>
+      <div
+        class="flex flex-column w-100 py-5 mt-5 justify-end h-100-dvh"
+      >
+        <div class="flex w-100 py-5 justify-start cursor-pointer" @click="logOut">
+          <IconsLogOut />
+          <span class="f-s-14 f-w-600 color-danger"> Log out </span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +95,11 @@ const navigate = (path) => {
   navigateTo(path);
   handleChangeSidebarState();
 };
+
+const logOut = () => {
+  navigateTo("/auth/login");
+  sidebarStoreModule.handleLogOut();
+};
 </script>
 
 <style scoped>
@@ -99,7 +112,7 @@ const navigate = (path) => {
 }
 .mobile-sidebar-style {
   width: 250px;
-  height: 100dvh;
+  height: 98dvh;
   border: 1px solid #d1cdcd53;
   border-radius: 10px;
   transition: 0.5s;

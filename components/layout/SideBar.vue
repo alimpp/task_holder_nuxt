@@ -64,6 +64,21 @@
         </div>
       </div>
     </div>
+    <div
+      class="flex flex-column w-100 mt-5 justify-end h-95-dvh"
+    >
+      <div
+        class="flex w-100 py-5 justify-start cursor-pointer"
+        v-if="sidebarState === 'open'"
+        @click="logOut"
+      >
+        <IconsLogOut />
+        <span class="f-s-14 f-w-600 color-danger"> Log out </span>
+      </div>
+      <div class="flex w-100 py-5 justify-center cursor-pointer" v-else @click="logOut">
+        <IconsLogOut />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -80,6 +95,11 @@ const sidebarList = computed(() => {
 const sidebarState = computed(() => {
   return sidebarStoreModule.sidebarState.value;
 });
+
+const logOut = () => {
+  navigateTo("/auth/login");
+  sidebarStoreModule.handleLogOut();
+};
 </script>
 
 <style scoped>

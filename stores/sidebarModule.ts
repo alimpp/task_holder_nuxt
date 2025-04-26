@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import { useCookie } from "@/composable/useCookie";
 
 export interface ISidebarItem {
   name: string;
@@ -57,6 +58,10 @@ export class SidebarModule {
         this.sidebarState.value = "close";
         break;
     }
+  }
+  handleLogOut() {
+    const { deleteCookie } = useCookie();
+    deleteCookie("token");
   }
 }
 
