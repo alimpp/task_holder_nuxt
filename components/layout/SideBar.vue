@@ -19,7 +19,8 @@
       </div>
     </div>
 
-    <div
+    <div class="content">
+      <div
       class="flex flex-column border-bottom w-100 mt-5 py-10 cursor-pointer"
       v-for="(item, index) in sidebarList"
       :key="index"
@@ -64,18 +65,19 @@
         </div>
       </div>
     </div>
+    </div>
     <div
-      class="flex flex-column w-100 mt-5 justify-end h-95-dvh"
+      class="flex align-center w-100 h-38-px bg-red border-rounded cursor-pointer"
     >
       <div
-        class="flex w-100 py-5 justify-start cursor-pointer"
+        class="flex align-center px-5"
         v-if="sidebarState === 'open'"
         @click="logOut"
       >
         <IconsLogOut />
         <span class="f-s-14 f-w-600 color-danger"> Log out </span>
       </div>
-      <div class="flex w-100 py-5 justify-center cursor-pointer" v-else @click="logOut">
+      <div class="flex w-100 justify-center" v-else @click="logOut">
         <IconsLogOut />
       </div>
     </div>
@@ -112,6 +114,22 @@ const logOut = () => {
   display: flex;
   flex-direction: column;
   padding: 10px 15px;
+}
+
+.content {
+  width: 100%;
+  min-height: 85dvh;
+  max-height: 85dvh;
+  overflow-y: scroll;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 .border-bottom {

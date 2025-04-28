@@ -16,6 +16,7 @@
           >
         </div>
       </div>
+     <div class="content">
       <div
         class="flex flex-column border-bottom w-100 mt-5 py-10 cursor-pointer"
         v-for="(item, index) in sidebarList"
@@ -61,14 +62,18 @@
           </div>
         </div>
       </div>
+     </div>
+     <div
+      class="flex align-center w-100 h-38-px bg-red border-rounded cursor-pointer"
+    >
       <div
-        class="flex flex-column w-100 py-5 mt-5 justify-end h-100-dvh"
+        class="flex align-center px-5"
+        @click="logOut"
       >
-        <div class="flex w-100 py-5 justify-start cursor-pointer" @click="logOut">
-          <IconsLogOut />
-          <span class="f-s-14 f-w-600 color-danger"> Log out </span>
-        </div>
+        <IconsLogOut />
+        <span class="f-s-14 f-w-600 color-danger"> Log out </span>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -110,14 +115,30 @@ const logOut = () => {
   z-index: 100;
   background: #00000060;
 }
+
 .mobile-sidebar-style {
   width: 250px;
-  height: 98dvh;
   border: 1px solid #d1cdcd53;
   border-radius: 10px;
   transition: 0.5s;
   display: flex;
   flex-direction: column;
   padding: 10px 15px;
+}
+
+.content {
+  width: 100%;
+  min-height: 83dvh;
+  max-height: 83dvh;
+  overflow-y: scroll;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 </style>
