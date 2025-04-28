@@ -12,7 +12,10 @@
     </div>
     <div class="w-20 flex justify-end align-center">
       <div class="flex align-center mx-10">
-        <IconsFriends class="cursor-pointer" />
+        <IconsFriends
+          class="cursor-pointer"
+          @click="handleUserListModalState"
+        />
       </div>
       <IconsHamburgerMenu
         @click="handleChangeSidebarState"
@@ -20,6 +23,10 @@
       />
     </div>
   </div>
+  <ModalsUserList
+    :state="userListModalState"
+    @close="handleUserListModalState"
+  />
 </template>
 
 <script setup>
@@ -33,6 +40,11 @@ const handleChangeSidebarState = () => {
 const user = computed(() => {
   return UserStoreModule.user.value;
 });
+
+const userListModalState = ref(false);
+const handleUserListModalState = () => {
+  userListModalState.value = !userListModalState.value;
+};
 </script>
 
 <style scoped>

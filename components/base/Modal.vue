@@ -16,11 +16,15 @@
           <IconsClose class="cursor-pointer" @click="emit('close')" />
         </div>
       </div>
-      <div class="w-100 px-10 py-10">
-        <slot name="content"></slot>
+      <div class="flex w-100 py-10">
+        <div class="w-100 flex align-center px-5">
+          <slot name="content"></slot>
+        </div>
       </div>
-      <div class="w-100 px-10 py-5 border-top" v-if="hasFooter">
-        <slot name="footer"></slot>
+      <div class="flex w-100 py-5 border-top" v-if="hasFooter">
+        <div class="w-100 flex align-center px-5">
+          <slot name="footer"></slot>
+        </div>
       </div>
     </div>
   </div>
