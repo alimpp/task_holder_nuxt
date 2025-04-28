@@ -1,7 +1,7 @@
 <template>
   <div class="layout-header-style bg-primary-white">
     <div
-      class="w-80 flex cursor-pointer align-center"
+      class="w-70 flex cursor-pointer align-center"
       @click="navigateTo('/profile/userProfile')"
     >
       <BaseAvatar :character="user.fristChar" />
@@ -10,8 +10,9 @@
         <span class="f-s-12 f-w-500 color-gray">{{ user.email }}</span>
       </div>
     </div>
-    <div class="w-20 flex justify-end align-center">
-      <div class="flex align-center mx-10">
+    <div class="w-30 flex justify-end align-center">
+      <IconsLogOut color="#000" @click="logOut" class="cursor-pointer" />
+      <div class="flex align-center mx-5">
         <IconsFriends
           class="cursor-pointer"
           @click="handleUserListModalState"
@@ -44,6 +45,11 @@ const user = computed(() => {
 const userListModalState = ref(false);
 const handleUserListModalState = () => {
   userListModalState.value = !userListModalState.value;
+};
+
+const logOut = () => {
+  navigateTo("/auth/login");
+  sidebarStoreModule.handleLogOut();
 };
 </script>
 

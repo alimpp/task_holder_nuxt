@@ -1,64 +1,52 @@
 <template>
   <BaseModal
-    width="90%"
-    height="90dvh"
+    width="380px"
     title="Add Your Friends"
-    text="Add your favorite person or someone you intract with"
+    text="Add your favorite person or someone"
     :isOpen="state"
     @close="emit('close')"
     borderRadius="10px"
+    :hasFooter="false"
   >
     <template #icon>
-      <div>
-        <IconsFriendAdd class="px-7" />
-      </div>
+      <IconsFriendAdd class="mx-7" />
     </template>
 
     <template #content>
-      <div class="flex flex-column w-100 h-70-dvh content">
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-        <div>this is content</div>
-      </div>
-    </template>
-
-    <template #footer>
-      <div class="flex w-100 justify-end ">
-        <BaseButton name="submit" />
+      <div class="flex flex-column w-100 h-50-dvh content">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus,
+        velit reprehenderit quam libero qui perferendis placeat magni nam.
+        Voluptatem quia, rerum non corporis dolores est alias iste veniam
+        consequuntur animi! Lorem ipsum, dolor sit amet consectetur adipisicing
+        elit. Temporibus, velit reprehenderit quam libero qui perferendis
+        placeat magni nam. Voluptatem quia, rerum non corporis dolores est alias
+        iste veniam consequuntur animi! Lorem ipsum, dolor sit amet consectetur
+        adipisicing elit. Temporibus, velit reprehenderit quam libero qui
+        perferendis placeat magni nam. Voluptatem quia, rerum non corporis
+        dolores est alias iste veniam consequuntur animi! Lorem ipsum, dolor sit
+        amet consectetur adipisicing elit. Temporibus, velit reprehenderit quam
+        libero qui perferendis placeat magni nam. Voluptatem quia, rerum non
+        corporis dolores est alias iste veniam consequuntur animi! Lorem ipsum,
+        dolor sit amet consectetur adipisicing elit. Temporibus, velit
+        reprehenderit quam libero qui perferendis placeat magni nam. Voluptatem
+        quia, rerum non corporis dolores est alias iste veniam consequuntur
+        animi! Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Temporibus, velit reprehenderit quam libero qui perferendis placeat
+        magni nam. Voluptatem quia, rerum non corporis dolores est alias iste
+        veniam consequuntur animi! Lorem ipsum, dolor sit amet consectetur
+        adipisicing elit. Temporibus, velit reprehenderit quam libero qui
+        perferendis placeat magni nam. Voluptatem quia, rerum non corporis
+        dolores est alias iste veniam consequuntur animi! Lorem ipsum, dolor sit
+        amet consectetur adipisicing elit. Temporibus, velit reprehenderit quam
+        libero qui perferendis placeat magni nam. Voluptatem quia, rerum non
+        corporis dolores est alias iste veniam consequuntur animi! Lorem ipsum,
+        dolor sit amet consectetur adipisicing elit. Temporibus, velit
+        reprehenderit quam libero qui perferendis placeat magni nam. Voluptatem
+        quia, rerum non corporis dolores est alias iste veniam consequuntur
+        animi! Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Temporibus, velit reprehenderit quam libero qui perferendis placeat
+        magni nam. Voluptatem quia, rerum non corporis dolores est alias iste
+        veniam consequuntur animi!
       </div>
     </template>
   </BaseModal>
@@ -78,5 +66,12 @@ const props = defineProps({
 <style scoped>
 .content {
   overflow-y: scroll;
+}
+.content::-webkit-scrollbar {
+  display: none;
+}
+.content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>

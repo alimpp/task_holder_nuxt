@@ -21,64 +21,49 @@
 
     <div class="content">
       <div
-      class="flex flex-column border-bottom w-100 mt-5 py-10 cursor-pointer"
-      v-for="(item, index) in sidebarList"
-      :key="index"
-    >
-      <div class="flex w-100" @click="item.isOpen = !item.isOpen">
-        <div
-          class="flex align-center w-70 px-5"
-          :class="{ 'justify-center': sidebarState == 'close' }"
-        >
-          <img :src="item.icon" alt="icon" width="20" />
-          <span
-            class="f-s-14 f-w-600 color-primary px-2"
-            v-if="sidebarState === 'open'"
-            >{{ item.name }}</span
-          >
-        </div>
-        <div class="w-30 flex justify-end" v-if="sidebarState === 'open'">
-          <IconsArrowDown v-if="item.isOpen" />
-          <IconsArrowUp v-else />
-        </div>
-      </div>
-      <div
-        class="flex flex-column w-100 fade-animation"
-        v-if="item.isOpen && sidebarState === 'open'"
+        class="flex flex-column border-bottom w-100 mt-5 py-10 cursor-pointer"
+        v-for="(item, index) in sidebarList"
+        :key="index"
       >
-        <div
-          class="flex align-center w-100 py-5 mt-5 border-rounded"
-          v-for="(child, index) in item.childs"
-          :key="index"
-          @click="navigateTo(child.path)"
-          :class="{ 'bg-primary': route.path == child.path }"
-        >
-          <IconsCheckCircle class="mx-2" v-if="route.path == child.path" />
-          <span
-            class="f-s-14 f-w-600 color-primary-white"
-            :class="{
-              'color-primary-white': route.path == child.path,
-              'px-28': route.path != child.path,
-            }"
-            >{{ child.name }}</span
+        <div class="flex w-100" @click="item.isOpen = !item.isOpen">
+          <div
+            class="flex align-center w-70 px-5"
+            :class="{ 'justify-center': sidebarState == 'close' }"
           >
+            <img :src="item.icon" alt="icon" width="20" />
+            <span
+              class="f-s-14 f-w-600 color-primary px-2"
+              v-if="sidebarState === 'open'"
+              >{{ item.name }}</span
+            >
+          </div>
+          <div class="w-30 flex justify-end" v-if="sidebarState === 'open'">
+            <IconsArrowDown v-if="item.isOpen" />
+            <IconsArrowUp v-else />
+          </div>
         </div>
-      </div>
-    </div>
-    </div>
-    <div
-      class="flex align-center w-100 h-38-px bg-red border-rounded cursor-pointer"
-    >
-      <div
-        class="flex align-center px-5"
-        v-if="sidebarState === 'open'"
-        @click="logOut"
-      >
-        <IconsLogOut />
-        <span class="f-s-14 f-w-600 color-danger"> Log out </span>
-      </div>
-      <div class="flex w-100 justify-center" v-else @click="logOut">
-        <IconsLogOut />
+        <div
+          class="flex flex-column w-100 fade-animation"
+          v-if="item.isOpen && sidebarState === 'open'"
+        >
+          <div
+            class="flex align-center w-100 py-5 mt-5 border-rounded"
+            v-for="(child, index) in item.childs"
+            :key="index"
+            @click="navigateTo(child.path)"
+            :class="{ 'bg-primary': route.path == child.path }"
+          >
+            <IconsCheckCircle class="mx-2" v-if="route.path == child.path" />
+            <span
+              class="f-s-14 f-w-600 color-primary-white"
+              :class="{
+                'color-primary-white': route.path == child.path,
+                'px-28': route.path != child.path,
+              }"
+              >{{ child.name }}</span
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -97,11 +82,6 @@ const sidebarList = computed(() => {
 const sidebarState = computed(() => {
   return sidebarStoreModule.sidebarState.value;
 });
-
-const logOut = () => {
-  navigateTo("/auth/login");
-  sidebarStoreModule.handleLogOut();
-};
 </script>
 
 <style scoped>
@@ -128,8 +108,8 @@ const logOut = () => {
 }
 
 .content {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .border-bottom {
