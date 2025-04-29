@@ -10,6 +10,11 @@ interface IUser {
   email: string;
   id: number;
   avatarUrl: string;
+  bio: string;
+}
+
+interface IUserList {
+  users: IUser[];
 }
 
 export class User {
@@ -22,6 +27,7 @@ export class User {
     email: "",
     id: 0,
     avatarUrl: "",
+    bio: "",
   });
 
   async profile() {
@@ -29,7 +35,7 @@ export class User {
     const { getCookie } = useCookie();
     const token = getCookie("token");
     const response = await $fetch("/api/users/profile", {
-      method: "get",
+      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,4 +46,19 @@ export class User {
   }
 }
 
+export class UserList {
+  public users = ref<IUserList>({
+    users: [],
+  });
+  async getUsers() {
+    BaseAppStoreElementModule.loading.value = true;
+    const response = await $fetch("/api/users/all", {
+      method: "GET",
+    });
+    BaseAppStoreElementModule.loading.value = false;
+    return response;
+  }
+}
+
 export const UserStoreModule = new User();
+export const UserListStoreModule = new UserList();

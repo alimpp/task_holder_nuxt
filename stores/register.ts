@@ -9,7 +9,7 @@ export class Register {
   async register(input: Input) {
     await $fetch("/api/auth/register", {
       method: "POST",
-      body: { ...input, avatarUrl: "" },
+      body: { ...input, avatarUrl: "" ,bio: ""},
     });
     navigateTo("/auth/login");
   }

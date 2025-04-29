@@ -12,6 +12,7 @@ export class UserController extends BaseAppModule {
       email: response.email,
       id: response.id,
       avatarUrl: response.avatarUrl,
+      bio: response.bio,
     };
     UserStoreModule.user.value = user;
   }

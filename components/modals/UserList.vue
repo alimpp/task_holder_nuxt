@@ -2,7 +2,7 @@
   <BaseModal
     width="380px"
     title="Add Your Friends"
-    text="Add your favorite person or someone"
+    text="Add your favorite person or someone you interact with"
     :isOpen="state"
     @close="emit('close')"
     borderRadius="10px"
@@ -61,6 +61,8 @@ const props = defineProps({
     default: false,
   },
 });
+
+
 </script>
 
 <style scoped>
