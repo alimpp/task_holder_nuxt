@@ -13,10 +13,6 @@ interface IUser {
   bio: string;
 }
 
-interface IUserList {
-  users: IUser[];
-}
-
 export class User {
   public isAuthenticated = ref<boolean>(false);
   public user = ref<IUser>({
@@ -46,19 +42,5 @@ export class User {
   }
 }
 
-export class UserList {
-  public users = ref<IUserList>({
-    users: [],
-  });
-  async getUsers() {
-    BaseAppStoreElementModule.loading.value = true;
-    const response = await $fetch("/api/users/all", {
-      method: "GET",
-    });
-    BaseAppStoreElementModule.loading.value = false;
-    return response;
-  }
-}
 
 export const UserStoreModule = new User();
-export const UserListStoreModule = new UserList();
