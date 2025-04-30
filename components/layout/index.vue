@@ -20,9 +20,15 @@
 
 <script setup>
 import { BaseAppStoreElementModule } from "@/stores/baseApp";
+import { onMounted } from "vue";
+import { UsersControllerModule } from "~/controllers/users";
 
 const pageLoading = computed(() => {
   return BaseAppStoreElementModule.loading.value;
+});
+
+onMounted(() => {
+  UsersControllerModule.getUsersList();
 });
 </script>
 

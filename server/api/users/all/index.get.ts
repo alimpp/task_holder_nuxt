@@ -4,5 +4,6 @@ export default defineEventHandler(async (event) => {
   const response: any = await $fetch(`http://localhost:4000/users/all`, {
     method: "GET",
   });
+
   return response;
 });

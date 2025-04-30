@@ -14,45 +14,14 @@
 
     <template #content>
       <div class="flex flex-column w-100 h-50-dvh content">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus,
-        velit reprehenderit quam libero qui perferendis placeat magni nam.
-        Voluptatem quia, rerum non corporis dolores est alias iste veniam
-        consequuntur animi! Lorem ipsum, dolor sit amet consectetur adipisicing
-        elit. Temporibus, velit reprehenderit quam libero qui perferendis
-        placeat magni nam. Voluptatem quia, rerum non corporis dolores est alias
-        iste veniam consequuntur animi! Lorem ipsum, dolor sit amet consectetur
-        adipisicing elit. Temporibus, velit reprehenderit quam libero qui
-        perferendis placeat magni nam. Voluptatem quia, rerum non corporis
-        dolores est alias iste veniam consequuntur animi! Lorem ipsum, dolor sit
-        amet consectetur adipisicing elit. Temporibus, velit reprehenderit quam
-        libero qui perferendis placeat magni nam. Voluptatem quia, rerum non
-        corporis dolores est alias iste veniam consequuntur animi! Lorem ipsum,
-        dolor sit amet consectetur adipisicing elit. Temporibus, velit
-        reprehenderit quam libero qui perferendis placeat magni nam. Voluptatem
-        quia, rerum non corporis dolores est alias iste veniam consequuntur
-        animi! Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-        Temporibus, velit reprehenderit quam libero qui perferendis placeat
-        magni nam. Voluptatem quia, rerum non corporis dolores est alias iste
-        veniam consequuntur animi! Lorem ipsum, dolor sit amet consectetur
-        adipisicing elit. Temporibus, velit reprehenderit quam libero qui
-        perferendis placeat magni nam. Voluptatem quia, rerum non corporis
-        dolores est alias iste veniam consequuntur animi! Lorem ipsum, dolor sit
-        amet consectetur adipisicing elit. Temporibus, velit reprehenderit quam
-        libero qui perferendis placeat magni nam. Voluptatem quia, rerum non
-        corporis dolores est alias iste veniam consequuntur animi! Lorem ipsum,
-        dolor sit amet consectetur adipisicing elit. Temporibus, velit
-        reprehenderit quam libero qui perferendis placeat magni nam. Voluptatem
-        quia, rerum non corporis dolores est alias iste veniam consequuntur
-        animi! Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-        Temporibus, velit reprehenderit quam libero qui perferendis placeat
-        magni nam. Voluptatem quia, rerum non corporis dolores est alias iste
-        veniam consequuntur animi!
+        {{ userList }}
       </div>
     </template>
   </BaseModal>
 </template>
 
 <script setup>
+import { UsersStoreModule } from "~/stores/users";
 const emit = defineEmits(["close"]);
 
 const props = defineProps({
@@ -62,7 +31,10 @@ const props = defineProps({
   },
 });
 
-
+const userList = computed(() => {
+  return UsersStoreModule.userlist.value;
+  
+});
 </script>
 
 <style scoped>

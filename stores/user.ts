@@ -42,5 +42,4 @@ export class User {
   }
 }
 
-
 export const UserStoreModule = new User();

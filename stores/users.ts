@@ -2,14 +2,19 @@ import { BaseAppStoreElementModule } from "./baseApp";
 import { ref } from "vue";
 
 interface IUserList {
-  users: [];
+  fristname: string;
+  lastname: string;
+  email: string;
+  id: number;
+  avatarUrl: string;
+  bio: string;
+  password: string;
 }
 
-export class UserList {
-  public users = ref<IUserList>({
-    users: [],
-  });
-  async getUsers() {
+export class Users {
+  public userlist = ref<IUserList[]>([]);
+
+  async users() {
     BaseAppStoreElementModule.loading.value = true;
     const response = await $fetch("/api/users/all", {
       method: "GET",
@@ -19,4 +24,4 @@ export class UserList {
   }
 }
 
-export const UserListStoreModule = new UserList();
+export const UsersStoreModule = new Users();
