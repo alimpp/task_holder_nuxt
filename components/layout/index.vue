@@ -24,8 +24,6 @@ import { BaseAppStoreElementModule } from "@/stores/baseApp";
 const pageLoading = computed(() => {
   return BaseAppStoreElementModule.loading.value;
 });
-
-
 </script>
 
 <style scoped>

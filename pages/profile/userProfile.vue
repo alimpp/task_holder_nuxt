@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 flex flex-column">
+  <div class="w-100 flex flex-column pb-10">
     <div class="w-100">
       <BaseBreadCrumbs />
     </div>
@@ -36,6 +36,24 @@
             width="98%"
           />
           <BaseInput label="Bio" class="mt-4" width="98%" v-model="user.bio" />
+          <BaseButton
+            class="mt-10"
+            bg="bg-info"
+            color="color-primary"
+            border="1px solid #7d7be5"
+            width="99%"
+            name="Update Profile"
+            @click="addSkill"
+          >
+            <template #iconLeft>
+              <IconsPencile
+                class="mx-2"
+                width="20px"
+                height="20px"
+                color="#7d7be5"
+              />
+            </template>
+          </BaseButton>
         </div>
       </div>
       <div class="flex flex-column responsive-width mt-10">

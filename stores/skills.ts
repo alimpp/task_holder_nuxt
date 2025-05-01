@@ -26,6 +26,7 @@ export class Skills {
   }
 
   async addSkill(skill: string) {
+    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     await $fetch("/api/skills/add", {
@@ -39,6 +40,7 @@ export class Skills {
     }).then(async (res) => {
       return res;
     });
+    BaseAppStoreElementModule.loading.value = false;
   }
 }
 
