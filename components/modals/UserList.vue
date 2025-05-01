@@ -14,7 +14,18 @@
 
     <template #content>
       <div class="flex flex-column w-100 h-50-dvh content">
-        {{ userList }}
+        <div
+          v-for="(item, index) in userList"
+          :key="index"
+          :style="{ 'background-color': item.avatarColor }"
+          class="flex my-2"
+        >
+          <span>{{ "ID" + ":" + " " + item.id }}</span> /
+          <span>{{ "Full name" + ":" + " " + item.fullname }}</span> /
+          <span>{{ "Email" + ":" + " " + item.email }}</span> /
+          <span>{{ "bio" + ":" + " " + item.bio }}</span> /
+          <span>{{ "first char" + ":" + " " + item.fristChar }}</span>
+        </div>
       </div>
     </template>
   </BaseModal>
@@ -33,7 +44,6 @@ const props = defineProps({
 
 const userList = computed(() => {
   return UsersStoreModule.userlist.value;
-  
 });
 </script>
 
