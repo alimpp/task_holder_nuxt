@@ -2,13 +2,15 @@ import { BaseAppStoreElementModule } from "./baseApp";
 import { ref } from "vue";
 
 interface IUserList {
+  fullname: string;
+  fristChar: string;
   fristname: string;
   lastname: string;
   email: string;
   id: number;
   avatarUrl: string;
   bio: string;
-  password: string;
+  avatarColor: string;
 }
 
 export class Users {
