@@ -9,7 +9,9 @@
     :hasFooter="false"
   >
     <template #icon>
-      <IconsFriendAdd class="mx-7" />
+      <BaseIconContent bgClass="bg-info">
+        <IconsFriendAdd color="#7d7be5" />
+      </BaseIconContent>
     </template>
 
     <template #content>
@@ -26,10 +28,14 @@
             <div class="w-30 flex align-center">
               <BaseButton
                 width="100%"
-                name="Send Request"
+                name="Request"
                 bg="bg-info"
                 color="color-primary"
-              ></BaseButton>
+              >
+                <template #iconLeft>
+                  <IconsFriendAdd color="#7d7be5" class="mx-4" width="18px" />
+                </template>
+              </BaseButton>
             </div>
           </div>
         </BaseCard>
