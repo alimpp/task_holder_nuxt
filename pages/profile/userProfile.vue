@@ -15,29 +15,63 @@
         />
         <span class="f-s-16 f-w-600 py-5">{{ user.fullname }}</span>
         <span class="f-s-14 f-w-600 color-gray">{{ user.email }}</span>
+        <div class="flex flex-column mt-5 w-100">
+          <BaseInput
+            label="Fristname"
+            class="mt-4"
+            v-model="user.fristname"
+            width="98%"
+          />
+          <BaseInput
+            label="Lastname"
+            class="mt-4"
+            v-model="user.lastname"
+            width="98%"
+          />
+          <BaseInput
+            label="Email"
+            :disabled="true"
+            class="mt-4"
+            v-model="user.email"
+            width="98%"
+          />
+          <BaseInput label="Bio" class="mt-4" width="98%" v-model="user.bio" />
+        </div>
       </div>
       <div class="flex flex-column responsive-width mt-10">
+        <span class="f-s-16 f-w-500 color-primary">Add Your Skills</span>
         <BaseInput
-          label="Fristname"
-          class="mt-4"
-          v-model="user.fristname"
-          width="98%"
+          label="Skill"
+          width="97%"
+          class="mt-10"
+          v-model="skill"
+          :errorMessage="inputSkillError"
         />
-        <BaseInput
-          label="Lastname"
-          class="mt-4"
-          v-model="user.lastname"
-          width="98%"
-        />
-        <BaseInput
-          label="Email"
-          :disabled="true"
-          class="mt-4"
-          v-model="user.email"
-          width="98%"
-        />
-        <BaseInput label="Job" class="mt-4" width="98%" />
-        <BaseInput label="skills" class="mt-4" width="98%" />
+        <BaseButton
+          class="bg-primary mt-10"
+          width="99%"
+          name="Add Skill"
+          @click="addSkill"
+        >
+          <template #iconLeft>
+            <IconsPlus class="mx-2" />
+          </template>
+        </BaseButton>
+        <div class="w-100 flex flex-wrap mt-10">
+          <BaseChip
+            width="100px"
+            class="mx-4 mt-4"
+            v-for="(item, index) in skillsDataSource"
+            :key="index"
+            bg="bg-info"
+            color="color-primary"
+            :name="item.skill"
+          >
+            <template #iconLeft>
+              <IconsClose class="mx-1 cursor-pointer" color="#7d7be5" />
+            </template>
+          </BaseChip>
+        </div>
       </div>
     </div>
   </div>
@@ -45,12 +79,36 @@
 
 <script setup>
 import { UserStoreModule } from "~/stores/user";
+import { SkillsControllerModule } from "~/controllers/skills";
+import { SkillsStoreModule } from "~/stores/skills";
+
+const skill = ref("");
+
+const inputSkillError = computed(() => {
+  return SkillsControllerModule.inputSkillError.value;
+});
 
 const user = computed(() => {
   return UserStoreModule.user.value;
 });
+
+const skillsDataSource = computed(() => {
+  return SkillsStoreModule.skills.value;
+});
+
 definePageMeta({
   middleware: "auth",
+});
+
+const addSkill = async () => {
+  const res = await SkillsControllerModule.validateSkill(skill.value);
+  if (res) {
+    skill.value = "";
+  }
+};
+
+onMounted(async () => {
+  await SkillsControllerModule.getSkills();
 });
 </script>
 
@@ -61,6 +119,7 @@ definePageMeta({
 
 .responsive-width {
   width: 50%;
+  padding: 0 10px;
 }
 
 @media (max-width: 900px) {
@@ -69,6 +128,7 @@ definePageMeta({
   }
   .responsive-width {
     width: 100%;
+    padding: 0;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     class="base-button"
     :style="{ width: width, height: height, border: border }"
     :class="[bg, color]"
-    :disabled="disabled"
+    :disabled="disabled || loading"
   >
     <div class="flex align-center">
       <slot name="iconRight"></slot>

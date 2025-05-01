@@ -1,10 +1,10 @@
 <template>
   <div
     class="base-chip"
-    :style="{ width: width, height: height }"
+    :style="{ height: height }"
     :class="[bg, color, border]"
   >
-    <div class="flex align-center">
+    <div class="flex align-center justify-center px-5">
       <slot name="iconRight"></slot>
       <span :class="[fontSize, fontWight, color]"> {{ name }}</span>
       <slot name="iconLeft"></slot>
