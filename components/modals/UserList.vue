@@ -13,19 +13,21 @@
     </template>
 
     <template #content>
-      <div class="flex flex-column w-100 h-50-dvh content">
-        <div
-          v-for="(item, index) in userList"
-          :key="index"
-          :style="{ 'background-color': item.avatarColor }"
-          class="flex my-2"
-        >
-          <span>{{ "ID" + ":" + " " + item.id }}</span> /
-          <span>{{ "Full name" + ":" + " " + item.fullname }}</span> /
-          <span>{{ "Email" + ":" + " " + item.email }}</span> /
-          <span>{{ "bio" + ":" + " " + item.bio }}</span> /
-          <span>{{ "first char" + ":" + " " + item.fristChar }}</span>
-        </div>
+      <div class="flex flex-column w-100 h-50-dvh content px-5">
+        <BaseCard class="mt-10" v-for="(item, index) in userList" :key="index">
+          <div class="w-100 flex">
+            <div class="flex w-80">
+              <BaseAvatar :character="item.fristChar" :bg="item.avatarColor" />
+              <div class="flex flex-column justify-center px-5">
+                <span class="f-s-14 f-w-500">{{ item.fullname }}</span>
+                <span class="f-s-12 f-w-500 color-gray">{{ item.email }}</span>
+              </div>
+            </div>
+            <div class="w-20 flex align-center">
+              <BaseButton name="Request"></BaseButton>
+            </div>
+          </div>
+        </BaseCard>
       </div>
     </template>
   </BaseModal>

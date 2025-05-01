@@ -2,7 +2,7 @@
   <div
     class="base-avatar"
     :class="[bgClass]"
-    :style="{ 'min-width': width, 'min-height': height }"
+    :style="{ 'min-width': width, 'min-height': height, background: bg }"
   >
     <span class="color-primary-white" :class="[characterSize]">{{
       character
@@ -27,6 +27,10 @@ const props = defineProps({
   bgClass: {
     type: String,
     default: "bg-primary",
+  },
+  bg: {
+    type: String,
+    default: "",
   },
   characterSize: {
     type: String,
