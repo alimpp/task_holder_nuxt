@@ -2,7 +2,7 @@
   <BaseModal
     width="380px"
     title="Add Your Friends"
-    text="Add your favorite person or someone you interact with"
+    text="you can add people you know"
     :isOpen="state"
     @close="emit('close')"
     borderRadius="10px"
