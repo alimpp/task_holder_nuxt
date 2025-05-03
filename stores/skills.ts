@@ -42,6 +42,21 @@ export class Skills {
     });
     BaseAppStoreElementModule.loading.value = false;
   }
+
+  async removeSkill(id: number) {
+    BaseAppStoreElementModule.loading.value = true;
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch(`/api/skills/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    BaseAppStoreElementModule.loading.value = false;
+    return response;
+  }
+  
 }
 
 export const SkillsStoreModule = new Skills();
