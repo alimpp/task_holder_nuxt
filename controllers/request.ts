@@ -27,13 +27,12 @@ export class RequestController extends BaseAppModule {
     }
   }
 
-  async sendRequest(body: ISendBody) {
-    await RequestStoreModule.sendRequest(body);
+  async sendRequest(request: ISendBody) {
+    await RequestStoreModule.sendRequest(request);
   }
 
   async removeRequest(id: number) {
     await RequestStoreModule.removeRequest(id);
-    
   }
 }
 

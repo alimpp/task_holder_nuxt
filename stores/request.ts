@@ -9,6 +9,10 @@ interface IRequest {
   fullname: string;
 }
 
+interface ISendBody {
+  to: number | string;
+}
+
 export class request {
   public requestList = ref<IRequest[]>([]);
 
@@ -23,10 +27,12 @@ export class request {
       },
     });
     BaseAppStoreElementModule.loading.value = false;
+    console.log(this.requestList.value);
+
     return response;
   }
 
-  async sendRequest(request: object) {
+  async sendRequest(request: ISendBody) {
     BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");

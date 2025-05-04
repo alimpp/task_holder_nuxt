@@ -31,6 +31,7 @@
                 name="Request"
                 bg="bg-info"
                 color="color-primary"
+                @click="handleSendRequest(item.id)"
               >
                 <template #iconLeft>
                   <IconsFriendAdd color="#7d7be5" class="mx-4" width="18px" />
@@ -46,6 +47,7 @@
 
 <script setup>
 import { UsersStoreModule } from "~/stores/users";
+import { RequestControllerModule } from "~/controllers/request";
 const emit = defineEmits(["close"]);
 
 const props = defineProps({
@@ -58,6 +60,13 @@ const props = defineProps({
 const userList = computed(() => {
   return UsersStoreModule.userlist.value;
 });
+
+const handleSendRequest = (id) => {
+  let request = {
+    to: id,
+  };
+  RequestControllerModule.sendRequest(request);
+};
 </script>
 
 <style scoped>

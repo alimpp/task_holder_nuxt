@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
   const token = event.req.headers["authorization"];
 
   const headers = {
-    authorazation: `${token}`,
+    Authorization: `${token}`,
     "Content-Type": "application/json",
   };
 
