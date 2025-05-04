@@ -6,6 +6,7 @@ interface IRequest {
   id: number | string;
   from: number | string;
   to: number | string;
+  fullname: string;
 }
 
 export class request {
@@ -25,7 +26,7 @@ export class request {
     return response;
   }
 
-  async sendRequest(request: string) {
+  async sendRequest(request: object) {
     BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");

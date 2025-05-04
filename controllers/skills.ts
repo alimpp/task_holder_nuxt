@@ -20,6 +20,13 @@ export class SkillsController extends BaseAppModule {
       return true;
     }
   }
+  async addSkill(skill: string) {
+    await SkillsStoreModule.addSkill(skill);
+  }
+
+  async removeSkill(id: number) {
+    await SkillsStoreModule.removeSkill(id);
+  }
 }
 
 export const SkillsControllerModule = new SkillsController();
