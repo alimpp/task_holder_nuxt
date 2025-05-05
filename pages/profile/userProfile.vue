@@ -86,7 +86,7 @@
             :name="item.skill"
           >
             <template #iconLeft>
-              <IconsClose class="mx-1 cursor-pointer" color="#7d7be5" />
+              <IconsClose class="mx-1 cursor-pointer" color="#7d7be5" @click="removeSkill(item.id)" />
             </template>
           </BaseChip>
         </div>
@@ -101,6 +101,7 @@ import { SkillsControllerModule } from "~/controllers/skills";
 import { SkillsStoreModule } from "~/stores/skills";
 
 const skill = ref("");
+const loading = ref(false);
 
 const inputSkillError = computed(() => {
   return SkillsControllerModule.inputSkillError.value;
@@ -124,6 +125,10 @@ const addSkill = async () => {
     skill.value = "";
   }
 };
+
+const removeSkill = async (id) => {
+  await SkillsControllerModule.removeSkill(id);
+}
 
 onMounted(async () => {
   await SkillsControllerModule.getSkills();

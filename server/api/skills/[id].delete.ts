@@ -1,6 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const id = getQuery(event);
-
+  const id = getRouterParam(event, 'id');
   const token = event.req.headers["authorization"];
 
   const headers = {

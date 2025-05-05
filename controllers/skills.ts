@@ -24,8 +24,9 @@ export class SkillsController extends BaseAppModule {
     await SkillsStoreModule.addSkill(skill);
   }
 
-  async removeSkill(id: number) {
+  async removeSkill(id: number) {    
     await SkillsStoreModule.removeSkill(id);
+    await this.getSkills();
   }
 }
 

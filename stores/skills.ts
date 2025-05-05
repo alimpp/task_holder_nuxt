@@ -44,7 +44,6 @@ export class Skills {
   }
 
   async removeSkill(id: number) {
-    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     const response = await $fetch(`/api/skills/${id}`, {
@@ -53,7 +52,6 @@ export class Skills {
         Authorization: `Bearer ${token}`,
       },
     });
-    BaseAppStoreElementModule.loading.value = false;
     return response;
   }
   
