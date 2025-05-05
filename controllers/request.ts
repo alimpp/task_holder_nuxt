@@ -8,9 +8,6 @@ interface IRequest {
   to: number | string;
   fullname: any;
 }
-interface ISendBody {
-  to: number | string;
-}
 export class RequestController extends BaseAppModule {
   async getRequests() {
     RequestStoreModule.requestList.value = [];
@@ -27,7 +24,7 @@ export class RequestController extends BaseAppModule {
     }
   }
 
-  async sendRequest(request: ISendBody) {
+  async sendRequest(request: number) {
     await RequestStoreModule.sendRequest(request);
   }
 

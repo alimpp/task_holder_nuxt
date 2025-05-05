@@ -62,10 +62,7 @@ const userList = computed(() => {
 });
 
 const handleSendRequest = (id) => {
-  let request = {
-    to: id,
-  };
-  RequestControllerModule.sendRequest(request);
+  RequestControllerModule.sendRequest(id);
 };
 </script>
 
