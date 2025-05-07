@@ -17,30 +17,6 @@
     <template #content>
       <div class="flex flex-column w-100 h-50-dvh content px-5">
         <CardsFriendRequest v-for="(item, index) in userList" :key="index" :user="item" />
-        <!-- <BaseCard class="mt-10" v-for="(item, index) in userList" :key="index">
-          <div class="w-100 flex">
-            <div class="flex w-70">
-              <BaseAvatar :character="item.fristChar" :bg="item.avatarColor" />
-              <div class="flex flex-column justify-center px-5">
-                <span class="f-s-14 f-w-500">{{ item.fullname }}</span>
-                <span class="f-s-12 f-w-500 color-gray">{{ item.email }}</span>
-              </div>
-            </div>
-            <div class="w-30 flex align-center">
-              <BaseButton
-                width="100%"
-                name="Request"
-                bg="bg-info"
-                color="color-primary"
-                @click="handleSendRequest(item.id)"
-              >
-                <template #iconLeft>
-                  <IconsFriendAdd color="#7d7be5" class="mx-4" width="18px" />
-                </template>
-              </BaseButton>
-            </div>
-          </div>
-        </BaseCard> -->
       </div>
     </template>
   </BaseModal>
