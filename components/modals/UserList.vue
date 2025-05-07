@@ -16,7 +16,8 @@
 
     <template #content>
       <div class="flex flex-column w-100 h-50-dvh content px-5">
-        <BaseCard class="mt-10" v-for="(item, index) in userList" :key="index">
+        <CardsFriendRequest v-for="(item, index) in userList" :key="index" :user="item" />
+        <!-- <BaseCard class="mt-10" v-for="(item, index) in userList" :key="index">
           <div class="w-100 flex">
             <div class="flex w-70">
               <BaseAvatar :character="item.fristChar" :bg="item.avatarColor" />
@@ -39,7 +40,7 @@
               </BaseButton>
             </div>
           </div>
-        </BaseCard>
+        </BaseCard> -->
       </div>
     </template>
   </BaseModal>

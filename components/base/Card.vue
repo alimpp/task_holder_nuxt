@@ -8,13 +8,13 @@
 const props = defineProps({
   bgClass: {
     type: String,
-    default: "bg-secondary-white",
+    default: "",
   },
 });
 </script>
 
 <style scoped>
 .base-card {
-  box-shadow: 4px 2px 1px #7d7be515;
+  box-shadow: 3px 2px 1px #7d7be515;
 }
 </style>
