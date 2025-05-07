@@ -12,7 +12,7 @@ export class RequestController extends BaseAppModule {
       if (user) {
         RequestStoreModule.requestList.value.push(user);
       }
-    }    
+    }
   }
   async sendRequest(request: number) {
     await RequestStoreModule.sendRequest(request);
@@ -20,6 +20,7 @@ export class RequestController extends BaseAppModule {
 
   async removeRequest(id: number) {
     await RequestStoreModule.removeRequest(id);
+    this.getRequests();
   }
 }
 

@@ -62,7 +62,7 @@ export class request {
     });
   }
 
-  async removeRequest(id: number) {
+  async removeRequest(id: number ) {
     BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
@@ -72,7 +72,7 @@ export class request {
         Authorization: `Bearer ${token}`,
       },
     });
-    BaseAppStoreElementModule.loading.value = false;
+    BaseAppStoreElementModule.loading.value = false;    
     return response;
   }
 }

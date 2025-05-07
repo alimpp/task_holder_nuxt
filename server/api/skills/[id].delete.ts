@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, 'id');
+  const id = getRouterParam(event, "id");
   const token = event.req.headers["authorization"];
 
   const headers = {
@@ -11,6 +11,5 @@ export default defineEventHandler(async (event) => {
     method: "DELETE",
     headers: headers,
   });
-
   return response;
 });
