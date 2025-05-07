@@ -23,6 +23,11 @@ export const sidebarListData: ISidebarItem[] = [
         active: false,
         path: "/friends/list",
       },
+      {
+        name: "Request List",
+        active: false,
+        path: "/friends/requests",
+      },
     ],
   },
   {
@@ -65,4 +70,4 @@ export class SidebarModule {
   }
 }
 
-export const sidebarStoreModule = new SidebarModule("open", sidebarListData);
+export const sidebarStoreModule = new SidebarModule("close", sidebarListData);

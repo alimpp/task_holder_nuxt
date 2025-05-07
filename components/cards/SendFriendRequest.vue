@@ -17,7 +17,8 @@
                 @click="handleSendRequest(user.id)"
             >
                 <template #iconLeft>
-                    <IconsFriendAdd color="#7d7be5" class="mx-4" width="18px" />
+                    <IconsSpinner color="#7d7be5" class="mx-4" v-if="loading" />
+                    <IconsFriendAdd color="#7d7be5" class="mx-4" width="18px" v-else />
                 </template>
             </BaseButton>
         </div>
@@ -26,6 +27,8 @@
 </template>
 
 <script setup>
+import { RequestControllerModule } from "~/controllers/request";
+
 const prosp = defineProps({
     user: {
         type: Object,
@@ -33,4 +36,12 @@ const prosp = defineProps({
         default: () => {}
     }
 })
+
+const loading = ref(false);
+
+const handleSendRequest = async (id) => {
+  loading.value = true;
+  await RequestControllerModule.sendRequest(id);
+  loading.value = false;
+};
 </script>

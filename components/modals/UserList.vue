@@ -16,7 +16,7 @@
 
     <template #content>
       <div class="flex flex-column w-100 h-50-dvh content px-5">
-        <CardsFriendRequest v-for="(item, index) in userList" :key="index" :user="item" />
+        <CardsSendFriendRequest v-for="(item, index) in userList" :key="index" :user="item" />
       </div>
     </template>
   </BaseModal>
@@ -24,7 +24,7 @@
 
 <script setup>
 import { UsersStoreModule } from "~/stores/users";
-import { RequestControllerModule } from "~/controllers/request";
+
 const emit = defineEmits(["close"]);
 
 const props = defineProps({
@@ -38,9 +38,7 @@ const userList = computed(() => {
   return UsersStoreModule.userlist.value;
 });
 
-const handleSendRequest = (id) => {
-  RequestControllerModule.sendRequest(id);
-};
+
 </script>
 
 <style scoped>

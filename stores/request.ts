@@ -1,12 +1,16 @@
 import { BaseAppStoreElementModule } from "./baseApp";
 import { useCookie } from "@/composable/useCookie";
 import { ref } from "vue";
-
 interface IRequest {
-  id: number | string;
-  from: number | string;
-  to: number | string;
   fullname: string;
+  fristChar: string;
+  fristname: string;
+  lastname: string;
+  email: string;
+  id: number;
+  avatarUrl: string;
+  bio: string;
+  avatarColor: string;
 }
 
 export class request {
@@ -23,13 +27,10 @@ export class request {
       },
     });
     BaseAppStoreElementModule.loading.value = false;
-    console.log(this.requestList.value);
-
     return response;
   }
 
   async sendRequest(request: number) {
-    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     await $fetch("/api/request/send", {
@@ -40,10 +41,25 @@ export class request {
       body: {
         to: request,
       },
-    }).then(async (res) => {
-      return res;
+    }).then(async (res: any) => {
+      if(res?.statusCode == 400) {
+        BaseAppStoreElementModule.createToast({
+          title: res.message,
+          text: res.message,
+          type: "danger",
+          id: Date.now(),
+          timeout: 5000,
+        });
+      } else {
+        BaseAppStoreElementModule.createToast({
+          title: res.message,
+          text: res.message,
+          type: "success",
+          id: Date.now(),
+          timeout: 5000,
+        });
+      }
     });
-    BaseAppStoreElementModule.loading.value = false;
   }
 
   async removeRequest(id: number) {

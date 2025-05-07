@@ -1,6 +1,7 @@
 import { BaseAppStoreElementModule } from "./baseApp";
 import { ref } from "vue";
 
+import { UserStoreModule } from "./user";
 interface IUserList {
   fullname: string;
   fristChar: string;
@@ -17,12 +18,14 @@ export class Users {
   public userlist = ref<IUserList[]>([]);
 
   async users() {
-    BaseAppStoreElementModule.loading.value = true;
-    const response = await $fetch("/api/users/all", {
+    BaseAppStoreElementModule.loading.value = true;    
+    const users = await $fetch("/api/users/all", {
       method: "GET",
     });
     BaseAppStoreElementModule.loading.value = false;
-    return response;
+    return users.filter((user: IUserList) => {
+      return user.id != UserStoreModule.user.value.id;
+    });
   }
 }
 

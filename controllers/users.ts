@@ -16,6 +16,7 @@ export class UsersController extends BaseAppModule {
   public userlist = ref<IUserList[]>([]);
 
   async getUsersList() {
+    this.userlist.value = []
     const response = await UsersStoreModule.users();
     for (const element of response) {
       let user: IUserList = {
