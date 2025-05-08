@@ -10,9 +10,15 @@ export class RequestController extends BaseAppModule {
     for (const element of response) {
       const user = userlist.find((user) => user.id == element.from);
       if (user) {
-        RequestStoreModule.requestList.value.push(user);
+        const result = {
+          requestId: element.id,
+          userId: user.id,
+          ...user,
+        };
+        RequestStoreModule.requestList.value.push(result);
       }
     }
+    console.log(RequestStoreModule.requestList.value);
   }
   async sendRequest(request: number) {
     await RequestStoreModule.sendRequest(request);

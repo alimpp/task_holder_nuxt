@@ -14,9 +14,15 @@
           bg="bg-info"
           color="color-primary"
           class="mx-2"
+          @click="
+            handleAcceptRequest({
+              requestId: user.requestId,
+              friend: user.userId,
+            })
+          "
         >
           <template #iconLeft>
-            <IconsSpinner color="#7d7be5" class="mx-4" v-if="loading" />
+            <IconsSpinner color="#7d7be5" class="mx-4" v-if="acceptLoading" />
             <IconsCheckCircle color="#7d7be5" v-else />
           </template>
         </BaseButton>
@@ -25,10 +31,10 @@
           bg="bg-red"
           color="color-primary-white"
           class="mx-2"
-          @click="handleRejectRequest(user.id)"
+          @click="handleRejectRequest(user.requestId)"
         >
           <template #iconLeft>
-            <IconsSpinner color="#7d7be5" class="mx-4" v-if="loading" />
+            <IconsSpinner color="#7d7be5" class="mx-4" v-if="rejectLoading" />
             <IconsClose color="#fff" v-else />
           </template>
         </BaseButton>
@@ -39,6 +45,7 @@
 
 <script setup>
 import { RequestControllerModule } from "~/controllers/request";
+import { FriendsControllerModule } from "~/controllers/friends";
 
 const prosp = defineProps({
   user: {
@@ -48,10 +55,19 @@ const prosp = defineProps({
   },
 });
 
-const loading = ref(false);
-const handleRejectRequest = async (id) => {    
-  loading.value = true;
+const rejectLoading = ref(false);
+const handleRejectRequest = async (id) => {
+  rejectLoading.value = true;
   await RequestControllerModule.removeRequest(id);
-  loading.value = false;
+  rejectLoading.value = false;
+};
+
+const acceptLoading = ref(false);
+const handleAcceptRequest = async (data) => {
+  console.log(data);
+
+  acceptLoading.value = true;
+  await FriendsControllerModule.addFriend(data);
+  acceptLoading.value = false;
 };
 </script>
