@@ -9,6 +9,7 @@ interface IFriendsList {
   lastname: string;
   email: string;
   id: number;
+  friendListId: number;
   avatarUrl: string;
   bio: string;
   avatarColor: string;
@@ -42,6 +43,19 @@ export class Friends {
         Authorization: `Bearer ${token}`,
       },
       body: data,
+    });
+    return response;
+  }
+
+  async removeFriend(id: number) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+
+    const response = await $fetch(`/api/friends/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     return response;
   }

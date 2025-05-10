@@ -32,6 +32,11 @@ export class FriendsController extends BaseAppModule {
     await RequestControllerModule.getRequests();
     this.getFriends();
   }
+
+  async removeFriend(id: number) {
+    await FriendsStoreModule.removeFriend(id);
+    this.getFriends();
+  }
 }
 
 export const FriendsControllerModule = new FriendsController();

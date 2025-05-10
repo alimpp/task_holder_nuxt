@@ -64,8 +64,6 @@ const handleRejectRequest = async (id) => {
 
 const acceptLoading = ref(false);
 const handleAcceptRequest = async (data) => {
-  console.log(data);
-
   acceptLoading.value = true;
   await FriendsControllerModule.addFriend(data);
   acceptLoading.value = false;
