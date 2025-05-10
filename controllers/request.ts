@@ -18,7 +18,6 @@ export class RequestController extends BaseAppModule {
         RequestStoreModule.requestList.value.push(result);
       }
     }
-    console.log(RequestStoreModule.requestList.value);
   }
   async sendRequest(request: number) {
     await RequestStoreModule.sendRequest(request);
