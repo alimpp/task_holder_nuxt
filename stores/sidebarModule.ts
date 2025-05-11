@@ -24,9 +24,14 @@ export const sidebarListData: ISidebarItem[] = [
         path: "/friends/list",
       },
       {
-        name: "Request List",
+        name: "Friend Requests",
         active: false,
         path: "/friends/requests",
+      },
+      {
+        name: "Send Friend Request",
+        active: false,
+        path: "/friends/send",
       },
     ],
   },

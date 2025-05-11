@@ -10,6 +10,7 @@
 </template>
   
 <script setup>
+import { FriendsControllerModule} from "~/controllers/friends"
 import { FriendsStoreModule } from '~/stores/friends';
 
 definePageMeta({
@@ -19,5 +20,9 @@ definePageMeta({
 const friendsList = computed(() => {  
   return FriendsStoreModule.friendsList.value;
 })
+
+onMounted(async () => {
+  await FriendsControllerModule.getFriends();
+});
 </script>
   

@@ -12,22 +12,12 @@
     </div>
     <div class="w-30 flex justify-end align-center">
       <IconsLogOut color="#000" @click="logOut" class="cursor-pointer" />
-      <div class="flex align-center mx-5">
-        <IconsFriends
-          class="cursor-pointer"
-          @click="handleUserListModalState"
-        />
-      </div>
       <IconsHamburgerMenu
         @click="handleChangeSidebarState"
         class="cursor-pointer"
       />
     </div>
   </div>
-  <ModalsUserList
-    :state="userListModalState"
-    @close="handleUserListModalState"
-  />
 </template>
 
 <script setup>
@@ -41,11 +31,6 @@ const handleChangeSidebarState = () => {
 const user = computed(() => {
   return UserStoreModule.user.value;
 });
-
-const userListModalState = ref(false);
-const handleUserListModalState = () => {
-  userListModalState.value = !userListModalState.value;
-};
 
 const logOut = () => {
   navigateTo("/auth/login");
