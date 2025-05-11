@@ -1,5 +1,4 @@
-import { BaseAppModule, BaseAppStoreElementModule } from "@/stores/baseApp";
-import { RequestStoreModule } from "~/stores/request";
+import { BaseAppModule } from "@/stores/baseApp";
 import { RequestControllerModule } from "./request";
 import { FriendsStoreModule } from "~/stores/friends";
 import { UsersStoreModule } from "~/stores/users";
@@ -30,12 +29,12 @@ export class FriendsController extends BaseAppModule {
   async addFriend(data: IAddFriend) {
     await FriendsStoreModule.addFriend(data);
     await RequestControllerModule.getRequests();
-    this.getFriends();
+    await this.getFriends();
   }
 
   async removeFriend(id: number) {
     await FriendsStoreModule.removeFriend(id);
-    this.getFriends();
+    await this.getFriends();
   }
 }
 
