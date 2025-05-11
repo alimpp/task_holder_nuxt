@@ -8,10 +8,9 @@
                 <span class="f-s-12 f-w-500 color-gray">{{ user.email }}</span>
             </div>
         </div>
-        <div class="w-30 flex align-center">
+        <div class="w-30 flex align-center justify-end">
             <BaseButton
-                width="100%"
-                name="Request"
+                width="50px"
                 bg="bg-info"
                 color="color-primary"
                 @click="handleSendRequest(user.id)"
@@ -29,7 +28,7 @@
 <script setup>
 import { RequestControllerModule } from "~/controllers/request";
 
-const prosp = defineProps({
+const props = defineProps({
     user: {
         type: Object,
         required: true,

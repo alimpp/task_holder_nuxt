@@ -9,18 +9,6 @@
         </div>
       </div>
       <div class="w-30 flex align-center justify-end">
-        <BaseButton
-          width="50px"
-          bg="bg-red"
-          color="color-primary-white"
-          class="mx-2"
-          @click="handleRemoveFriend(user.friendListId)"
-        >
-          <template #iconLeft>
-            <IconsSpinner color="#7d7be5" class="mx-4" v-if="removeLoading" />
-            <IconsClose color="#fff" v-else />
-          </template>
-        </BaseButton>
       </div>
     </div>
   </BaseCard>
@@ -29,7 +17,7 @@
 <script setup>
 import { FriendsControllerModule } from "~/controllers/friends";
 
-const prosp = defineProps({
+const props = defineProps({
   user: {
     type: Object,
     required: true,

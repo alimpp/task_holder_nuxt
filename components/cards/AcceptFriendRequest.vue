@@ -47,7 +47,7 @@
 import { RequestControllerModule } from "~/controllers/request";
 import { FriendsControllerModule } from "~/controllers/friends";
 
-const prosp = defineProps({
+const props = defineProps({
   user: {
     type: Object,
     required: true,
