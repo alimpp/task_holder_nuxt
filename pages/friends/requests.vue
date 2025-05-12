@@ -11,6 +11,7 @@
   
 <script setup>
 import { RequestStoreModule } from '~/stores/request';
+import { RequestControllerModule } from "~/controllers/request";
 
 definePageMeta({
   middleware: "auth",
@@ -19,5 +20,9 @@ definePageMeta({
 const requestList = computed(() => {  
   return RequestStoreModule.requestList.value;
 })
+
+onMounted(async () => {
+  await RequestControllerModule.getRequests();
+});
 </script>
   

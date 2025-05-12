@@ -16,6 +16,7 @@ export class UsersController extends BaseAppModule {
   public userlist = ref<IUserList[]>([]);
 
   async getUsersList() {
+    BaseAppStoreElementModule.loading.value = true
     this.userlist.value = []
     const response = await UsersStoreModule.users();
     for (const element of response) {
@@ -33,6 +34,7 @@ export class UsersController extends BaseAppModule {
       this.userlist.value.push(user);
     }
     UsersStoreModule.userlist.value = this.userlist.value;
+    BaseAppStoreElementModule.loading.value = false
   }
 }
 

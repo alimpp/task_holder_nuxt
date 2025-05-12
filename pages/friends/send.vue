@@ -12,7 +12,6 @@
 <script setup>
 import { UsersStoreModule } from "~/stores/users";
 import { UsersControllerModule } from "~/controllers/users";
-import { RequestControllerModule } from "~/controllers/request";
 
 const userList = computed(() => {
   return UsersStoreModule.userlist.value;
@@ -25,7 +24,6 @@ definePageMeta({
 
 onMounted(async () => {
   await UsersControllerModule.getUsersList();
-  await RequestControllerModule.getRequests();
 });
 </script>
   
