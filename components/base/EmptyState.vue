@@ -10,11 +10,11 @@
 const props = defineProps({
     title: {
         type: String,
-        default: "No Data"
+        default: ""
     },
     text: {
         type: String,
-        default: "No Data"
+        default: ""
     }
 })
 </script>
