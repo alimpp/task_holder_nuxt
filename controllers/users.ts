@@ -1,6 +1,5 @@
 import { BaseAppModule, BaseAppStoreElementModule } from "@/stores/baseApp";
 import { UsersStoreModule } from "~/stores/users";
-
 interface IUserList {
   fullname: string;
   fristChar: string;
@@ -22,7 +21,6 @@ export class UsersController extends BaseAppModule {
   public userlist = ref<IUserList[]>([]);
 
   async getUsersList() {
-    BaseAppStoreElementModule.loading.value = true
     this.userlist.value = []
     const response = await UsersStoreModule.users();
     for (const element of response) {
@@ -40,7 +38,6 @@ export class UsersController extends BaseAppModule {
       this.userlist.value.push(user);
     }
     UsersStoreModule.userlist.value = this.userlist.value;
-    BaseAppStoreElementModule.loading.value = false
   }
 
   async validateUpdateProfile(body: IUpdateProfile) {

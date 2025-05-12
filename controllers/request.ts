@@ -5,7 +5,7 @@ import { UsersStoreModule } from "~/stores/users";
 export class RequestController extends BaseAppModule {
   async getRequests() {
     RequestStoreModule.requestList.value = [];
-    const userlist = UsersStoreModule.userlist.value;
+    const userlist = UsersStoreModule.userlist.value;    
     const response = await RequestStoreModule.getRequests();
     for (const element of response) {
       const user = userlist.find((user) => user.id == element.from);
@@ -19,6 +19,7 @@ export class RequestController extends BaseAppModule {
       }
     }
   }
+  
   async sendRequest(request: number) {
     await RequestStoreModule.sendRequest(request);
   }
