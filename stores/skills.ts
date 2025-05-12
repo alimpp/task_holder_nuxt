@@ -12,7 +12,6 @@ export class Skills {
   public skills = ref<ISkill[]>([]);
 
   async getSkills() {
-    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     const response = await $fetch("/api/skills/list", {
@@ -21,12 +20,10 @@ export class Skills {
         Authorization: `Bearer ${token}`,
       },
     });
-    BaseAppStoreElementModule.loading.value = false;
     return response;
   }
 
   async addSkill(skill: string) {
-    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     await $fetch("/api/skills/add", {
@@ -40,7 +37,6 @@ export class Skills {
     }).then(async (res) => {
       return res;
     });
-    BaseAppStoreElementModule.loading.value = false;
   }
 
   async removeSkill(id: number) {

@@ -1,5 +1,5 @@
 <template>
-<BaseCard class="mt-10 slid-up-animation-8" bgClass="bg-primary-white">
+<BaseCard class="mt-10 fade-animation" bgClass="bg-primary-white">
     <div class="w-100 flex">
         <div class="flex w-70">
             <BaseAvatar :character="user.fristChar" :bg="user.avatarColor" />

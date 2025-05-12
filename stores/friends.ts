@@ -22,7 +22,6 @@ interface IAddFriend {
 export class Friends {
   public friendsList = ref<IFriendsList[]>([]);
   async getFriends() {
-    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     const response = await $fetch("/api/friends/list", {
@@ -31,7 +30,6 @@ export class Friends {
         Authorization: `Bearer ${token}`,
       },
     });
-    BaseAppStoreElementModule.loading.value = false;
     return response;
   }
 

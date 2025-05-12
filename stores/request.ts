@@ -17,7 +17,6 @@ export class request {
   public requestList = ref<IRequest[]>([]);
 
   async getRequests() {
-    BaseAppStoreElementModule.loading.value = true;
     const { getCookie } = useCookie();
     const token = getCookie("token");
     const response = await $fetch("/api/request/list", {
@@ -26,7 +25,6 @@ export class request {
         Authorization: `Bearer ${token}`,
       },
     });
-    BaseAppStoreElementModule.loading.value = false;
     return response;
   }
 

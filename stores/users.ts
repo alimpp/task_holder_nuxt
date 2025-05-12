@@ -18,11 +18,9 @@ export class Users {
   public userlist = ref<IUserList[]>([]);
 
   async users() {
-    BaseAppStoreElementModule.loading.value = true;    
     const users = await $fetch("/api/users/all", {
       method: "GET",
     });
-    BaseAppStoreElementModule.loading.value = false;
     return users.filter((user: IUserList) => {
       return user.id != UserStoreModule.user.value.id;
     });
