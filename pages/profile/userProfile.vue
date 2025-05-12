@@ -43,10 +43,12 @@
             border="1px solid #7d7be5"
             width="99%"
             name="Update Profile"
-            @click="addSkill"
+            @click="udpateProfile"
           >
             <template #iconLeft>
+              <IconsSpinner v-if="updateProfileLoading" color="#7d7be5" />
               <IconsPencile
+                v-else
                 class="mx-2"
                 width="20px"
                 height="20px"
@@ -72,7 +74,8 @@
           @click="addSkill"
         >
           <template #iconLeft>
-            <IconsPlus class="mx-2" />
+            <IconsSpinner v-if="addSkillLoading" color="#fff" />
+            <IconsPlus v-else class="mx-2" />
           </template>
         </BaseButton>
         <div class="w-100 flex flex-wrap mt-10">
@@ -96,12 +99,14 @@
 </template>
 
 <script setup>
+import { UsersController } from "~/controllers/users";
 import { UserStoreModule } from "~/stores/user";
 import { SkillsControllerModule } from "~/controllers/skills";
 import { SkillsStoreModule } from "~/stores/skills";
 
 const skill = ref("");
-const loading = ref(false);
+const updateProfileLoading = ref(false);
+const addSkillLoading = ref(false);
 
 const inputSkillError = computed(() => {
   return SkillsControllerModule.inputSkillError.value;
@@ -119,11 +124,24 @@ definePageMeta({
   middleware: "auth",
 });
 
+const udpateProfile = async () => {
+  updateProfileLoading.value = true;
+  const body = {
+    fristname: user.value.fristname,
+    lastname: user.value.lastname,
+    bio: user.value.bio,
+  }
+  await UsersController.validateUpdateProfile(body)
+  updateProfileLoading.value = false;
+}
+
 const addSkill = async () => {
+  addSkillLoading.value = true;
   const res = await SkillsControllerModule.validateSkill(skill.value);
   if (res) {
     skill.value = "";
   }
+  addSkillLoading.value = false;
 };
 
 const removeSkill = async (id) => {

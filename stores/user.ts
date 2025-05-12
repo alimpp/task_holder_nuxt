@@ -13,6 +13,12 @@ interface IUser {
   bio: string;
 }
 
+interface IUpdateProfile {
+  fristname: string;
+  lastname: string;
+  bio: string;
+}
+
 export class User {
   public isAuthenticated = ref<boolean>(false);
   public user = ref<IUser>({
@@ -39,6 +45,19 @@ export class User {
     BaseAppStoreElementModule.loading.value = false;
     if (response) this.isAuthenticated.value = true;
     return response;
+  }
+
+  async updateProfile(body: IUpdateProfile) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    await $fetch("/api/users/update", {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: body,
+    });
+    await this.profile();
   }
 }
 

@@ -12,6 +12,12 @@ interface IUserList {
   bio: string;
   avatarColor: string;
 }
+
+interface IUpdateProfile {
+  fristname: string;
+  lastname: string;
+  bio: string;
+}
 export class UsersController extends BaseAppModule {
   public userlist = ref<IUserList[]>([]);
 
@@ -35,6 +41,10 @@ export class UsersController extends BaseAppModule {
     }
     UsersStoreModule.userlist.value = this.userlist.value;
     BaseAppStoreElementModule.loading.value = false
+  }
+
+  async validateUpdateProfile(body: IUpdateProfile) {
+    console.log(body);
   }
 }
 
