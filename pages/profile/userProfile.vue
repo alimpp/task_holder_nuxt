@@ -21,12 +21,14 @@
             class="mt-4"
             v-model="user.fristname"
             width="98%"
+            :errorMessage="errorMessage.fristname"
           />
           <BaseInput
             label="Lastname"
             class="mt-4"
             v-model="user.lastname"
             width="98%"
+            :errorMessage="errorMessage.lastname"
           />
           <BaseInput
             label="Email"
@@ -35,7 +37,13 @@
             v-model="user.email"
             width="98%"
           />
-          <BaseInput label="Bio" class="mt-4" width="98%" v-model="user.bio" />
+          <BaseInput
+            label="Bio"
+            class="mt-4"
+            width="98%"
+            v-model="user.bio"
+            :errorMessage="errorMessage.bio"
+          />
           <BaseButton
             class="mt-10"
             bg="bg-info"
@@ -89,7 +97,11 @@
             :name="item.skill"
           >
             <template #iconLeft>
-              <IconsClose class="mx-1 cursor-pointer" color="#7d7be5" @click="removeSkill(item.id)" />
+              <IconsClose
+                class="mx-1 cursor-pointer"
+                color="#7d7be5"
+                @click="removeSkill(item.id)"
+              />
             </template>
           </BaseChip>
         </div>
@@ -99,7 +111,7 @@
 </template>
 
 <script setup>
-import { UsersController } from "~/controllers/users";
+import { UsersControllerModule } from "~/controllers/users";
 import { UserStoreModule } from "~/stores/user";
 import { SkillsControllerModule } from "~/controllers/skills";
 import { SkillsStoreModule } from "~/stores/skills";
@@ -124,16 +136,20 @@ definePageMeta({
   middleware: "auth",
 });
 
+const errorMessage = computed(() => {
+  return UsersControllerModule.inputError.value;
+});
+
 const udpateProfile = async () => {
   updateProfileLoading.value = true;
   const body = {
     fristname: user.value.fristname,
     lastname: user.value.lastname,
     bio: user.value.bio,
-  }
-  await UsersController.validateUpdateProfile(body)
+  };
+  await UsersControllerModule.validateUpdateProfile(body);
   updateProfileLoading.value = false;
-}
+};
 
 const addSkill = async () => {
   addSkillLoading.value = true;
@@ -146,7 +162,7 @@ const addSkill = async () => {
 
 const removeSkill = async (id) => {
   await SkillsControllerModule.removeSkill(id);
-}
+};
 
 onMounted(async () => {
   await SkillsControllerModule.getSkills();

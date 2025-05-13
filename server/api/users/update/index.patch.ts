@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     };
   
     const response = await $fetch(`http://localhost:4000/users/update`, {
-      method: "POST",
+      method: "PATCH",
       body: body,
       headers: headers,
     });

@@ -21,7 +21,7 @@ export class UsersController extends BaseAppModule {
   public userlist = ref<IUserList[]>([]);
 
   async getUsersList() {
-    this.userlist.value = []
+    this.userlist.value = [];
     const response = await UsersStoreModule.users();
     for (const element of response) {
       let user: IUserList = {
@@ -40,8 +40,39 @@ export class UsersController extends BaseAppModule {
     UsersStoreModule.userlist.value = this.userlist.value;
   }
 
+  inputError = ref<IUpdateProfile>({
+    fristname: "",
+    lastname: "",
+    bio: "",
+  });
+
   async validateUpdateProfile(body: IUpdateProfile) {
-    console.log(body);
+    const { fristname, lastname, bio, } = body;
+    this.inputError.value = {
+      fristname: "",
+      lastname: "",
+      bio: "",
+    };
+    const fristnameValid = this.validLength(fristname, 3, 10);
+    if (!fristnameValid.isValid) {
+      this.inputError.value.fristname = fristnameValid.message || "";
+    }
+    const lastnameValid = this.validLength(lastname, 3, 16);
+    if (!lastnameValid.isValid) {
+      this.inputError.value.lastname = lastnameValid.message || "";
+    }
+    const bioValid = this.validLength(bio, 3, 100);
+    if (!bioValid.isValid) {
+      this.inputError.value.bio = bioValid.message || "";
+    }
+
+    if (
+      fristnameValid.isValid &&
+      lastnameValid.isValid &&
+      bioValid.isValid
+    ) {
+      UsersStoreModule.updateProfile(body);
+    }
   }
 }
 
