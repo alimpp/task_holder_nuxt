@@ -111,8 +111,9 @@
 </template>
 
 <script setup>
-import { UsersControllerModule } from "~/controllers/users";
+import { UserControllerModule } from "~/controllers/user";
 import { UserStoreModule } from "~/stores/user";
+
 import { SkillsControllerModule } from "~/controllers/skills";
 import { SkillsStoreModule } from "~/stores/skills";
 
@@ -137,7 +138,7 @@ definePageMeta({
 });
 
 const errorMessage = computed(() => {
-  return UsersControllerModule.inputError.value;
+  return UserControllerModule.inputError.value;
 });
 
 const udpateProfile = async () => {

@@ -11,13 +11,8 @@ interface IUserList {
   bio: string;
   avatarColor: string;
 }
-
-interface IUpdateProfile {
-  fristname: string;
-  lastname: string;
-  bio: string;
-}
 export class UsersController extends BaseAppModule {
+
   public userlist = ref<IUserList[]>([]);
 
   async getUsersList() {
@@ -40,40 +35,6 @@ export class UsersController extends BaseAppModule {
     UsersStoreModule.userlist.value = this.userlist.value;
   }
 
-  inputError = ref<IUpdateProfile>({
-    fristname: "",
-    lastname: "",
-    bio: "",
-  });
-
-  async validateUpdateProfile(body: IUpdateProfile) {
-    const { fristname, lastname, bio, } = body;
-    this.inputError.value = {
-      fristname: "",
-      lastname: "",
-      bio: "",
-    };
-    const fristnameValid = this.validLength(fristname, 3, 10);
-    if (!fristnameValid.isValid) {
-      this.inputError.value.fristname = fristnameValid.message || "";
-    }
-    const lastnameValid = this.validLength(lastname, 3, 16);
-    if (!lastnameValid.isValid) {
-      this.inputError.value.lastname = lastnameValid.message || "";
-    }
-    const bioValid = this.validLength(bio, 3, 100);
-    if (!bioValid.isValid) {
-      this.inputError.value.bio = bioValid.message || "";
-    }
-
-    if (
-      fristnameValid.isValid &&
-      lastnameValid.isValid &&
-      bioValid.isValid
-    ) {
-      UsersStoreModule.updateProfile(body);
-    }
-  }
 }
 
 export const UsersControllerModule = new UsersController();

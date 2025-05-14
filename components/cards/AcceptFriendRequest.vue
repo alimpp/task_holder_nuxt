@@ -17,7 +17,7 @@
           @click="
             handleAcceptRequest({
               requestId: user.requestId,
-              friend: user.userId,
+              friendRequestedBy: user.userId,
             })
           "
         >

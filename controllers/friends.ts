@@ -2,7 +2,7 @@ import { BaseAppModule } from "@/stores/baseApp";
 import { RequestControllerModule } from "./request";
 import { FriendsStoreModule } from "~/stores/friends";
 import { UsersStoreModule } from "~/stores/users";
-
+import { UserStoreModule } from "~/stores/user";
 interface IAddFriend {
   requestId: number;
   friend: number;
@@ -10,11 +10,18 @@ interface IAddFriend {
 
 export class FriendsController extends BaseAppModule {
   async getFriends() {
+    const currentUserId = UserStoreModule.user.value?.id;
     FriendsStoreModule.friendsList.value = [];
     const userlist = UsersStoreModule.userlist.value;
     const response = await FriendsStoreModule.getFriends();
-    for (const element of response) {
-      const user = userlist.find((user) => user.id == element.friend);
+    for (const element of response) {      
+      const user = userlist.find((user) => {
+        if(currentUserId == element.friendRequestedBy) {
+          return user.id == element.to 
+        } else {
+          return user.id == element.from
+        }
+      });      
       if (user) {
         const result = {
           friendListId: element.id,
