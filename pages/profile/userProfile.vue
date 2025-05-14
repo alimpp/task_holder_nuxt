@@ -148,7 +148,7 @@ const udpateProfile = async () => {
     lastname: user.value.lastname,
     bio: user.value.bio,
   };
-  await UsersControllerModule.validateUpdateProfile(body);
+  await UserControllerModule.validateUpdateProfile(body);
   updateProfileLoading.value = false;
 };
 
