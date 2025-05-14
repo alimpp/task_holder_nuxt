@@ -13,7 +13,7 @@
       />
     </div>
     <div class="flex flex-column" v-if="pageLoading">
-      <SkeletonSendFriendRequest v-for="n in 10" />
+      <SkeletonFriendList v-for="n in 10" />
     </div>
     <div class="w-100 flex flex-column"></div>
     <div class="w-100 flex flex-column">
