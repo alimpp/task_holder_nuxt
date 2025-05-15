@@ -48,6 +48,19 @@ export const sidebarListData: ISidebarItem[] = [
       },
     ],
   },
+  {
+    name: "Timeline",
+    isOpen: true,
+    permission: true,
+    icon: "/sidebar/time-line.png",
+    childs: [
+      {
+        name: "Notes",
+        active: false,
+        path: "/timeline/notes",
+      },
+    ],
+  },
 ];
 
 export class SidebarModule {

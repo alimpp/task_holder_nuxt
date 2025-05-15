@@ -12,11 +12,8 @@ interface IUserList {
   avatarColor: string;
 }
 export class UsersController extends BaseAppModule {
-
-  public userlist = ref<IUserList[]>([]);
-
   async getUsersList() {
-    this.userlist.value = [];
+    let userlist = [];
     const response = await UsersStoreModule.users();
     for (const element of response) {
       let user: IUserList = {
@@ -30,11 +27,10 @@ export class UsersController extends BaseAppModule {
         bio: element.bio,
         avatarColor: "#" + Math.floor(Math.random() * 16777215).toString(16),
       };
-      this.userlist.value.push(user);
+      userlist.push(user);
     }
-    UsersStoreModule.userlist.value = this.userlist.value;
+    UsersStoreModule.userlist.value = userlist;
   }
-
 }
 
 export const UsersControllerModule = new UsersController();

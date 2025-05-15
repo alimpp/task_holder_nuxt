@@ -1,4 +1,3 @@
-import { BaseAppStoreElementModule } from "./baseApp";
 import { useCookie } from "@/composable/useCookie";
 import { ref } from "vue";
 
@@ -50,7 +49,6 @@ export class Skills {
     });
     return response;
   }
-  
 }
 
 export const SkillsStoreModule = new Skills();
