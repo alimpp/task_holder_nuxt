@@ -1,8 +1,4 @@
-import { BaseAppStoreElementModule } from "./baseApp";
-import { useCookie } from "@/composable/useCookie";
 import { ref } from "vue";
-
-import { UserStoreModule } from "./user";
 interface IUserList {
   fullname: string;
   fristChar: string;
@@ -28,22 +24,7 @@ export class Users {
     const users = await $fetch("/api/users/all", {
       method: "GET",
     });
-    return users.filter((user: IUserList) => {
-      return user.id != UserStoreModule.user.value.id;
-    });
-  }
-
-  async updateProfile(body: IUpdateProfile) {
-    const { getCookie } = useCookie();
-    const token = getCookie("token");
-    const response = await $fetch("/api/users/update", {
-      method: "PATCH",
-      body: body,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response;
+    return users;
   }
 }
 

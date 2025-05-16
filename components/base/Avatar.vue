@@ -14,11 +14,11 @@
 const props = defineProps({
   width: {
     type: String,
-    default: "45px",
+    default: "35px",
   },
   height: {
     type: String,
-    default: "45px",
+    default: "35px",
   },
   character: {
     type: String,

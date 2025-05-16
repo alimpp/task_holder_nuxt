@@ -15,7 +15,6 @@
     <div class="flex flex-column" v-if="pageLoading">
       <SkeletonFriendList v-for="n in 10" />
     </div>
-    <div class="w-100 flex flex-column"></div>
     <div class="w-100 flex flex-column">
       <CardsFriendList
         v-for="(item, index) in friendsList"
