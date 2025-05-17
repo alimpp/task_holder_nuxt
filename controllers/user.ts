@@ -9,7 +9,6 @@ interface IUpdateProfile {
 }
 
 export class UserController extends BaseAppModule {
-
   inputError = ref<IUpdateProfile>({
     fristname: "",
     lastname: "",
@@ -17,33 +16,29 @@ export class UserController extends BaseAppModule {
   });
 
   async validateUpdateProfile(body: IUpdateProfile) {
-      const { fristname, lastname, bio, } = body;
-      this.inputError.value = {
-        fristname: "",
-        lastname: "",
-        bio: "",
-      };
-      const fristnameValid = this.validLength(fristname, 3, 10);
-      if (!fristnameValid.isValid) {
-        this.inputError.value.fristname = fristnameValid.message || "";
-      }
-      const lastnameValid = this.validLength(lastname, 3, 16);
-      if (!lastnameValid.isValid) {
-        this.inputError.value.lastname = lastnameValid.message || "";
-      }
-      const bioValid = this.validLength(bio, 3, 100);
-      if (!bioValid.isValid) {
-        this.inputError.value.bio = bioValid.message || "";
-      }
-  
-      if (
-        fristnameValid.isValid &&
-        lastnameValid.isValid &&
-        bioValid.isValid
-      ) {
-        UserStoreModule.updateProfile(body);
-      }
+    const { fristname, lastname, bio } = body;
+    this.inputError.value = {
+      fristname: "",
+      lastname: "",
+      bio: "",
+    };
+    const fristnameValid = this.validLength(fristname, 3, 10);
+    if (!fristnameValid.isValid) {
+      this.inputError.value.fristname = fristnameValid.message || "";
     }
+    const lastnameValid = this.validLength(lastname, 3, 16);
+    if (!lastnameValid.isValid) {
+      this.inputError.value.lastname = lastnameValid.message || "";
+    }
+    const bioValid = this.validLength(bio, 3, 100);
+    if (!bioValid.isValid) {
+      this.inputError.value.bio = bioValid.message || "";
+    }
+
+    if (fristnameValid.isValid && lastnameValid.isValid && bioValid.isValid) {
+     await UserStoreModule.updateProfile(body);
+    }
+  }
 
   async getUserProfile() {
     const response = await UserStoreModule.profile();
