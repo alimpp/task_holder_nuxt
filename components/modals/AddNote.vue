@@ -16,7 +16,12 @@
 
     <template #content>
       <div class="flex w-100 py-10">
-        <BaseInput label="Note Content" class="w-355-px" />
+        <BaseInput
+          :errorMessage="errorMessage.note"
+          label="Note Content"
+          class="w-355-px"
+          v-model="userNote"
+        />
       </div>
     </template>
 
@@ -26,9 +31,11 @@
         name="Submit Note"
         width="100%"
         color="color-primary"
+        @click="handleAddNote"
       >
         <template #iconLeft>
-          <IconsCheckCircle color="#7d7be5" class="mx-2" />
+          <IconsSpinner v-if="addNoteLoading" color="#7d7be5" />
+          <IconsCheckCircle color="#7d7be5" class="mx-2" v-else />
         </template>
       </BaseButton>
     </template>
@@ -36,6 +43,8 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { NotesControllerModule } from "~/controllers/notes";
 const emit = defineEmits(["close"]);
 
 const props = defineProps({
@@ -44,4 +53,21 @@ const props = defineProps({
     default: false,
   },
 });
+
+const userNote = ref("");
+const addNoteLoading = ref(false);
+
+const errorMessage = computed(() => {
+  return NotesControllerModule.inputError.value;
+});
+
+const handleAddNote = async () => {
+  addNoteLoading.value = true;
+  await NotesControllerModule.validateAddNote(userNote.value);
+  addNoteLoading.value = false;
+  if (errorMessage.value.note === "") {
+    emit("close");
+    userNote.value = "";
+  }
+};
 </script>

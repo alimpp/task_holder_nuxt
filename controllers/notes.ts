@@ -3,6 +3,7 @@ import { NotesStoreModule } from "~/stores/notes";
 import { UsersStoreModule } from "~/stores/users";
 import { UsersControllerModule } from "~/controllers/users";
 
+
 export class NotesController extends BaseAppModule {
   async getNotes() {
     if (UsersStoreModule.userlist.value.length == 0) {
@@ -20,6 +21,22 @@ export class NotesController extends BaseAppModule {
       notes.push(obj);
     }
     NotesStoreModule.notes.value = notes;
+  }
+
+  inputError = ref({
+    note: "",
+  });
+
+  async validateAddNote(note: string) {    
+    this.inputError.value.note = "";
+    const noteValid = this.validLength(note, 3, 100);
+    if (!noteValid.isValid) {
+      this.inputError.value.note = noteValid.message || "";
+    }
+    if (noteValid.isValid) {
+      await NotesStoreModule.addNote(note);
+      await this.getNotes();
+    }
   }
 }
 

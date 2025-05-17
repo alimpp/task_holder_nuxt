@@ -36,7 +36,7 @@ export class UserController extends BaseAppModule {
     }
 
     if (fristnameValid.isValid && lastnameValid.isValid && bioValid.isValid) {
-     await UserStoreModule.updateProfile(body);
+      UserStoreModule.updateProfile(body);
     }
   }
 

@@ -35,6 +35,21 @@ export class Notes {
     });
     return response;
   }
+  async addNote(note: string) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch("/api/notes/add", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: {
+        note: note,
+      }
+      
+    });
+    return response;
+  }
 }
 
 export const NotesStoreModule = new Notes();
