@@ -7,14 +7,17 @@
       <div
         class="flex flex-column align-center justify-center responsive-width mt-10"
       >
+      <!-- <img :src="user.avatarUrl" alt="image" style="width: 60px; height: 60px; border-radius: 50%;"> -->
         <BaseAvatar
           :character="user.fristChar"
+          :avatar="user.avatarUrl"
           width="150px"
           height="150px"
           characterSize="f-s-40"
         />
         <span class="f-s-16 f-w-600 py-5">{{ user.fullname }}</span>
         <span class="f-s-14 f-w-600 color-gray">{{ user.email }}</span>
+        <input type="file" @change="updateAvatar">
         <div class="flex flex-column mt-5 w-100">
           <BaseInput
             label="Fristname"
@@ -111,6 +114,7 @@
 </template>
 
 <script setup>
+import { UploadControllerModule } from "~/controllers/upload";
 import { UserControllerModule } from "~/controllers/user";
 import { UserStoreModule } from "~/stores/user";
 
@@ -120,6 +124,15 @@ import { SkillsStoreModule } from "~/stores/skills";
 const skill = ref("");
 const updateProfileLoading = ref(false);
 const addSkillLoading = ref(false);
+const avatarFile =  ref(null);
+
+const updateAvatar = async (event) => {
+  avatarFile.value = event.target.files[0]
+  const response = await UploadControllerModule.uploadFile(avatarFile.value);
+  if(response.id) {
+   await UserControllerModule.updateAvatar(response.id);
+  }
+}
 
 const inputSkillError = computed(() => {
   return SkillsControllerModule.inputSkillError.value;

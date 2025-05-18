@@ -4,7 +4,8 @@
     :class="[bgClass]"
     :style="{ 'min-width': width, 'min-height': height, background: bg }"
   >
-    <span class="color-primary-white" :class="[characterSize]">{{
+    <img :src="avatar" alt="PROFILE" v-if="avatar" :style="{ 'width': width, 'height': height }" />
+    <span v-else class="color-primary-white" :class="[characterSize]">{{
       character
     }}</span>
   </div>
@@ -12,6 +13,10 @@
 
 <script setup>
 const props = defineProps({
+  avatar: {
+    type: String,
+    default: "",
+  },
   width: {
     type: String,
     default: "35px",
@@ -45,5 +50,6 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 </style>

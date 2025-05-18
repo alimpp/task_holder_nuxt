@@ -4,7 +4,7 @@
       class="w-70 flex cursor-pointer align-center"
       @click="navigateTo('/profile/userProfile')"
     >
-      <BaseAvatar :character="user.fristChar" />
+      <BaseAvatar :character="user.fristChar" :avatar="user.avatarUrl" />
       <div class="flex flex-column justify-center px-5">
         <span class="f-s-14 f-w-600">{{ user.fullname }}</span>
         <span class="f-s-12 f-w-500 color-gray">{{ user.email }}</span>
