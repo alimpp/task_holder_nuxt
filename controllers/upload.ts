@@ -1,11 +1,13 @@
-import { BaseAppModule } from "@/stores/baseApp";
+import { BaseAppModule, BaseAppStoreElementModule } from "@/stores/baseApp";
 import { UploadStoreModule } from "@/stores/upload";
 
 export class UploadController extends BaseAppModule {
     async uploadFile(file: File) {
+        BaseAppStoreElementModule.loading.value = true
         const formData = new FormData();
         formData.append("file", file);
         const response = await UploadStoreModule.uploadFile(formData)
+        BaseAppStoreElementModule.loading.value = false
         return response
     }
     

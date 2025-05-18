@@ -7,7 +7,6 @@
       <div
         class="flex flex-column align-center justify-center responsive-width mt-10"
       >
-      <!-- <img :src="user.avatarUrl" alt="image" style="width: 60px; height: 60px; border-radius: 50%;"> -->
         <BaseAvatar
           :character="user.fristChar"
           :avatar="user.avatarUrl"
@@ -17,7 +16,7 @@
         />
         <span class="f-s-16 f-w-600 py-5">{{ user.fullname }}</span>
         <span class="f-s-14 f-w-600 color-gray">{{ user.email }}</span>
-        <input type="file" @change="updateAvatar">
+        <BaseUploadAvatar @updateAvatar="updateAvatar" class="mt-10" />
         <div class="flex flex-column mt-5 w-100">
           <BaseInput
             label="Fristname"
