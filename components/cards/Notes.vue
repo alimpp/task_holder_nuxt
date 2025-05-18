@@ -3,6 +3,7 @@
     <div class="w-35-px flex align-end justify-center">
       <BaseAvatar
         :character="note.author?.fristChar"
+        :avatar="note.author?.avatarUrl"
         :bg="note.author?.avatarColor"
       />
     </div>

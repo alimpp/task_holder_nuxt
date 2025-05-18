@@ -1,7 +1,7 @@
 import { BaseAppModule, BaseAppStoreElementModule } from "@/stores/baseApp";
 import { UserStoreModule } from "~/stores/user";
 import { ref } from "vue";
-
+import { UploadControllerModule } from "./upload";
 interface IUpdateProfile {
   fristname: string;
   lastname: string;
@@ -42,6 +42,7 @@ export class UserController extends BaseAppModule {
 
   async getUserProfile() {
     const response = await UserStoreModule.profile();
+    const avatarUrl = response.avatarUrl ? await UploadControllerModule.downloadFileById(response.avatarUrl) : '';
     const user = {
       fullname: response.fristname + " " + response.lastname,
       fristChar: response.fristname[0].toUpperCase(),
@@ -49,10 +50,15 @@ export class UserController extends BaseAppModule {
       lastname: response.lastname,
       email: response.email,
       id: response.id,
-      avatarUrl: response.avatarUrl,
+      avatarUrl,
       bio: response.bio,
     };
     UserStoreModule.user.value = user;
+  }
+  
+  async updateAvatar(avatarUrl: string) {
+    await UserStoreModule.updateAvatar(avatarUrl);
+    await this.getUserProfile()
   }
 }
 

@@ -17,6 +17,7 @@ interface IUpdateProfile {
   fristname: string;
   lastname: string;
   bio: string;
+  avatarUrl?: string;
 }
 
 export class User {
@@ -58,6 +59,18 @@ export class User {
       body: body,
     });
     await this.profile();
+  }
+
+  async updateAvatar(avatarUrl: string) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    await $fetch("/api/users/update", {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: {avatarUrl: avatarUrl},
+    });
   }
 }
 
