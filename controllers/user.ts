@@ -36,13 +36,15 @@ export class UserController extends BaseAppModule {
     }
 
     if (fristnameValid.isValid && lastnameValid.isValid && bioValid.isValid) {
-      UserStoreModule.updateProfile(body);
+      await UserStoreModule.updateProfile(body);
     }
   }
 
   async getUserProfile() {
     const response = await UserStoreModule.profile();
-    const avatarUrl = response.avatarUrl ? await UploadControllerModule.downloadFileById(response.avatarUrl) : '';
+    const avatarUrl = response.avatarUrl
+      ? await UploadControllerModule.downloadFileById(response.avatarUrl)
+      : "";
     const user = {
       fullname: response.fristname + " " + response.lastname,
       fristChar: response.fristname[0].toUpperCase(),
@@ -55,10 +57,10 @@ export class UserController extends BaseAppModule {
     };
     UserStoreModule.user.value = user;
   }
-  
+
   async updateAvatar(avatarUrl: string) {
     await UserStoreModule.updateAvatar(avatarUrl);
-    await this.getUserProfile()
+    await this.getUserProfile();
   }
 }
 

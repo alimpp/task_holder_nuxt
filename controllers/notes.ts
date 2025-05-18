@@ -29,7 +29,7 @@ export class NotesController extends BaseAppModule {
 
   async validateAddNote(note: string) {    
     this.inputError.value.note = "";
-    const noteValid = this.validLength(note, 3, 100);
+    const noteValid = this.validEmpty(note);
     if (!noteValid.isValid) {
       this.inputError.value.note = noteValid.message || "";
     }

@@ -14,6 +14,19 @@ export class BaseAppModule {
     return regex.test(email);
   }
 
+  validEmpty(input: string): { isValid: boolean; message?: string } {
+    const length = input.length;
+    if (length == 0) {
+      return {
+        isValid: false,
+        message: "The field cannot be empty",
+      };
+    }
+    return {
+      isValid: true,
+    };
+  }
+
   validLength(
     input: string,
     minLength: number,
