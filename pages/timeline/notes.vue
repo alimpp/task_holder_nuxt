@@ -47,6 +47,7 @@
 </template>
 
 <script setup>
+import { UsersControllerModule } from "~/controllers/users";
 import { NotesControllerModule } from "~/controllers/notes";
 import { NotesStoreModule } from "~/stores/notes";
 
@@ -58,6 +59,7 @@ const pageLoading = ref(false);
 const addNote = ref(false);
 
 onMounted(async () => {
+  await UsersControllerModule.getUsersList()
   pageLoading.value = !pageLoading.value;
   await NotesControllerModule.getNotes();
   pageLoading.value = !pageLoading.value;

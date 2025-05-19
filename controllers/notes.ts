@@ -18,6 +18,7 @@ export class NotesController extends BaseAppModule {
       notes.push(obj);
     }
     NotesStoreModule.notes.value = notes;
+    NotesStoreModule.notes.value.reverse()
   }
 
   inputError = ref({
