@@ -34,7 +34,7 @@
     <div class="w-100 flex flex-wrap justify-center" v-if="pageLoading">
       <SkeletonNote v-for="n in 20" class="mx-7 mt-10" />
     </div>
-    <div class="w-100 flex flex-wrap justify-center" v-if="!pageLoading">
+    <div class="w-100 flex flex-wrap justify-center py-20" v-if="!pageLoading">
       <CardsNotes
         v-for="(item, index) in notes"
         :key="index"

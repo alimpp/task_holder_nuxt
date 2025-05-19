@@ -6,9 +6,6 @@ import { UsersControllerModule } from "~/controllers/users";
 
 export class NotesController extends BaseAppModule {
   async getNotes() {
-    if (UsersStoreModule.userlist.value.length == 0) {
-      await UsersControllerModule.getUsersList();
-    }
     let notes = [];
     const response = await NotesStoreModule.getNotes();
     for (let elem of response) {
