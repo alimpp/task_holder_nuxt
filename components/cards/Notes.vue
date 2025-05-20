@@ -12,14 +12,14 @@
         <div class="w-100 flex flex-column">
           <div class="flex w-100">
             <div class="flex flex-column justify-center px-5">
-              <span class="f-s-10 f-w-500">{{ note.author?.fullname }}</span>
-              <span class="f-s-10 f-w-500 color-gray">{{
+              <span class="f-s-12 f-w-600">{{ note.author?.fullname }}</span>
+              <span class="f-s-12 color-gray">{{
                 note.author?.email
               }}</span>
             </div>
           </div>
           <div class="w-98 flex px-5 py-5 mt-5 border-rounded">
-            <span class="f-s-11 f-w-400">{{ note?.note }}</span>
+            <span class="f-s-13 f-w-400">{{ note?.note }}</span>
           </div>
         </div>
       </BaseCard>

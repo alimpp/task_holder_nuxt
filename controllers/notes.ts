@@ -1,7 +1,6 @@
 import { BaseAppModule } from "@/stores/baseApp";
 import { NotesStoreModule } from "~/stores/notes";
 import { UsersStoreModule } from "~/stores/users";
-import { UsersControllerModule } from "~/controllers/users";
 
 
 export class NotesController extends BaseAppModule {

@@ -59,6 +59,11 @@ export const sidebarListData: ISidebarItem[] = [
         active: false,
         path: "/timeline/notes",
       },
+      {
+        name: "Posts",
+        active: false,
+        path: "/timeline/posts",
+      },
     ],
   },
 ];
