@@ -4,7 +4,7 @@
       <BaseBreadCrumbs />
     </div>
     <div class="flex w-100 mt-15">
-      <BaseButton name="Add Post" width="130px" @click="addNote = true">
+      <BaseButton name="Add Post" width="130px" @click="addPost = true">
         <template #iconLeft>
           <IconsPlus class="mx-2" />
         </template>
@@ -27,7 +27,7 @@
       v-if="!pageLoading && posts.length == 0"
     >
       <BaseEmptyState
-        title="No Friends Found"
+        title="Posts Not Found"
         text="Posts list is empty please try again later"
       />
     </div>
@@ -43,7 +43,7 @@
       />
     </div>
   </div>
-  <!-- <ModalsAddNote :state="addNote" @close="addNote = false" /> -->
+  <ModalsAddPost :state="addPost" @close="addPost = false" />
 </template>
 
 <script setup>
@@ -56,7 +56,7 @@ const posts = computed(() => {
 });
 
 const pageLoading = ref(false);
-const addNote = ref(false);
+const addPost = ref(false);
 
 onMounted(async () => {
   await UsersControllerModule.getUsersList()
