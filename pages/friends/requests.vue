@@ -28,7 +28,6 @@
 <script setup>
 import { RequestStoreModule } from "~/stores/request";
 import { RequestControllerModule } from "~/controllers/request";
-import { UsersControllerModule } from "~/controllers/users";
 
 definePageMeta({
   middleware: "auth",
@@ -41,7 +40,6 @@ const pageLoading = ref(false);
 
 onMounted(async () => {
   pageLoading.value = !pageLoading.value;
-  await UsersControllerModule.getUsersList();
   await RequestControllerModule.getRequests();
   pageLoading.value = !pageLoading.value;
 });

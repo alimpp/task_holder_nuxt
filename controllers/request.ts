@@ -1,23 +1,23 @@
 import { BaseAppModule, BaseAppStoreElementModule } from "@/stores/baseApp";
 import { RequestStoreModule } from "~/stores/request";
-import { UsersStoreModule } from "~/stores/users";
+import { userGenratorModel } from '@/composable/userGenerator'
 
 export class RequestController extends BaseAppModule {
+
   async getRequests() {
     RequestStoreModule.requestList.value = [];
-    const userlist = UsersStoreModule.userlist.value;    
     const response = await RequestStoreModule.getRequests();
     for (const element of response) {
-      const user = userlist.find((user) => user.id == element.from);
-      if (user) {
-        const result = {
-          requestId: element.id,
-          userId: user.id,
-          ...user,
-        };
-        RequestStoreModule.requestList.value.push(result);
-      }
+      const from = await userGenratorModel(element.from)
+      const result = {
+        requestId: element.id,
+        userId: element.from.id,
+        ...from,
+      };
+      RequestStoreModule.requestList.value.push(result);
     }
+    console.log(RequestStoreModule.requestList.value);
+    
   }
   
   async sendRequest(request: number) {
