@@ -3,6 +3,21 @@ import { RequestControllerModule } from "./request";
 import { FriendsStoreModule } from "~/stores/friends";
 import { UsersStoreModule } from "~/stores/users";
 import { UserStoreModule } from "~/stores/user";
+import { userGenratorModel } from '@/composable/userGenerator'
+
+interface IFriendsList {
+  avatarColor: string;
+  avatarUrl: string;
+  bio: string;
+  email: string;
+  friendListId: number;
+  fristChar: string; 
+  fristname: string;
+  fullname: string;
+  id: number;
+  lastname: string;
+}
+
 interface IAddFriend {
   requestId: number;
   friend: number;
@@ -10,27 +25,25 @@ interface IAddFriend {
 
 export class FriendsController extends BaseAppModule {
   async getFriends() {
-    const currentUserId = UserStoreModule.user.value?.id;
     FriendsStoreModule.friendsList.value = [];
-    const userlist = UsersStoreModule.userlist.value;
     const response = await FriendsStoreModule.getFriends();
-    for (const element of response) {      
-      const user = userlist.find((user) => {
-        if(currentUserId == element.friendRequestedBy) {
-          return user.id == element.to 
-        } else {
-          return user.id == element.from
-        }
-      });      
-      if (user) {
-        const result = {
+    for (const element of response) {  
+      let result : IFriendsList | any = {};            
+      if(UserStoreModule.user.value?.id == element.friendRequestedBy.id) {
+       result = {
+        friendListId: element.id,
+        ...await userGenratorModel(element.to)
+       }
+      } else {
+        result = {
           friendListId: element.id,
-          userId: user.id,
-          ...user,
-        };
-        FriendsStoreModule.friendsList.value.push(result);
-      }
+          ...await userGenratorModel(element.from)
+         }
+      } 
+      FriendsStoreModule.friendsList.value.push(result);      
     }
+    console.log(response);
+    console.log(FriendsStoreModule.friendsList.value);
   }
 
   async addFriend(data: IAddFriend) {

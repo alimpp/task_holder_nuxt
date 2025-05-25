@@ -3,16 +3,16 @@ import { useCookie } from "@/composable/useCookie";
 import { ref } from "vue";
 
 interface IFriendsList {
-  fullname: string;
-  fristChar: string;
-  fristname: string;
-  lastname: string;
-  email: string;
-  id: number;
-  friendListId: number;
+  avatarColor: string;
   avatarUrl: string;
   bio: string;
-  avatarColor: string;
+  email: string;
+  friendListId: number;
+  fristChar: string; 
+  fristname: string;
+  fullname: string;
+  id: number;
+  lastname: string;
 }
 interface IAddFriend {
   requestId: number;

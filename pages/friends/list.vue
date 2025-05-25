@@ -28,7 +28,6 @@
 <script setup>
 import { FriendsControllerModule } from "~/controllers/friends";
 import { FriendsStoreModule } from "~/stores/friends";
-import { UsersControllerModule } from "~/controllers/users";
 
 definePageMeta({
   middleware: "auth",
@@ -42,7 +41,6 @@ const pageLoading = ref(false);
 
 onMounted(async () => {
   pageLoading.value = !pageLoading.value;
-  await UsersControllerModule.getUsersList();
   await FriendsControllerModule.getFriends();
   pageLoading.value = !pageLoading.value;
 });
