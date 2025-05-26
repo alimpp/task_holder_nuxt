@@ -1,7 +1,6 @@
 import { BaseAppModule } from "@/stores/baseApp";
 import { RequestControllerModule } from "./request";
 import { FriendsStoreModule } from "~/stores/friends";
-import { UsersStoreModule } from "~/stores/users";
 import { UserStoreModule } from "~/stores/user";
 import { userGenratorModel } from '@/composable/userGenerator'
 
@@ -42,8 +41,6 @@ export class FriendsController extends BaseAppModule {
       } 
       FriendsStoreModule.friendsList.value.push(result);      
     }
-    console.log(response);
-    console.log(FriendsStoreModule.friendsList.value);
   }
 
   async addFriend(data: IAddFriend) {

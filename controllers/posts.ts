@@ -1,6 +1,6 @@
 import { BaseAppModule } from "@/stores/baseApp";
 import { PostsStoreModule } from "~/stores/posts";
-import { UsersStoreModule } from "~/stores/users";
+import { userGenratorModel } from '@/composable/userGenerator'
 import { UploadControllerModule } from "./upload";
 
 
@@ -11,9 +11,7 @@ export class PostsController extends BaseAppModule {
     for (let elem of response) {
       const obj = {
         ...elem,
-        author: UsersStoreModule.userlist.value.find(
-          (user) => user.id == elem.authorId
-        ),
+        author: await userGenratorModel(elem.author),
         image: await UploadControllerModule.downloadFileById(elem.imageId),
       };
       posts.push(obj);
