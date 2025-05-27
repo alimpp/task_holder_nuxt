@@ -15,9 +15,7 @@ export class RequestController extends BaseAppModule {
         ...from,
       };
       RequestStoreModule.requestList.value.push(result);
-    }
-    console.log(RequestStoreModule.requestList.value);
-    
+    }    
   }
   
   async sendRequest(request: number) {
