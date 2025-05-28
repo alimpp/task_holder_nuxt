@@ -20,6 +20,7 @@ export class UsersController extends BaseAppModule {
     for (const element of response) {
       const avatarUrl = await element.avatarUrl ? await UploadControllerModule.downloadFileById(element.avatarUrl) : '';
       let user: IUserList = {
+        ...element,
         fullname: element.fristname + " " + element.lastname,
         fristChar: element.fristname[0].toUpperCase(),
         fristname: element.fristname,
