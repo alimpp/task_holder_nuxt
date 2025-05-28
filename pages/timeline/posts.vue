@@ -47,7 +47,6 @@
 </template>
 
 <script setup>
-import { UsersControllerModule } from "~/controllers/users";
 import { PostsControllerModule } from "~/controllers/posts";
 import { PostsStoreModule } from "~/stores/posts";
 
@@ -59,7 +58,6 @@ const pageLoading = ref(false);
 const addPost = ref(false);
 
 onMounted(async () => {
-  await UsersControllerModule.getUsersList()
   pageLoading.value = !pageLoading.value;
   await PostsControllerModule.getPosts();
   pageLoading.value = !pageLoading.value;
