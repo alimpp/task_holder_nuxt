@@ -1,13 +1,16 @@
 <template>
-  <BaseCard class="mt-10 fade-animation" bgClass="bg-primary-white">
-    <div class="w-100 flex">
-      <div class="flex w-70">
-        <BaseSkeleton width="35px" height="35px" radius="50%" />
-        <div class="flex flex-column justify-center px-5">
-          <BaseSkeleton width="100px" height="15px" />
-          <BaseSkeleton class="mt-4" width="130px" height="15px" />
-        </div>
-      </div>
+  <BaseCard class="mt-10 fade-animation py-10" bgClass="bg-primary-white">
+    <div class="flex flex-column align-center justify-center w-100">
+      <BaseSkeleton width="120px" height="120px" radius="50%" />
+    </div>
+    <div class="w-100 flex align-center justify-center mt-8">
+      <BaseSkeleton width="100px" height="20px" />
+    </div>
+    <div class="w-100 flex align-center justify-center mt-8">
+      <BaseSkeleton width="120px" height="20px" />
+    </div>
+    <div class="w-100 flex align-center justify-center mt-8">
+      <BaseSkeleton width="140px" height="30px" class="mx-3" />
     </div>
   </BaseCard>
 </template>

@@ -12,15 +12,15 @@
         text="Friends list is empty please try again later"
       />
     </div>
-    <div class="flex flex-column" v-if="pageLoading">
-      <SkeletonFriendList v-for="n in 10" />
+    <div class="flex flex-wrap justify-center" v-if="pageLoading">
+      <div v-for="n in 10" class="w-375-px mx-10">
+        <SkeletonFriendList />
+      </div>
     </div>
-    <div class="w-100 flex flex-column">
-      <CardsFriendList
-        v-for="(item, index) in friendsList"
-        :key="index"
-        :user="item"
-      />
+    <div class="w-100 flex flex-wrap justify-center" v-else>
+      <div class="w-375-px mx-10" v-for="(item, index) in friendsList">
+        <CardsFriendList :key="index" :user="item" />
+      </div>
     </div>
   </div>
 </template>

@@ -4,14 +4,14 @@
       <BaseSkeleton width="120px" height="120px" radius="50%" />
     </div>
     <div class="w-100 flex align-center justify-center mt-8">
-      <BaseSkeleton width="140px" height="30px" />
+      <BaseSkeleton width="110px" height="20px" />
     </div>
     <div class="w-100 flex align-center justify-center mt-8">
-      <BaseSkeleton width="170px" height="30px" />
+      <BaseSkeleton width="140px" height="20px" />
     </div>
     <div class="w-100 flex align-center justify-center mt-8">
-      <BaseSkeleton width="100px" height="30px" />
-      <BaseSkeleton width="40px" height="30px" class="mx-5" />
+      <BaseSkeleton width="100px" height="30px" class="mx-3"/>
+      <BaseSkeleton width="50px" height="30px" class="mx-3" />
     </div>
   </BaseCard>
 </template>
