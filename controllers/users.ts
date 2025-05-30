@@ -1,7 +1,6 @@
 import { BaseAppModule, BaseAppStoreElementModule } from "@/stores/baseApp";
 import { UsersStoreModule } from "~/stores/users";
 import { UploadControllerModule } from "./upload";
-
 interface IUserList {
   fullname: string;
   fristChar: string;
@@ -18,11 +17,15 @@ export class UsersController extends BaseAppModule {
     let userlist = [];
     const response = await UsersStoreModule.users();
     for (const element of response) {
-      const avatarUrl = await element.avatarUrl ? await UploadControllerModule.downloadFileById(element.avatarUrl) : '';
+      const avatarUrl = (await element.avatarUrl)
+        ? await UploadControllerModule.downloadFileById(element.avatarUrl)
+        : "";
       let user: IUserList = {
         ...element,
         fullname: element.fristname + " " + element.lastname,
-        fristChar: element.fristname[0].toUpperCase(),
+        fristChar:
+          element.fristname[0].toUpperCase() +
+          element.lastname[0].toUpperCase(),
         fristname: element.fristname,
         lastname: element.lastname,
         email: element.email,

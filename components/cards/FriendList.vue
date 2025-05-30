@@ -1,6 +1,5 @@
 <template>
-
-    <BaseCard class="mt-10 fade-animation py-10" bgClass="bg-primary-white">
+  <BaseCard class="mt-10 fade-animation py-10" bgClass="bg-primary-white">
     <div class="flex flex-column align-center justify-center w-100">
       <BaseAvatar
         :character="user.fristChar"
@@ -22,14 +21,10 @@
         color="color-primary"
         class="mx-2"
         name="View Profile"
-        @click="
-          handleViewProfile({
-        
-          })
-        "
+        @click="navigateTo(`/user/viewProfile/${user.id}`)"
       >
         <template #iconLeft>
-          <IconsViewProfile color="#7d7be5" class="mx-2"/>
+          <IconsViewProfile color="#7d7be5" class="mx-2" />
         </template>
       </BaseButton>
     </div>
