@@ -5,6 +5,7 @@
       'w-200-px': sidebarState === 'open',
       'w-40-px': sidebarState == 'close',
     }"
+    @mouseenter="sidebarStoreModule.handleHoverChangeSidebarState"
   >
     <div
       class="w-100 flex align-center bg-info py-2 border-rounded cursor-pointer"

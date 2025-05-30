@@ -77,6 +77,14 @@ export class SidebarModule {
     this.sidebarList.value = sidebarList;
   }
 
+  handleHoverChangeSidebarState() {
+    switch (this.sidebarState.value) {
+      case "close":
+        this.sidebarState.value = "open";
+        break;
+    }
+  }
+
   handleChangeSidebarState() {
     switch (this.sidebarState.value) {
       case "close":
