@@ -12,15 +12,14 @@
         text="Users list is empty please try again later"
       />
     </div>
-    <div class="flex flex-column" v-if="pageLoading">
-      <SkeletonSendFriendRequest v-for="n in 10" />
+    <div class="flex flex-wrap justify-center" v-if="pageLoading">
+      <div v-for="n in 10" class="w-375-px mx-10">
+        <SkeletonSendFriendRequest />
+      </div>
     </div>
     <div class="w-100 flex flex-wrap justify-center" v-else>
       <div class="w-375-px mx-10" v-for="(item, index) in userList">
-        <CardsSendFriendRequest
-          :key="index"
-          :user="item"
-        />
+        <CardsSendFriendRequest :key="index" :user="item" />
       </div>
     </div>
   </div>
