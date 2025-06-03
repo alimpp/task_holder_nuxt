@@ -68,7 +68,6 @@ const openComments = async (post) => {
 
 const closeCommentsModal = () => {
   commentsModal.value = false
-  PostsStoreModule.post.value = {}
 }
 
 onMounted(async () => {
