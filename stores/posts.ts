@@ -26,11 +26,44 @@ interface IPosts {
 
 export class Posts {
   public posts = ref<IPosts[]>([]);
+  public post = ref<IPosts>({
+    author: {
+      fullname: '',
+      fristChar: '',
+      fristname: '',
+      lastname: '',
+      email: '',
+      id: 0,
+      avatarUrl: '',
+      bio: '',
+      avatarColor: ''
+    },
+    authorId: 0,
+    created_at: '',
+    description: '',
+    id: '',
+    image: '',
+    imageId: '',
+    title: ''
+  });  
+  public comments = ref<any[]>([]);
 
   async getPosts() {
     const { getCookie } = useCookie();
     const token = getCookie("token");
     const response = await $fetch("/api/post/all", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  }
+
+  async getComments(postId: string) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch(`/api/post/comments/${postId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

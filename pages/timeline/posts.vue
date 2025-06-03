@@ -40,10 +40,12 @@
         :key="index"
         :post="item"
         class="mx-7 mt-10"
+        @comments="openComments"
       />
     </div>
   </div>
   <ModalsAddPost :state="addPost" @close="addPost = false" />
+  <ModalsAddCommentToPost :state="commentsModal" @close="closeCommentsModal" />
 </template>
 
 <script setup>
@@ -56,6 +58,18 @@ const posts = computed(() => {
 
 const pageLoading = ref(false);
 const addPost = ref(false);
+
+const commentsModal = ref(false)
+
+const openComments = async (post) => {
+  commentsModal.value = true
+  await PostsControllerModule.getComments(post)
+}
+
+const closeCommentsModal = () => {
+  commentsModal.value = false
+  PostsStoreModule.post.value = {}
+}
 
 onMounted(async () => {
   pageLoading.value = !pageLoading.value;

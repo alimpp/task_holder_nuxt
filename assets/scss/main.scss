@@ -22,6 +22,14 @@
   border-radius: 50%;
 }
 
+.y-scroll {
+  overflow-y: scroll;
+}
+
+.y-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 @for $i from 1 through 100 {
   .w-#{$i} {
     width: #{$i}#{"%"};

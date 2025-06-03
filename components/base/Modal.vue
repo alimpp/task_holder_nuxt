@@ -4,7 +4,7 @@
       class="content bg-primary-white flex flex-column"
       :style="{ width: width, height: height, borderRadius: borderRadius }"
     >
-      <div class="flex w-100 py-8 border-bottom">
+      <div class="flex w-100 py-8 border-bottom" v-if="hasHeader">
         <div class="w-100 flex align-center px-5">
           <slot name="icon"></slot>
           <div class="flex flex-column justify-center px-8">
@@ -13,6 +13,11 @@
           </div>
         </div>
         <div class="flex align-center px-4">
+          <IconsClose class="cursor-pointer" @click="emit('close')" />
+        </div>
+      </div>
+      <div class="flex justify-end w-100 py-8" v-else>
+        <div class="flex  align-center px-4">
           <IconsClose class="cursor-pointer" @click="emit('close')" />
         </div>
       </div>
@@ -57,6 +62,10 @@ const props = defineProps({
     default: "",
   },
   hasFooter: {
+    type: Boolean,
+    default: true,
+  },
+  hasHeader: {
     type: Boolean,
     default: true,
   },

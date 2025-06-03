@@ -21,6 +21,16 @@
           <span class="f-s-15 f-w-500 pt-15">{{ post.title }}</span>
           <span class="f-s-12 f-w-500 color-gray py-5">{{ post.description }}</span>
          </div>
+         <div class="flex justify-end px-10 pb-10 align-center">
+          <div class="flex mx-5 align-center cursor-pointer" @click="comments">
+            <IconsComment />
+            <span class="f-s-12 f-w-600 pt-4">100</span>
+          </div>
+          <div class="flex align-center cursor-pointer">
+            <IconsLike />
+            <span class="f-s-12 f-w-600 pt-4">100</span>
+          </div>
+         </div>
         </div>
       </BaseCard>
     </div>
@@ -28,6 +38,8 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['comments'])
+
 const props = defineProps({
   post: {
     type: Object,
@@ -35,4 +47,8 @@ const props = defineProps({
     default: () => {},
   },
 });
+
+const comments = () => {
+  emit('comments', props.post)
+}
 </script>

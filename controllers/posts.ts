@@ -19,6 +19,22 @@ export class PostsController extends BaseAppModule {
     PostsStoreModule.posts.value = posts;
     PostsStoreModule.posts.value.reverse()    
   }
+
+  async getComments(post: any) {
+    PostsStoreModule.post.value = post
+    let comments = []
+    const response: any = await PostsStoreModule.getComments(post.id);    
+    for (let elem of response) {
+      const obj = {
+        ...elem,
+        commentFrom: await userGenratorModel(elem.commentFrom),
+      };
+      comments.push(obj);
+    }
+    PostsStoreModule.comments.value = comments
+    console.log(PostsStoreModule.comments.value);
+    
+  }
 }
 
 export const PostsControllerModule = new PostsController();
