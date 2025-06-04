@@ -1,8 +1,7 @@
 import { BaseAppModule } from "@/stores/baseApp";
 import { PostsStoreModule } from "~/stores/posts";
-import { userGenratorModel } from '@/composable/userGenerator'
+import { userGenratorModel } from "@/composable/userGenerator";
 import { UploadControllerModule } from "./upload";
-
 
 export class PostsController extends BaseAppModule {
   async getPosts() {
@@ -15,15 +14,15 @@ export class PostsController extends BaseAppModule {
         image: await UploadControllerModule.downloadFileById(elem.imageId),
       };
       posts.push(obj);
-    }    
+    }
     PostsStoreModule.posts.value = posts;
-    PostsStoreModule.posts.value.reverse()    
+    PostsStoreModule.posts.value.reverse();
   }
 
   async getComments(post: any) {
-    PostsStoreModule.post.value = post
-    let comments = []
-    const response: any = await PostsStoreModule.getComments(post.id);    
+    PostsStoreModule.post.value = post;
+    let comments = [];
+    const response: any = await PostsStoreModule.getComments(post.id);
     for (let elem of response) {
       const obj = {
         ...elem,
@@ -31,9 +30,16 @@ export class PostsController extends BaseAppModule {
       };
       comments.push(obj);
     }
-    PostsStoreModule.comments.value = comments
-    console.log(PostsStoreModule.comments.value);
-    
+    PostsStoreModule.comments.value = comments;
+  }
+
+  async addComment(comment: string) {
+    if (comment) {
+      const response = await PostsStoreModule.addComment(comment);
+      if (response) {
+        await this.getComments(PostsStoreModule.post.value);
+      }
+    }
   }
 }
 

@@ -28,24 +28,24 @@ export class Posts {
   public posts = ref<IPosts[]>([]);
   public post = ref<IPosts>({
     author: {
-      fullname: '',
-      fristChar: '',
-      fristname: '',
-      lastname: '',
-      email: '',
+      fullname: "",
+      fristChar: "",
+      fristname: "",
+      lastname: "",
+      email: "",
       id: 0,
-      avatarUrl: '',
-      bio: '',
-      avatarColor: ''
+      avatarUrl: "",
+      bio: "",
+      avatarColor: "",
     },
     authorId: 0,
-    created_at: '',
-    description: '',
-    id: '',
-    image: '',
-    imageId: '',
-    title: ''
-  });  
+    created_at: "",
+    description: "",
+    id: "",
+    image: "",
+    imageId: "",
+    title: "",
+  });
   public comments = ref<any[]>([]);
 
   async getPosts() {
@@ -67,6 +67,22 @@ export class Posts {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  }
+
+  async addComment(comment: string) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch(`/api/post/comments/add`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: {
+        comment: comment,
+        postId: this.post.value.id,
       },
     });
     return response;

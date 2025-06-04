@@ -59,16 +59,17 @@ const posts = computed(() => {
 const pageLoading = ref(false);
 const addPost = ref(false);
 
-const commentsModal = ref(false)
+const commentsModal = ref(false);
 
 const openComments = async (post) => {
-  commentsModal.value = true
-  await PostsControllerModule.getComments(post)
-}
+  commentsModal.value = true;
+  await PostsControllerModule.getComments(post);
+};
 
 const closeCommentsModal = () => {
-  commentsModal.value = false
-}
+  commentsModal.value = false;
+  PostsStoreModule.comments.value = [];
+};
 
 onMounted(async () => {
   pageLoading.value = !pageLoading.value;
