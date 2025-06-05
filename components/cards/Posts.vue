@@ -3,9 +3,7 @@
     <div class="w-335-px flex px-5 mt-5">
       <BaseCard class="fade-animation" bgClass="bg-primary-white" px="0" py="0">
         <div class="w-100 flex flex-column">
-          <img :src="post.image" alt="image" width="100%" height="200" />
-         <div class="flex flex-column w-92 px-15 py-10">
-          <div class="flex w-100">
+          <div class="flex w-100 py-10 px-5">
             <BaseAvatar
               width="40px"
               height="40px"
@@ -15,22 +13,31 @@
             />
             <div class="flex flex-column justify-center w-100 px-8">
               <span class="f-s-12 f-w-600">{{ post.author.fullname }}</span>
-              <span class="f-s-12 color-gray pt-5">{{ post.author.email }}</span>
+              <span class="f-s-12 color-gray pt-5">{{
+                post.author.email
+              }}</span>
             </div>
           </div>
-          <span class="f-s-15 f-w-500 pt-15">{{ post.title }}</span>
-          <span class="f-s-12 f-w-500 color-gray py-5">{{ post.description }}</span>
-         </div>
-         <div class="flex justify-end px-10 pb-10 align-center">
-          <div class="flex mx-5 align-center cursor-pointer" @click="comments">
-            <IconsComment />
-            <span class="f-s-12 f-w-600 pt-4">100</span>
+          <img :src="post.image" alt="image" width="100%" height="200" />
+          <div class="flex flex-column w-92 px-15 py-10">
+            <span class="f-s-15 f-w-500 pt-15">{{ post.title }}</span>
+            <span class="f-s-12 f-w-500 color-gray py-5">{{
+              post.description
+            }}</span>
           </div>
-          <div class="flex align-center cursor-pointer">
-            <IconsLike />
-            <span class="f-s-12 f-w-600 pt-4">100</span>
+          <div class="flex justify-end px-10 pb-10 align-center">
+            <div
+              class="flex mx-5 align-center cursor-pointer"
+              @click="comments"
+            >
+              <IconsComment />
+              <span class="f-s-12 f-w-600 pt-4">100</span>
+            </div>
+            <div class="flex align-center cursor-pointer">
+              <IconsLike />
+              <span class="f-s-12 f-w-600 pt-4">100</span>
+            </div>
           </div>
-         </div>
         </div>
       </BaseCard>
     </div>
@@ -38,7 +45,7 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['comments'])
+const emit = defineEmits(["comments"]);
 
 const props = defineProps({
   post: {
@@ -49,6 +56,6 @@ const props = defineProps({
 });
 
 const comments = () => {
-  emit('comments', props.post)
-}
+  emit("comments", props.post);
+};
 </script>
