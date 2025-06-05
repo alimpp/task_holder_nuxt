@@ -11,7 +11,11 @@
     <template #content>
       <div class="flex flex-column">
         <div class="flex flex-column h-40-dvh y-scroll">
-          <img :src="post?.image" alt="image" class="w-370-px border-rounded" />
+          <img
+            :src="post?.image"
+            alt="image"
+            class="w-370-px h-250-px border-rounded"
+          />
           <span class="f-s-15 f-w-500 pt-15 px-5">{{ post.title }}</span>
           <span class="f-s-12 f-w-500 color-gray py-5 px-5">{{
             post.description

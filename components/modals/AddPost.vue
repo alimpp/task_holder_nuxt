@@ -16,16 +16,26 @@
 
     <template #content>
       <div class="flex flex-column w-100 py-10">
-        <BaseUploadImage 
-          @uploadImage="uploadImage" 
-          :image="targetImage" 
+        <BaseUploadImage
+          @uploadImage="uploadImage"
+          :image="targetImage"
           :loading="loadingUpload"
         />
+        <span v-if="errorMessage.imageId" class="color-danger f-s-12 f-w-500">
+          {{ errorMessage.imageId }}
+        </span>
         <BaseInput
+          :errorMessage="errorMessage.title"
           label="Title"
           class="w-355-px mt-5"
+          v-model="form.title"
         />
-        <BaseTextarea label="Description" class="w-355-px" />
+        <BaseTextarea
+          :errorMessage="errorMessage.description"
+          label="Description"
+          class="w-355-px"
+          v-model="form.description"
+        />
       </div>
     </template>
 
@@ -35,9 +45,10 @@
         name="Submit Post"
         width="100%"
         color="color-primary"
+        @click="addPost"
       >
         <template #iconLeft>
-          <IconsSpinner v-if="addNoteLoading" color="#7d7be5" />
+          <IconsSpinner v-if="addPostLoading" color="#7d7be5" />
           <IconsCheckCircle color="#7d7be5" class="mx-2" v-else />
         </template>
       </BaseButton>
@@ -46,6 +57,8 @@
 </template>
 
 <script setup>
+import { PostsControllerModule } from "~/controllers/posts";
+
 import { UploadControllerModule } from "~/controllers/upload";
 const emit = defineEmits(["close"]);
 
@@ -56,18 +69,42 @@ const props = defineProps({
   },
 });
 
-const targetImage = ref(null)
-const addNoteLoading = ref(false);
+const targetImage = ref(null);
+const addPostLoading = ref(false);
 const loadingUpload = ref(false);
 
+const form = ref({
+  description: "",
+  title: "",
+  imageId: "",
+});
+
 const errorMessage = computed(() => {
-  return ;
+  return PostsControllerModule.errorMessage.value;
 });
 
 const uploadImage = async (event) => {
   loadingUpload.value = true;
-  const response = await UploadControllerModule.uploadFile(event.target.files[0]);
-  targetImage.value = await UploadControllerModule.downloadFileById(response.id);
+  const response = await UploadControllerModule.uploadFile(
+    event.target.files[0]
+  );
+  targetImage.value = await UploadControllerModule.downloadFileById(
+    response.id
+  );
+  form.value.imageId = response.id;
   loadingUpload.value = false;
-}
+};
+
+const addPost = async () => {
+  addPostLoading.value = true;
+  await PostsControllerModule.validateAddPost(form.value);
+  addPostLoading.value = false;
+
+  form.value = {
+    description: "",
+    title: "",
+    imageId: "",
+  };
+  emit("close");
+};
 </script>

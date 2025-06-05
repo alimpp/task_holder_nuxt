@@ -24,6 +24,12 @@ interface IPosts {
   title: string;
 }
 
+interface AddPost {
+  description: string;
+  title: string;
+  imageId: string;
+}
+
 export class Posts {
   public posts = ref<IPosts[]>([]);
   public post = ref<IPosts>({
@@ -47,6 +53,19 @@ export class Posts {
     title: "",
   });
   public comments = ref<any[]>([]);
+
+  async addPost(body: AddPost) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch("/api/post/add", {
+      method: "POST",
+      body: body,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  }
 
   async getPosts() {
     const { getCookie } = useCookie();

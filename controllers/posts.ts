@@ -2,8 +2,45 @@ import { BaseAppModule } from "@/stores/baseApp";
 import { PostsStoreModule } from "~/stores/posts";
 import { userGenratorModel } from "@/composable/userGenerator";
 import { UploadControllerModule } from "./upload";
+import { ref } from "vue";
+
+interface ErrorMessages {
+  description: string;
+  title: string;
+  imageId: string;
+}
 
 export class PostsController extends BaseAppModule {
+  public errorMessage = ref<ErrorMessages>({
+    description: "",
+    title: "",
+    imageId: "",
+  });
+
+  async validateAddPost(body: ErrorMessages) {
+    const { description, title, imageId } = body;
+    this.errorMessage.value = {
+      description: "",
+      title: "",
+      imageId: "",
+    };
+    if (!imageId) {
+      this.errorMessage.value.imageId = "Image is required";
+    }
+    const titleValid = this.validLength(title, 10, 30);
+    if (!titleValid.isValid) {
+      this.errorMessage.value.title = titleValid.message || "";
+    }
+    const descriptionValid = this.validLength(description, 20, 300);
+    if (!descriptionValid.isValid) {
+      this.errorMessage.value.description = descriptionValid.message || "";
+    }
+    if (titleValid.isValid && descriptionValid.isValid && imageId) {
+      await PostsStoreModule.addPost(body);
+      await this.getPosts();
+    }
+  }
+
   async getPosts() {
     let posts = [];
     const response = await PostsStoreModule.getPosts();
