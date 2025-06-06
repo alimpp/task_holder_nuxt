@@ -42,11 +42,13 @@
                 :bg="comment.commentFrom?.avatarColor"
               />
             </div>
-            <div class="flex flex-column justify-center px-5">
-              <span class="f-s-10 f-w-500 color-gray">{{
+            <div
+              class="flex flex-column justify-center px-5 py-2 border-bottom-gray w-320-px"
+            >
+              <span class="f-s-10 f-w-500">{{
                 comment.commentFrom.email
               }}</span>
-              <span class="f-s-10 f-w-500 pt-3">{{ comment.comment }}</span>
+              <span class="f-s-10 f-w-500">{{ comment.comment }}</span>
             </div>
           </div>
         </div>

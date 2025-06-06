@@ -19,13 +19,15 @@
             </div>
           </div>
           <img :src="post.image" alt="image" width="100%" height="200" />
-          <div class="flex flex-column w-92 px-15 py-10">
+          <div class="flex flex-column w-92 px-15 py-10 h-150-px">
             <span class="f-s-15 f-w-500 pt-15">{{ post.title }}</span>
             <span class="f-s-12 f-w-500 color-gray py-5">{{
               post.description
             }}</span>
           </div>
-          <div class="flex justify-end px-10 pb-10 align-center">
+          <div
+            class="flex justify-end px-10 align-center h-40-px border-top-gray mx-10"
+          >
             <div
               class="flex mx-5 align-center cursor-pointer"
               @click="comments"

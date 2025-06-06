@@ -27,3 +27,9 @@
 .border-gray {
   border: 1px solid var(--gray-) !important;
 }
+.border-top-gray {
+  border-top: 1px solid var(--secondary-gray) !important;
+}
+.border-bottom-gray {
+  border-bottom: 1px solid var(--secondary-gray) !important;
+}
