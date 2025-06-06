@@ -37,13 +37,13 @@ export class BaseAppModule {
     if (length < minLength) {
       return {
         isValid: false,
-        message: `The password length must be at least ${minLength} characters.`,
+        message: `The length must be at least ${minLength} characters.`,
       };
     }
     if (length > maxLength) {
       return {
         isValid: false,
-        message: `The password length cannot exceed ${maxLength} characters.`,
+        message: `The length cannot exceed ${maxLength} characters.`,
       };
     }
     return { isValid: true };

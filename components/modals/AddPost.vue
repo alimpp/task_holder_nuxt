@@ -97,14 +97,15 @@ const uploadImage = async (event) => {
 
 const addPost = async () => {
   addPostLoading.value = true;
-  await PostsControllerModule.validateAddPost(form.value);
+  const response = await PostsControllerModule.validateAddPost(form.value);
+  if (response) {
+    form.value = {
+      description: "",
+      title: "",
+      imageId: "",
+    };
+    emit("close");
+  }
   addPostLoading.value = false;
-
-  form.value = {
-    description: "",
-    title: "",
-    imageId: "",
-  };
-  emit("close");
 };
 </script>

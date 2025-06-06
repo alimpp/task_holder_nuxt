@@ -43,9 +43,9 @@
               />
             </div>
             <div
-              class="flex flex-column justify-center px-5 py-2 border-bottom-gray w-320-px"
+              class="flex flex-column justify-center py-5 px-5 border-bottom-gray w-320-px"
             >
-              <span class="f-s-10 f-w-500">{{
+              <span class="f-s-10 f-w-600">{{
                 comment.commentFrom.email
               }}</span>
               <span class="f-s-10 f-w-500">{{ comment.comment }}</span>

@@ -36,8 +36,11 @@ export class PostsController extends BaseAppModule {
       this.errorMessage.value.description = descriptionValid.message || "";
     }
     if (titleValid.isValid && descriptionValid.isValid && imageId) {
-      await PostsStoreModule.addPost(body);
-      await this.getPosts();
+      const response = await PostsStoreModule.addPost(body);
+      if (response) {
+        await this.getPosts();
+        return true;
+      }
     }
   }
 
