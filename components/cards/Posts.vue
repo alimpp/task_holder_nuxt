@@ -36,9 +36,14 @@
               <span class="f-s-12 f-w-600 pt-4">{{ post.commentsCount }}</span>
             </div>
             <div class="flex align-center cursor-pointer">
-              <IconsHealth v-if="youLiked" @click="handledislike(post.id)" />
+              <IconsHealth
+                v-if="post.youLiked"
+                @click="handledislike(post.id)"
+              />
               <IconsLike v-else @click="handlelike(post.id)" />
-              <span class="f-s-12 f-w-600 pt-4 px-2">{{ likesCount }}</span>
+              <span class="f-s-12 f-w-600 pt-4 px-2">{{
+                post.likesCount
+              }}</span>
             </div>
           </div>
         </div>
@@ -58,17 +63,16 @@ const props = defineProps({
     default: () => {},
   },
 });
-let youLiked = ref(props.post.youLiked);
-let likesCount = ref(props.post.likesCount);
+
 const handlelike = (id) => {
   PostsControllerModule.like(id);
-  youLiked.value = true;
-  likesCount.value++;
+  props.post.youLiked = true;
+  props.post.likesCount++;
 };
 const handledislike = (id) => {
   PostsControllerModule.dislike(id);
-  youLiked.value = false;
-  likesCount.value--;
+  props.post.youLiked = false;
+  props.post.likesCount--;
 };
 
 const comments = () => {
