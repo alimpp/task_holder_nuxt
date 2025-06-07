@@ -33,11 +33,12 @@
               @click="comments"
             >
               <IconsComment />
-              <span class="f-s-12 f-w-600 pt-4">100</span>
+              <span class="f-s-12 f-w-600 pt-4">{{ post.commentsCount }}</span>
             </div>
             <div class="flex align-center cursor-pointer">
-              <IconsLike />
-              <span class="f-s-12 f-w-600 pt-4">100</span>
+              <IconsHealth v-if="post.youLiked" />
+              <IconsLike v-else />
+              <span class="f-s-12 f-w-600 pt-4 px-2">{{ post.likesCount }}</span>
             </div>
           </div>
         </div>

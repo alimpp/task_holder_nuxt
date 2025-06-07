@@ -22,6 +22,9 @@ interface IPosts {
   image: string;
   imageId: string;
   title: string;
+  commentsCount: number,
+  likesCount: number,
+  youLiked: boolean
 }
 
 interface AddPost {
@@ -51,6 +54,9 @@ export class Posts {
     image: "",
     imageId: "",
     title: "",
+    commentsCount: 0,
+    likesCount: 0,
+    youLiked: false
   });
   public comments = ref<any[]>([]);
 
