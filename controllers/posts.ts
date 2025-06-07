@@ -81,6 +81,14 @@ export class PostsController extends BaseAppModule {
       }
     }
   }
+
+  async like(postId: string) {
+    await PostsStoreModule.like(postId);
+  }
+
+  async dislike(postId: string) {
+    await PostsStoreModule.dislike(postId);
+  }
 }
 
 export const PostsControllerModule = new PostsController();

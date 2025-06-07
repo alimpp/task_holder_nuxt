@@ -36,9 +36,9 @@
               <span class="f-s-12 f-w-600 pt-4">{{ post.commentsCount }}</span>
             </div>
             <div class="flex align-center cursor-pointer">
-              <IconsHealth v-if="post.youLiked" />
-              <IconsLike v-else />
-              <span class="f-s-12 f-w-600 pt-4 px-2">{{ post.likesCount }}</span>
+              <IconsHealth v-if="youLiked" @click="handledislike(post.id)" />
+              <IconsLike v-else @click="handlelike(post.id)" />
+              <span class="f-s-12 f-w-600 pt-4 px-2">{{ likesCount }}</span>
             </div>
           </div>
         </div>
@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+import { PostsControllerModule } from "~/controllers/posts";
 const emit = defineEmits(["comments"]);
 
 const props = defineProps({
@@ -57,6 +58,18 @@ const props = defineProps({
     default: () => {},
   },
 });
+let youLiked = ref(props.post.youLiked);
+let likesCount = ref(props.post.likesCount);
+const handlelike = (id) => {
+  PostsControllerModule.like(id);
+  youLiked.value = true;
+  likesCount.value++;
+};
+const handledislike = (id) => {
+  PostsControllerModule.dislike(id);
+  youLiked.value = false;
+  likesCount.value--;
+};
 
 const comments = () => {
   emit("comments", props.post);

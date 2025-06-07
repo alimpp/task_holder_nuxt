@@ -22,9 +22,9 @@ interface IPosts {
   image: string;
   imageId: string;
   title: string;
-  commentsCount: number,
-  likesCount: number,
-  youLiked: boolean
+  commentsCount: number;
+  likesCount: number;
+  youLiked: boolean;
 }
 
 interface AddPost {
@@ -56,7 +56,7 @@ export class Posts {
     title: "",
     commentsCount: 0,
     likesCount: 0,
-    youLiked: false
+    youLiked: false,
   });
   public comments = ref<any[]>([]);
 
@@ -108,6 +108,36 @@ export class Posts {
       body: {
         comment: comment,
         postId: this.post.value.id,
+      },
+    });
+    return response;
+  }
+
+  async like(postId: string) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch(`/api/like/liked`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: {
+        postId: postId,
+      },
+    });
+    return response;
+  }
+
+  async dislike(postId: string) {
+    const { getCookie } = useCookie();
+    const token = getCookie("token");
+    const response = await $fetch(`/api/like/dislike`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: {
+        postId: postId,
       },
     });
     return response;
