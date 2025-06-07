@@ -1,7 +1,7 @@
 <template>
   <BaseModal
     width="380px"
-    height="90dvh"
+    height="95dvh"
     :isOpen="state"
     @close="emit('close')"
     borderRadius="10px"
@@ -21,7 +21,7 @@
             post.description
           }}</span>
         </div>
-        <div class="flex flex-column h-38-dvh y-scroll py-2 px-5">
+        <div class="flex flex-column h-42-dvh y-scroll py-2 px-5">
           <div
             class="flex flex-column h-38-dvh align-center justify-center py-2 px-5"
             v-if="comments.length == 0"

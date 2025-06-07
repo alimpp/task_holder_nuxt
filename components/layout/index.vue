@@ -9,6 +9,7 @@
       </div>
       <div class="router-content">
         <NuxtPage />
+        <Compose />
       </div>
     </div>
 

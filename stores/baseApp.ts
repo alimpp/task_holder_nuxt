@@ -53,6 +53,7 @@ export class BaseAppModule {
 export class BaseAppElementModule {
   public loading = ref<boolean>(false);
   public toastMessages = ref<IToastMessage[]>([]);
+  public compose = ref<boolean>(false)
 
   constructor(loading: boolean, toastMessages: IToastMessage[]) {
     this.loading.value = loading;
