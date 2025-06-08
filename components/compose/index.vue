@@ -2,6 +2,7 @@
   <div
     class="add-post-content-style border-rounded w-200-px h-40-px bg-primary-white border-secondary-gray slid-up-animation-3"
     v-if="activeCompose"
+    @click="emit('createPost')"
   >
     <IconsAddPost class="px-5" />
     <span class="f-s-14 f-w-500">Create Post</span>
@@ -9,6 +10,7 @@
   <div
     class="add-note-content-style border-rounded w-200-px h-40-px bg-primary-white border-secondary-gray slid-up-animation-5"
     v-if="activeCompose"
+    @click="emit('addNote')"
   >
     <IconsAddNote class="mt-5 px-5" />
     <span class="f-s-14 f-w-500">Add Note</span>
@@ -16,6 +18,7 @@
   <div
     class="add-project-content-style border-rounded w-200-px h-40-px bg-primary-white border-secondary-gray slid-up-animation-8"
     v-if="activeCompose"
+    @click="emit('createProject')"
   >
     <IconsAddProject class="px-5" />
     <span class="f-s-14 f-w-500">Create Project</span>
@@ -33,6 +36,8 @@
 
 <script setup>
 import { BaseAppStoreElementModule } from "~/stores/baseApp";
+
+const emit = defineEmits(['createPost', 'addNote', 'createProject'])
 
 const activeCompose = computed(() => {
   return BaseAppStoreElementModule.compose.value;

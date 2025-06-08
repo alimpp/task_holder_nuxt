@@ -9,18 +9,26 @@
       </div>
       <div class="router-content">
         <NuxtPage />
-        <Compose />
+        <Compose 
+          @createPost="createPost = true"
+          @addNote="addNote = true"
+        />
       </div>
     </div>
 
     <LayoutMobileSidebar class="mobile-size" />
     <BasePageLoading v-if="pageLoading" />
     <BaseToastBar />
+    <ModalsAddNote :state="addNote" @close="addNote = false" />
+    <ModalsAddPost :state="createPost" @close="createPost = false" />
   </div>
 </template>
 
 <script setup>
 import { BaseAppStoreElementModule } from "@/stores/baseApp";
+
+const addNote = ref(false);
+const createPost = ref(false);
 
 const pageLoading = computed(() => {
   return BaseAppStoreElementModule.loading.value;

@@ -59,6 +59,7 @@ export class Posts {
     youLiked: false,
   });
   public comments = ref<any[]>([]);
+  public loadingComment = ref<boolean>(false)
 
   async addPost(body: AddPost) {
     const { getCookie } = useCookie();
@@ -88,12 +89,14 @@ export class Posts {
   async getComments(postId: string) {
     const { getCookie } = useCookie();
     const token = getCookie("token");
+    this.loadingComment.value = true
     const response = await $fetch(`/api/post/comments/${postId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+    this.loadingComment.value = false
     return response;
   }
 
