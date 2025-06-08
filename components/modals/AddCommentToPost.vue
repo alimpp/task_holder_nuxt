@@ -10,28 +10,20 @@
   >
     <template #content>
       <div class="flex flex-column">
-        <div class="flex flex-column h-40-dvh y-scroll">
-          <img
-            :src="post?.image"
-            alt="image"
-            class="w-370-px h-250-px border-rounded"
-          />
-          <span class="f-s-15 f-w-500 pt-15 px-5">{{ post.title }}</span>
-          <span class="f-s-12 f-w-500 color-gray py-5 px-5">{{
-            post.description
-          }}</span>
-        </div>
-        <div class="flex flex-column h-42-dvh y-scroll py-2 px-5">
+        <div class="flex flex-column h-82-dvh y-scroll px-5">
+          <div class="flex flex-column" v-if="loadingContent && comments.length == 0">
+            <SkeletonComment v-for="n in 100" class="fade-animation" />
+          </div>
           <div
-            class="flex flex-column h-38-dvh align-center justify-center py-2 px-5"
-            v-if="comments.length == 0"
+            class="flex flex-column h-38-dvh align-center justify-center py-2 px-5 fade-animation"
+            v-if="comments.length == 0 && !loadingContent"
           >
             <BaseEmptyState />
           </div>
           <div
-            class="flex mt-10 slid-up-animation-1s"
+            class="flex mt-5 slid-up-animation-1s"
             v-for="comment in comments"
-            v-else
+             v-if="comments.length != 0 && !loadingContent"
           >
             <div>
               <BaseAvatar
@@ -40,20 +32,28 @@
                 :character="comment.commentFrom?.fristChar"
                 :avatar="comment.commentFrom?.avatarUrl"
                 :bg="comment.commentFrom?.avatarColor"
+                class="mt-5"
               />
             </div>
-            <div
-              class="flex flex-column justify-center py-5 px-5 border-bottom-gray w-320-px"
-            >
-              <span class="f-s-10 f-w-600">{{
-                comment.commentFrom.email
-              }}</span>
-              <span class="f-s-10 f-w-500">{{ comment.comment }}</span>
+            <div class="flex flex-column py-5 px-5 border-bottom-gray w-320-px">
+              <div class="flex w-100">
+                <div class="flex w-50">
+                  <span class="f-s-12 f-w-500 color-primary">{{
+                    comment.commentFrom.email
+                  }}</span>
+                </div>
+                <div class="flex justify-end w-50">
+                  <span class="f-s-10 f-w-500 color-gray pt-2">{{
+                    comment.created_at.split('T')[0]
+                  }}</span>
+                </div>
+              </div>
+              <span class="f-s-10 f-w-500 pt-7 color-gray">{{ comment.comment }}</span>
             </div>
           </div>
         </div>
-        <div class="flex align-center w-370-px">
-          <div class="w-325-px px-">
+        <div class="flex align-center w-370-px h-7-dvh">
+          <div class="w-325-px">
             <BaseInput
               class="w-305-px"
               placeholder="Type your comment"
@@ -88,6 +88,10 @@ const emit = defineEmits(["close"]);
 
 const comment = ref("");
 const loading = ref(false);
+
+const loadingContent = computed(() => {
+  return PostsStoreModule.loadingComment.value
+})
 
 const post = computed(() => {
   return PostsStoreModule.post.value;

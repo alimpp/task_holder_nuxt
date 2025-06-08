@@ -3,25 +3,6 @@
     <div class="w-100">
       <BaseBreadCrumbs />
     </div>
-    <div class="flex w-100 mt-15">
-      <BaseButton name="Add Note" width="130px" @click="addNote = true">
-        <template #iconLeft>
-          <IconsPlus class="mx-2" />
-        </template>
-      </BaseButton>
-      <BaseButton
-        name="Search Note"
-        width="140px"
-        class="mx-5"
-        bg="none"
-        color="color-primary"
-        border="1px solid #7d7be5"
-      >
-        <template #iconLeft>
-          <IconsSearch class="mx-2" color="#7d7be5" />
-        </template>
-      </BaseButton>
-    </div>
     <div
       class="flex w-100 h-80-dvh align-cemter justify-center"
       v-if="!pageLoading && notes.length == 0"
@@ -43,7 +24,6 @@
       />
     </div>
   </div>
-  <ModalsAddNote :state="addNote" @close="addNote = false" />
 </template>
 
 <script setup>
@@ -55,7 +35,6 @@ const notes = computed(() => {
 });
 
 const pageLoading = ref(false);
-const addNote = ref(false);
 
 onMounted(async () => {
   pageLoading.value = !pageLoading.value;

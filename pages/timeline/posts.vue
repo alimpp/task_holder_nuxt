@@ -3,25 +3,6 @@
     <div class="w-100">
       <BaseBreadCrumbs />
     </div>
-    <div class="flex w-100 mt-15">
-      <BaseButton name="Add Post" width="130px" @click="addPost = true">
-        <template #iconLeft>
-          <IconsPlus class="mx-2" />
-        </template>
-      </BaseButton>
-      <BaseButton
-        name="Search Posts"
-        width="140px"
-        class="mx-5"
-        bg="none"
-        color="color-primary"
-        border="1px solid #7d7be5"
-      >
-        <template #iconLeft>
-          <IconsSearch class="mx-2" color="#7d7be5" />
-        </template>
-      </BaseButton>
-    </div>
     <div
       class="flex w-100 h-80-dvh align-cemter justify-center"
       v-if="!pageLoading && posts.length == 0"
@@ -44,7 +25,6 @@
       />
     </div>
   </div>
-  <ModalsAddPost :state="addPost" @close="addPost = false" />
   <ModalsAddCommentToPost :state="commentsModal" @close="closeCommentsModal" />
 </template>
 
@@ -57,7 +37,6 @@ const posts = computed(() => {
 });
 
 const pageLoading = ref(false);
-const addPost = ref(false);
 
 const commentsModal = ref(false);
 

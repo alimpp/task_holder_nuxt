@@ -75,13 +75,23 @@ export class PostsController extends BaseAppModule {
 
   async addComment(comment: string) {
     if (comment) {
-      const response = await PostsStoreModule.addComment(comment);
+      const response = await PostsStoreModule.addComment(comment);      
       if (response) {
-        await this.getComments(PostsStoreModule.post.value);
+        const obj = {
+          ...response,
+          commentFrom: await userGenratorModel((response as any).commentFrom),
+        }
+        PostsStoreModule.comments.value.push(obj)
+        const targetPost = PostsStoreModule.posts.value.find((item)=> {
+          return item.id === (response as any).postId
+        })
+        if (targetPost && targetPost.commentsCount !== undefined) {
+          targetPost.commentsCount = targetPost.commentsCount + 1;
+        }
       }
     }
   }
-
+  
   async like(postId: string) {
     await PostsStoreModule.like(postId);
   }
