@@ -1,8 +1,8 @@
 <template>
   <BaseModal
     width="380px"
-    title="Create Post"
-    text="you can add post for timeline"
+    title="Create Project"
+    text="you can create project for tasks"
     :isOpen="state"
     @close="emit('close')"
     borderRadius="10px"
@@ -21,18 +21,15 @@
           :image="targetImage"
           :loading="loadingUpload"
         />
-        <span v-if="errorMessage.imageId" class="color-danger f-s-12 f-w-500">
-          {{ errorMessage.imageId }}
-        </span>
         <BaseInput
           :errorMessage="errorMessage.title"
-          label="Title"
+          label="Project Name"
           class="w-355-px mt-5"
-          v-model="form.title"
+          v-model="form.name"
         />
         <BaseTextarea
           :errorMessage="errorMessage.description"
-          label="Description"
+          label="Project Description"
           class="w-355-px mt-5"
           v-model="form.description"
         />
@@ -45,10 +42,10 @@
         name="Submit Post"
         width="100%"
         color="color-primary"
-        @click="addPost"
+        @click="createProject"
       >
         <template #iconLeft>
-          <IconsSpinner v-if="addPostLoading" color="#7d7be5" />
+          <IconsSpinner v-if="addProjectLoading" color="#7d7be5" />
           <IconsCheckCircle color="#7d7be5" class="mx-2" v-else />
         </template>
       </BaseButton>
@@ -57,8 +54,7 @@
 </template>
 
 <script setup>
-import { PostsControllerModule } from "~/controllers/posts";
-
+import { ProjectControllerModule } from "~/controllers/project";
 import { UploadControllerModule } from "~/controllers/upload";
 const emit = defineEmits(["close"]);
 
@@ -70,17 +66,17 @@ const props = defineProps({
 });
 
 const targetImage = ref(null);
-const addPostLoading = ref(false);
+const addProjectLoading = ref(false);
 const loadingUpload = ref(false);
 
 const form = ref({
   description: "",
-  title: "",
-  imageId: "",
+  name: "",
+  avatar: ""
 });
 
 const errorMessage = computed(() => {
-  return PostsControllerModule.errorMessage.value;
+  return ProjectControllerModule.errorMessage.value;
 });
 
 const uploadImage = async (event) => {
@@ -91,21 +87,11 @@ const uploadImage = async (event) => {
   targetImage.value = await UploadControllerModule.downloadFileById(
     response.id
   );
-  form.value.imageId = response.id;
+  form.value.avatar = response.id;
   loadingUpload.value = false;
 };
 
-const addPost = async () => {
-  addPostLoading.value = true;
-  const response = await PostsControllerModule.validateAddPost(form.value);
-  if (response) {
-    form.value = {
-      description: "",
-      title: "",
-      imageId: "",
-    };
-    emit("close");
-  }
-  addPostLoading.value = false;
+const createProject = async () => {
+ 
 };
 </script>

@@ -11,6 +11,7 @@
         <NuxtPage />
         <Compose 
           @createPost="createPost = true"
+          @createProject="createProject = true"
           @addNote="addNote = true"
         />
       </div>
@@ -21,6 +22,7 @@
     <BaseToastBar />
     <ModalsAddNote :state="addNote" @close="addNote = false" />
     <ModalsAddPost :state="createPost" @close="createPost = false" />
+    <ModalsAddProject :state="createProject" @close="createProject = false" />
   </div>
 </template>
 
@@ -29,6 +31,7 @@ import { BaseAppStoreElementModule } from "@/stores/baseApp";
 
 const addNote = ref(false);
 const createPost = ref(false);
+const createProject = ref(false);
 
 const pageLoading = computed(() => {
   return BaseAppStoreElementModule.loading.value;

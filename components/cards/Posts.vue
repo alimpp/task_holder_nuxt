@@ -62,15 +62,15 @@ const props = defineProps({
 });
 
 const handlelike = async () => {
-  await PostsControllerModule.like(props.post.id);
   props.post.youLiked = true;
   props.post.likesCount++;
+  await PostsControllerModule.like(props.post.id);
 };
 
 const handledislike = async () => {
-  await PostsControllerModule.dislike(props.post.id);
   props.post.youLiked = false;
   props.post.likesCount--;
+  await PostsControllerModule.dislike(props.post.id);
 };
 
 const comments = () => {
