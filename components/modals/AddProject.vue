@@ -39,7 +39,7 @@
     <template #footer>
       <BaseButton
         bg="bg-info"
-        name="Submit Post"
+        name="Create"
         width="100%"
         color="color-primary"
         @click="createProject"
@@ -72,10 +72,11 @@ const loadingUpload = ref(false);
 const form = ref({
   description: "",
   name: "",
-  avatar: ""
+  avatar: "",
 });
 
 const errorMessage = computed(() => {
+  console.log(ProjectControllerModule.errorMessage.value);
   return ProjectControllerModule.errorMessage.value;
 });
 
@@ -92,6 +93,18 @@ const uploadImage = async (event) => {
 };
 
 const createProject = async () => {
- 
+  addProjectLoading.value = true;
+  await ProjectControllerModule.createProject(form.value);
+
+  setTimeout(() => {
+    emit("close");
+    addProjectLoading.value = false;
+    form.value = {
+      description: "",
+      name: "",
+      avatar: "",
+    };
+    targetImage.value = null;
+  }, 1000);
 };
 </script>
