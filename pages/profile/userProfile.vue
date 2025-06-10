@@ -17,69 +17,63 @@
         <span class="f-s-16 f-w-600 py-5">{{ user.fullname }}</span>
         <span class="f-s-14 f-w-600 color-gray">{{ user.email }}</span>
         <BaseUploadAvatar @updateAvatar="updateAvatar" class="mt-10" />
-        <div class="flex flex-column mt-5 w-100">
-          <BaseInput
-            label="Fristname"
-            class="mt-4"
-            v-model="user.fristname"
-            width="98%"
-            :errorMessage="errorMessage.fristname"
-          />
-          <BaseInput
-            label="Lastname"
-            class="mt-4"
-            v-model="user.lastname"
-            width="98%"
-            :errorMessage="errorMessage.lastname"
-          />
-          <BaseInput
-            label="Email"
-            :disabled="true"
-            class="mt-4"
-            v-model="user.email"
-            width="98%"
-          />
-          <BaseInput
-            label="Bio"
-            class="mt-4"
-            width="98%"
-            v-model="user.bio"
-            :errorMessage="errorMessage.bio"
-          />
-          <BaseButton
-            class="mt-10"
-            bg="bg-info"
-            color="color-primary"
-            border="1px solid #7d7be5"
-            width="99%"
-            name="Update Profile"
-            @click="udpateProfile"
-          >
-            <template #iconLeft>
-              <IconsSpinner v-if="updateProfileLoading" color="#7d7be5" />
-              <IconsPencile
-                v-else
-                class="mx-2"
-                width="20px"
-                height="20px"
-                color="#7d7be5"
-              />
-            </template>
-          </BaseButton>
-        </div>
+        <BaseInput
+          label="Fristname"
+          class="mt-4"
+          v-model="user.fristname"
+          :errorMessage="errorMessage.fristname"
+        />
+        <BaseInput
+          label="Lastname"
+          class="mt-4"
+          v-model="user.lastname"
+          :errorMessage="errorMessage.lastname"
+        />
+        <BaseInput
+          label="Email"
+          :disabled="true"
+          class="mt-4"
+          v-model="user.email"
+        />
+        <BaseInput
+          label="Bio"
+          class="mt-4"
+          v-model="user.bio"
+          :errorMessage="errorMessage.bio"
+        />
+        <BaseButton
+          class="mt-10"
+          bg="bg-info"
+          color="color-primary"
+          border="1px solid #7d7be5"
+          width="100%"
+          name="Update Profile"
+          @click="udpateProfile"
+        >
+          <template #iconLeft>
+            <IconsSpinner v-if="updateProfileLoading" color="#7d7be5" />
+            <IconsPencile
+              v-else
+              class="mx-2"
+              width="20px"
+              height="20px"
+              color="#7d7be5"
+            />
+          </template>
+        </BaseButton>
       </div>
+
       <div class="flex flex-column responsive-width mt-10">
         <span class="f-s-16 f-w-500 color-primary">Add Your Skills</span>
         <BaseInput
           label="Skill"
-          width="97%"
           class="mt-10"
           v-model="skill"
           :errorMessage="inputSkillError"
         />
         <BaseButton
           class="bg-primary mt-10"
-          width="99%"
+          width="100%"
           name="Add Skill"
           @click="addSkill"
         >
@@ -189,7 +183,6 @@ onMounted(async () => {
 
 .responsive-width {
   width: 50%;
-  padding: 0 10px;
 }
 
 @media (max-width: 900px) {

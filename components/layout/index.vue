@@ -3,7 +3,7 @@
     <div class="sidebar-content">
       <LayoutSideBar />
     </div>
-    <div class="main-content">
+    <div class="main-content px-10">
       <div class="header-content">
         <LayoutHeader />
       </div>
@@ -60,31 +60,6 @@ const pageLoading = computed(() => {
 .router-content {
   height: 90dvh;
   overflow-y: scroll;
-  padding: 0 34px;
-}
-
-@media (max-width: 1600px) {
-  .router-content {
-    padding: 0 28px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .router-content {
-    padding: 0 22px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .router-content {
-    padding: 0 18px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .router-content {
-    padding: 0 15px;
-  }
 }
 
 .router-content::-webkit-scrollbar {

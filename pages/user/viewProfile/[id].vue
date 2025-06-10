@@ -44,7 +44,7 @@
       </div>
       <div
         v-if="dataSource.skills.length > 0"
-        class="slid-up-animation-1s bg-secondary-gray border-rounded w-100 border-info py-10 px-2 mt-15 flex flex-wrap"
+        class="slid-up-animation-1s bg-secondary-gray border-rounded border-info py-10 px-2 mt-15 flex flex-wrap"
       >
         <span
           class="f-s-12 f-w-500 mt-5 px-10 bg-info color-primary mx-5 py-8 border-rounded"

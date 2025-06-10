@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-column">
+  <div class="flex flex-column w-100">
     <span class="f-s-12 f-w-500" :class="{ 'color-danger': errorMessage }">
       {{ label }}
     </span>
@@ -62,7 +62,7 @@ const props = defineProps({
   },
   width: {
     type: String,
-    default: "100%",
+    default: "",
   },
 });
 </script>
