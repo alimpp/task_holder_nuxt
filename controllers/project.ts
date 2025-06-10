@@ -6,7 +6,7 @@ import { ref } from "vue";
 
 interface ErrorMessages {
   description: string;
-  title: string;
+  name: string;
 }
 interface AddProject {
   avatar: string;
@@ -16,14 +16,37 @@ interface AddProject {
 
 export class ProjectController extends BaseAppModule {
   public errorMessage = ref<ErrorMessages>({
+    name: "",
     description: "",
-    title: "",
   });
+
   public loadingCreate = ref(false);
+  public closeModalCreate = ref(false);
 
   async createProject(body: AddProject) {
     this.loadingCreate.value = true;
-    const response = await PorjectStoreModule.addProject(body);
+    const { avatar, name, description } = body;
+    this.errorMessage.value = {
+      name: "",
+      description: "",
+    };
+
+    const nameValid = this.validLength(name, 3, 20);
+    if (!nameValid.isValid) {
+      this.errorMessage.value.name = nameValid.message || "";
+    }
+    const descriptionValid = this.validLength(description, 3, 100);
+    if (!descriptionValid.isValid) {
+      this.errorMessage.value.description = descriptionValid.message || "";
+    }
+    if (nameValid.isValid && descriptionValid.isValid) {
+      await PorjectStoreModule.addProject(body);
+      this.loadingCreate.value = false;
+      this.closeModalCreate.value = true;
+    } else {
+      this.loadingCreate.value = false;
+      this.closeModalCreate.value = false;
+    }
   }
 }
 

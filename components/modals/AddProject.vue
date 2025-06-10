@@ -22,7 +22,7 @@
           :loading="loadingUpload"
         />
         <BaseInput
-          :errorMessage="errorMessage.title"
+          :errorMessage="errorMessage.name"
           label="Project Name"
           class="w-355-px mt-5"
           v-model="form.name"
@@ -66,7 +66,6 @@ const props = defineProps({
 });
 
 const targetImage = ref(null);
-const addProjectLoading = ref(false);
 const loadingUpload = ref(false);
 
 const form = ref({
@@ -75,8 +74,11 @@ const form = ref({
   avatar: "",
 });
 
+const addProjectLoading = computed(() => {
+  return ProjectControllerModule.loadingCreate.value;
+});
+
 const errorMessage = computed(() => {
-  console.log(ProjectControllerModule.errorMessage.value);
   return ProjectControllerModule.errorMessage.value;
 });
 
@@ -93,18 +95,15 @@ const uploadImage = async (event) => {
 };
 
 const createProject = async () => {
-  addProjectLoading.value = true;
   await ProjectControllerModule.createProject(form.value);
 
-  setTimeout(() => {
+  if (ProjectControllerModule.closeModalCreate.value) {
     emit("close");
-    addProjectLoading.value = false;
     form.value = {
       description: "",
       name: "",
       avatar: "",
     };
-    targetImage.value = null;
-  }, 1000);
+  }  
 };
 </script>
