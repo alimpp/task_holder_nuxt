@@ -40,12 +40,10 @@ export class ProjectController extends BaseAppModule {
       this.errorMessage.value.description = descriptionValid.message || "";
     }
     if (nameValid.isValid && descriptionValid.isValid) {
-      await PorjectStoreModule.addProject(body);
-      this.loadingCreate.value = false;
-      this.closeModalCreate.value = true;
-    } else {
-      this.loadingCreate.value = false;
-      this.closeModalCreate.value = false;
+      const response = await PorjectStoreModule.addProject(body);
+      if (response) {
+        return true;
+      }
     }
   }
 }

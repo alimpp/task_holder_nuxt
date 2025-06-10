@@ -56,8 +56,8 @@
 <script setup>
 import { ProjectControllerModule } from "~/controllers/project";
 import { UploadControllerModule } from "~/controllers/upload";
-const emit = defineEmits(["close"]);
 
+const emit = defineEmits(["close"]);
 const props = defineProps({
   state: {
     type: Boolean,
@@ -67,15 +67,12 @@ const props = defineProps({
 
 const targetImage = ref(null);
 const loadingUpload = ref(false);
+const addProjectLoading = ref(false);
 
 const form = ref({
   description: "",
   name: "",
   avatar: "",
-});
-
-const addProjectLoading = computed(() => {
-  return ProjectControllerModule.loadingCreate.value;
 });
 
 const errorMessage = computed(() => {
@@ -95,15 +92,16 @@ const uploadImage = async (event) => {
 };
 
 const createProject = async () => {
-  await ProjectControllerModule.createProject(form.value);
-
-  if (ProjectControllerModule.closeModalCreate.value) {
-    emit("close");
+  addProjectLoading.value = true;
+  const response = await ProjectControllerModule.createProject(form.value);
+  if (response) {
     form.value = {
       description: "",
       name: "",
       avatar: "",
     };
-  }  
+    addProjectLoading.value = false;
+    emit("close");
+  }
 };
 </script>
