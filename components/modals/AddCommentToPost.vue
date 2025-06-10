@@ -89,6 +89,13 @@ const emit = defineEmits(["close"]);
 const comment = ref("");
 const loading = ref(false);
 
+const props = defineProps({
+  state: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const loadingContent = computed(() => {
   return PostsStoreModule.loadingComment.value
 })
@@ -107,11 +114,4 @@ const addComment = async () => {
   loading.value = false;
   comment.value = "";
 };
-
-const props = defineProps({
-  state: {
-    type: Boolean,
-    default: false,
-  },
-});
 </script>
