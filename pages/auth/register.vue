@@ -10,7 +10,6 @@
     </div>
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
-      width="365px"
       label="fristname"
       placeholder="Enter your fristname"
       :errorMessage="errorMessage.fristname"
@@ -18,7 +17,6 @@
     />
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
-      width="365px"
       label="Lastname"
       placeholder="Enter your Lastname"
       :errorMessage="errorMessage.lastname"
@@ -26,7 +24,6 @@
     />
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
-      width="365px"
       label="Email"
       placeholder="Enter your email"
       :errorMessage="errorMessage.email"
@@ -34,7 +31,6 @@
     />
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
-      width="365px"
       label="Password"
       placeholder="Enter your password"
       :errorMessage="errorMessage.password"

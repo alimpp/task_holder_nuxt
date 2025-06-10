@@ -10,7 +10,6 @@
     </div>
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
-      width="365px"
       label="Email"
       placeholder="Enter your email"
       :errorMessage="errorMessage.email"
@@ -18,7 +17,6 @@
     />
     <BaseInput
       class="mt-10 slid-up-animation-5 fade-animation"
-      width="365px"
       label="Password"
       placeholder="Enter your Password"
       :errorMessage="errorMessage.password"
